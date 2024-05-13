@@ -11,6 +11,7 @@
 		DE1615E22BF1AC27007EE7A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1615E12BF1AC27007EE7A0 /* ContentView.swift */; };
 		DE1615E42BF1AC28007EE7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */; };
 		DE1615E72BF1AC28007EE7A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */; };
+		DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		DE1615E12BF1AC27007EE7A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
 				DE1615E12BF1AC27007EE7A0 /* ContentView.swift */,
+				DF20AFF72BF1B4F10082BFF3 /* Extension */,
 				DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */,
 				DE1615E52BF1AC28007EE7A0 /* Preview Content */,
 			);
@@ -65,6 +68,14 @@
 				DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DF20AFF72BF1B4F10082BFF3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
 				DE1615E22BF1AC27007EE7A0 /* ContentView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 			);
