@@ -54,7 +54,9 @@
 			isa = PBXGroup;
 			children = (
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
-				DE1615E12BF1AC27007EE7A0 /* ContentView.swift */,
+				DF20B0042BF1B7B20082BFF3 /* Domain */,
+				DF20AFFE2BF1B75F0082BFF3 /* Data */,
+				DF20AFFB2BF1B6EC0082BFF3 /* Presentation */,
 				DF20AFF72BF1B4F10082BFF3 /* Extension */,
 				DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */,
 				DE1615E52BF1AC28007EE7A0 /* Preview Content */,
@@ -76,6 +78,92 @@
 				DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DF20AFFB2BF1B6EC0082BFF3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				DF20AFFD2BF1B70C0082BFF3 /* ViewModel */,
+				DF20AFFC2BF1B7050082BFF3 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		DF20AFFC2BF1B7050082BFF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE1615E12BF1AC27007EE7A0 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF20AFFD2BF1B70C0082BFF3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DF20AFFE2BF1B75F0082BFF3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DF20AFFF2BF1B7650082BFF3 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DF20AFFF2BF1B7650082BFF3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DF20B0012BF1B7850082BFF3 /* DataMapping */,
+				DF20B0002BF1B76C0082BFF3 /* NetwokManager */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DF20B0002BF1B76C0082BFF3 /* NetwokManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetwokManager;
+			sourceTree = "<group>";
+		};
+		DF20B0012BF1B7850082BFF3 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				DF20B0032BF1B79C0082BFF3 /* Response */,
+				DF20B0022BF1B78B0082BFF3 /* Request */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		DF20B0022BF1B78B0082BFF3 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		DF20B0032BF1B79C0082BFF3 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		DF20B0042BF1B7B20082BFF3 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				DF20B0052BF1B7BC0082BFF3 /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		DF20B0052BF1B7BC0082BFF3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
