@@ -8,19 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */; };
-		DE1615E22BF1AC27007EE7A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1615E12BF1AC27007EE7A0 /* ContentView.swift */; };
 		DE1615E42BF1AC28007EE7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */; };
 		DE1615E72BF1AC28007EE7A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */; };
 		DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */; };
+		DF20B00B2BF2F0850082BFF3 /* FinaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */; };
+		DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00C2BF2F0910082BFF3 /* SplashView.swift */; };
+		DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */; };
+		DF20B0112BF2F0AE0082BFF3 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */; };
+		DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */; };
+		DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0142BF2F0C70082BFF3 /* FinishView.swift */; };
+		DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DE1615DC2BF1AC27007EE7A0 /* SOONGEEZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SOONGEEZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOONGEEZApp.swift; sourceTree = "<group>"; };
-		DE1615E12BF1AC27007EE7A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinaleView.swift; sourceTree = "<group>"; };
+		DF20B00C2BF2F0910082BFF3 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
+		DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		DF20B0142BF2F0C70082BFF3 /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
+		DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +104,13 @@
 		DF20AFFC2BF1B7050082BFF3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DE1615E12BF1AC27007EE7A0 /* ContentView.swift */,
+				DF20B00C2BF2F0910082BFF3 /* SplashView.swift */,
+				DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */,
+				DF20B0142BF2F0C70082BFF3 /* FinishView.swift */,
+				DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */,
+				DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */,
+				DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */,
+				DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,9 +254,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
-				DE1615E22BF1AC27007EE7A0 /* ContentView.swift in Sources */,
+				DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */,
+				DF20B00B2BF2F0850082BFF3 /* FinaleView.swift in Sources */,
+				DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */,
+				DF20B0112BF2F0AE0082BFF3 /* MusicView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
+				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
