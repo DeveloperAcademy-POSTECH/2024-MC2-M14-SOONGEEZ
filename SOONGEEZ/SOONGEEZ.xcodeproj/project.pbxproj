@@ -25,7 +25,8 @@
 		DF3A06912BF31ABF00E40050 /* TempNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */; };
 		DF8BAFFC2BF4ABD3006469CD /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BAFFB2BF4ABD3006469CD /* SearchBar.swift */; };
 		DF8BAFFE2BF4ABE9006469CD /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BAFFD2BF4ABE9006469CD /* SearchView.swift */; };
-		DF8BB0002BF4DAA5006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BAFFF2BF4DAA5006469CD /* SelectMusicModel.swift */; };
+		DF8BB0022BF4ECD8006469CD /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0012BF4ECD8006469CD /* SwiftUIView.swift */; };
+		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +49,8 @@
 		DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempNetworkManager.swift; sourceTree = "<group>"; };
 		DF8BAFFB2BF4ABD3006469CD /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		DF8BAFFD2BF4ABE9006469CD /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		DF8BAFFF2BF4DAA5006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
+		DF8BB0012BF4ECD8006469CD /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				DF20B00C2BF2F0910082BFF3 /* SplashView.swift */,
 				DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */,
+				DF8BB0012BF4ECD8006469CD /* SwiftUIView.swift */,
 				DF20B0142BF2F0C70082BFF3 /* FinishView.swift */,
 				DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */,
 				DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */,
@@ -137,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				DF0523032BF30EA800C902DD /* TempModel.swift */,
-				DF8BAFFF2BF4DAA5006469CD /* SelectMusicModel.swift */,
+				DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -279,11 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
-				DF8BB0002BF4DAA5006469CD /* SelectMusicModel.swift in Sources */,
+				DF8BB0022BF4ECD8006469CD /* SwiftUIView.swift in Sources */,
 				DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */,
 				DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */,
 				DF0523042BF30EA800C902DD /* TempModel.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
+				DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */,
 				DF8BAFFC2BF4ABD3006469CD /* SearchBar.swift in Sources */,
 				DF8BAFFE2BF4ABE9006469CD /* SearchView.swift in Sources */,
 				DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */,

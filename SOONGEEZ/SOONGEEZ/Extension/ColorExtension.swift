@@ -2,7 +2,7 @@ import SwiftUI
 
 
 extension Color{
-    static let customGreen = Color(hex: "7B926C") //이런 식으로 색상 넣기
+    static let customGray = Color(hex: "8A8A8E") 
 }
 
 extension Color {

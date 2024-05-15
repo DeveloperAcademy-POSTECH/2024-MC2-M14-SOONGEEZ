@@ -6,22 +6,24 @@
 //
 
 import SwiftUI
- 
+
 struct SearchBar: View {
     
     @Binding var text: String
- 
+    @State var isSearching: Bool
+    
     var body: some View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
- 
+                
                 TextField("Search", text: $text)
                     .foregroundColor(.primary)
- 
+                
                 if !text.isEmpty {
                     Button(action: {
                         self.text = ""
+                        isSearching = false
                     }) {
                         Image(systemName: "xmark.circle.fill")
                     }
@@ -35,14 +37,15 @@ struct SearchBar: View {
             .cornerRadius(10.0)
             
             if !text.isEmpty {
-                        Button(action: {
-                            self.text = ""
-                        }) {
-                            Text("Cancel")
-                                .foregroundColor(.blue)
-                                .font(.system(size: 17))
-                        }
-                    }
+                Button(action: {
+                    self.text = ""
+                    isSearching = false
+                }) {
+                    Text("Cancel")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 17))
+                }
+            }
         }
         .padding(.horizontal)
     }
