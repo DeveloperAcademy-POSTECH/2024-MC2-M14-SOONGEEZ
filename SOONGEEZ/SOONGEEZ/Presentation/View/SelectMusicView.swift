@@ -65,6 +65,7 @@ struct SelectMusicView: View {
                         if !searchText.isEmpty {
                             Button(action: {
                                 self.searchText = ""
+                                self.filteredSongs = []
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                             }
@@ -80,6 +81,7 @@ struct SelectMusicView: View {
                     if !searchText.isEmpty {
                         Button(action: {
                             self.searchText = ""
+                            self.filteredSongs = []
                         }) {
                             Text("Cancel")
                                 .foregroundColor(.blue)
