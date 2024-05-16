@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectMusicView: View {
     
     @State private var searchText = ""
-    @State private var isSearching = false
+    @State private var filteredSongs: [SearchMusic] = []
     
     let songs: [LastFinaleMusic] = [
         LastFinaleMusic(title: "노래 제목 1", artist: "가수 1", imageURL: URL(string: "https://example.com/image1.jpg")!),
@@ -35,6 +35,12 @@ struct SelectMusicView: View {
         GridItem(.flexible(), spacing: 17)
     ]
     
+    func performSearch() {
+        filteredSongs = searchSongs.filter { song in
+            song.title.lowercased().contains(searchText.lowercased())
+        }
+    }
+    
     var body: some View {
         ScrollView{
             VStack(alignment: .leading,
@@ -48,13 +54,42 @@ struct SelectMusicView: View {
                     .padding(.leading, 20)
                     .font(.system(size: 17))
                 
-                SearchBar(text: $searchText, isSearching: isSearching)
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0))
-                    .onTapGesture {
-                        isSearching = true
+                HStack { //검색 창
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        
+                        TextField("Search", text: $searchText, onCommit: performSearch)
+                        .foregroundColor(.primary)
+                        
+                        if !searchText.isEmpty {
+                            Button(action: {
+                                self.searchText = ""
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                            }
+                        } else {
+                            EmptyView()
+                        }
                     }
+                    .padding(EdgeInsets(top: 7, leading: 8, bottom: 7, trailing: 8))
+                    .foregroundColor(.secondary)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(10.0)
+                    
+                    if !searchText.isEmpty {
+                        Button(action: {
+                            self.searchText = ""
+                        }) {
+                            Text("Cancel")
+                                .foregroundColor(.blue)
+                                .font(.system(size: 17))
+                        }
+                    }
+                }
+                .padding(.horizontal)
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0))
                 
-                if !isSearching { //입력 창 텍스트 없을 때
+                if searchText.isEmpty { //입력 창 텍스트 없을 때
                     Text("최근 선택한 곡")
                         .padding(.leading, 20)
                         .font(.system(size: 14))
@@ -84,37 +119,39 @@ struct SelectMusicView: View {
                         .padding(.leading, 20)
                         .font(.system(size: 14))
                     
-                    ForEach(searchSongs) { searchSong in
+                    ForEach(filteredSongs, id: \.id) { song in
                         VStack(spacing: 9){
                             HStack(spacing: 12){
-                                AsyncImage(url: searchSong.imageURL)
+                                AsyncImage(url: song.imageURL)
                                     .frame(width: 44, height: 44)
                                     .cornerRadius(11)
                                 
                                 VStack(alignment: .leading, spacing: 0){
-                                    Text(searchSong.title)
+                                    Text(song.title)
                                         .font(.system(size: 17))
-                                        .frame(width: 200, height: 22, alignment: .leading)
-                                    Text(searchSong.artist)
+                                        .frame(width: 260, height: 22, alignment: .leading)
+                                    Text(song.artist)
                                         .font(.system(size: 15))
                                         .foregroundColor(.customGray)
-                                        .frame(width: 200, height: 20, alignment: .leading)
+                                        .frame(width: 260, height: 20, alignment: .leading)
                                 }
-                                Text("\(searchSong.playtime)")
+                                Text(song.playtime)
                                     .font(.system(size: 12))
                                     .foregroundColor(.customGray)
                             }
-                           Divider()
+                            Divider()
+                        }.onTapGesture {
+                            //
                         }
                     }
                     
-                    
                 }
-                
             }
+            
         }
     }
 }
+
 
 
 #Preview {
