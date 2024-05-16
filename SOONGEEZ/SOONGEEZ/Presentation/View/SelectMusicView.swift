@@ -23,10 +23,10 @@ struct SelectMusicView: View {
     
     
     let searchSongs: [SearchMusic] = [
-        SearchMusic(title: "가", artist: "가수 1", playtime: 30, imageURL: URL(string: "https://example.com/image1.jpg")!),
-        SearchMusic(title: "나", artist: "가수 2", playtime: 30, imageURL: URL(string: "https://example.com/image2.jpg")!),
-        SearchMusic(title: "다", artist: "Muse", playtime: 40, imageURL: URL(string: "https://example.com/image2.jpg")!),
-        SearchMusic(title: "라", artist: "가수 4", playtime: 50, imageURL: URL(string: "https://example.com/image2.jpg")!)
+        SearchMusic(title: "가", artist: "가수 1", playtime: "3-30", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        SearchMusic(title: "나", artist: "가수 2", playtime: "3-30", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        SearchMusic(title: "다", artist: "Muse", playtime: "3-30", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        SearchMusic(title: "라", artist: "가수 4", playtime: "3-30", imageURL: URL(string: "https://example.com/image2.jpg")!)
     ]
     
     

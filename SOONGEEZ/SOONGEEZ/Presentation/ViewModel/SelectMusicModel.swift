@@ -18,6 +18,6 @@ struct SearchMusic: Identifiable {
     let id = UUID()
     let title: String
     let artist: String
-    let playtime: Float
+    let playtime: String
     let imageURL: URL
 }

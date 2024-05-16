@@ -18,6 +18,7 @@ struct SwiftUIView: View {
     ]
     
     var body: some View {
+        
         ForEach(songs) { song in
             VStack(spacing: 9){
                 HStack(spacing: 12){
