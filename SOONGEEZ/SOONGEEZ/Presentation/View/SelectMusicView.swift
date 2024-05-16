@@ -66,6 +66,7 @@ struct SelectMusicView: View {
                             Button(action: {
                                 self.searchText = ""
                                 self.filteredSongs = []
+                                self.clickedSongs = false
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                             }
@@ -82,6 +83,7 @@ struct SelectMusicView: View {
                         Button(action: {
                             self.searchText = ""
                             self.filteredSongs = []
+                            self.clickedSongs = false
                         }) {
                             Text("Cancel")
                                 .foregroundColor(.blue)
