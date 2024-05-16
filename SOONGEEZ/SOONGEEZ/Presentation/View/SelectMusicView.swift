@@ -11,6 +11,7 @@ struct SelectMusicView: View {
     
     @State private var searchText = ""
     @State private var filteredSongs: [SearchMusic] = []
+    @State private var clickedSongs = false
     
     let songs: [LastFinaleMusic] = [
         LastFinaleMusic(title: "노래 제목 1", artist: "가수 1", imageURL: URL(string: "https://example.com/image1.jpg")!),
@@ -59,7 +60,7 @@ struct SelectMusicView: View {
                         Image(systemName: "magnifyingglass")
                         
                         TextField("Search", text: $searchText, onCommit: performSearch)
-                        .foregroundColor(.primary)
+                            .foregroundColor(.primary)
                         
                         if !searchText.isEmpty {
                             Button(action: {
@@ -138,10 +139,49 @@ struct SelectMusicView: View {
                                 Text(song.playtime)
                                     .font(.system(size: 12))
                                     .foregroundColor(.customGray)
+                            }.onTapGesture {
+                                self.clickedSongs = true
                             }
                             Divider()
-                        }.onTapGesture {
-                            //
+                            
+                            if clickedSongs {
+                                ZStack{
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .frame(width: 353, height: 80)
+                                        .background(Color.customGray100)
+                                        .cornerRadius(16)
+                                    
+                                    
+                                    HStack(spacing: 16){
+                                        AsyncImage(url: song.imageURL) //이미지 바꾸기
+                                            .frame(width: 44, height: 44)
+                                            .cornerRadius(11)
+                                        
+                                        VStack(alignment: .leading, spacing: 0){
+                                            Text(song.title)
+                                                .font(.system(size: 16))
+                                                .fontWeight(.bold)
+                                                .frame(width: 260, height: 22, alignment: .leading)
+                                            Text("오늘의 피날레 곡으로 선택할게요.")
+                                                .font(.system(size: 16))
+                                                .frame(width: 260, height: 20, alignment: .leading)
+                                        }
+                                    }
+                                }.padding(.bottom, 16)
+                                    .padding(.top, 360)
+                                    .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
+                                
+                                Text("확인")
+                                    .padding(.vertical, 16)
+                                    .padding(.horizontal, 160)
+                                    .font(.system(size: 17))
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.black, lineWidth: 1)
+                                    )
+                            }
+                            
                         }
                     }
                     

@@ -3,6 +3,7 @@ import SwiftUI
 
 extension Color{
     static let customGray = Color(hex: "8A8A8E") 
+    static let customGray100 = Color(hex: "F5F5F5") 
 }
 
 extension Color {
