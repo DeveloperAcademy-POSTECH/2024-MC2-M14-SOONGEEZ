@@ -10,7 +10,8 @@ import SwiftUI
 struct LoginView: View {
     var body: some View {
         ZStack() {
-            Image("backgroundOfSplash")
+            
+            Image("backgroundOfLogin")
                 .scaledToFill()
                 .ignoresSafeArea()
             VStack() {
