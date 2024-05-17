@@ -10,7 +10,6 @@
 		DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */; };
 		DE1615E42BF1AC28007EE7A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */; };
 		DE1615E72BF1AC28007EE7A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */; };
-		DF0523042BF30EA800C902DD /* TempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523032BF30EA800C902DD /* TempModel.swift */; };
 		DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523052BF30EB500C902DD /* TempRequest.swift */; };
 		DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523072BF30ECC00C902DD /* TempResponse.swift */; };
 		DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */; };
@@ -23,6 +22,7 @@
 		DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */; };
 		DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A068E2BF31AAF00E40050 /* TempEntity.swift */; };
 		DF3A06912BF31ABF00E40050 /* TempNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */; };
+		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,6 @@
 		DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOONGEEZApp.swift; sourceTree = "<group>"; };
 		DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		DF0523032BF30EA800C902DD /* TempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempModel.swift; sourceTree = "<group>"; };
 		DF0523052BF30EB500C902DD /* TempRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempRequest.swift; sourceTree = "<group>"; };
 		DF0523072BF30ECC00C902DD /* TempResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempResponse.swift; sourceTree = "<group>"; };
 		DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -43,6 +42,7 @@
 		DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicView.swift; sourceTree = "<group>"; };
 		DF3A068E2BF31AAF00E40050 /* TempEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempEntity.swift; sourceTree = "<group>"; };
 		DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempNetworkManager.swift; sourceTree = "<group>"; };
+		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,7 @@
 		DF20AFFD2BF1B70C0082BFF3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DF0523032BF30EA800C902DD /* TempModel.swift */,
+				DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -272,8 +272,8 @@
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
 				DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */,
 				DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */,
-				DF0523042BF30EA800C902DD /* TempModel.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
+				DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */,
 				DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */,
 				DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */,
 				DF20B00B2BF2F0850082BFF3 /* FinaleView.swift in Sources */,
