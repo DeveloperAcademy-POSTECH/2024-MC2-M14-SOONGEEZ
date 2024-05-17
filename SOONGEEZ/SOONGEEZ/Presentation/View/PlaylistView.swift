@@ -32,8 +32,6 @@ struct PlaylistView: View {
     ]
     @State private var showingAlert = false
     
-    
-    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 20){
@@ -51,7 +49,6 @@ struct PlaylistView: View {
             }
             
             ZStack(alignment: .bottom){
-                
                 List{
                     ForEach(MusicList, id: \.id) { item in
                         HStack{
@@ -76,7 +73,23 @@ struct PlaylistView: View {
                         }
                         
                     }
-                    .onDelete(perform: delete)
+//                    .onDelete(perform: delete)
+                    
+                    .swipeActions(edge: .trailing) {
+                        Button(role: .destructive) {
+                            //                            삭제
+                        } label: {
+                            Label("delete", systemImage: "trash")
+                        }
+                        
+                        
+                        Button(role: .cancel) {
+                            //                            붐따
+                        } label: {
+                            Label("dislike", systemImage: "hand.thumbsdown.fill")
+                        }
+                        
+                    }
                 }
                 .listStyle(.inset)
                 .frame(maxHeight: 560)
@@ -105,7 +118,6 @@ struct PlaylistView: View {
                         startPoint: UnitPoint(x: 0.5, y: 0.18),
                         endPoint: UnitPoint(x: 0.5, y: 0.5)
                     ))
-                
             }
         }
         
@@ -117,7 +129,7 @@ struct PlaylistView: View {
             Text("지금 재생하고 있는 플레이리스트를 종료하시겠습니까?")
         }
         
-
+        
         
     }
     func delete(at offsets: IndexSet) {
