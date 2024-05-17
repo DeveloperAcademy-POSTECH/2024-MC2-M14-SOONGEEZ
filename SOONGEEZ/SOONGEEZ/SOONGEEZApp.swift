@@ -14,7 +14,7 @@ struct SOONGEEZApp: App {
     var body: some Scene {
         WindowGroup {
             
-            PlaylistView()
+            MusicView()
             
         }
     }
