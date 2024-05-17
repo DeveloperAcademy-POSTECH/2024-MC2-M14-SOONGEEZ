@@ -8,34 +8,23 @@
 import SwiftUI
 
 
-struct Music: Identifiable {
-    var id = UUID()
-    var title: String
-    var artist: String
-    var lenght: String
-}
 
 
 
 struct PlaylistView: View {
     @State var MusicList: [Music] = [
-        Music(title: "Cookie", artist: "NeaJeans", lenght: "3:13"),
-        Music(title: "Starlight", artist: "Muse", lenght: "4:12"),
-        Music(title: "Cookie", artist: "NeaJeans", lenght: "3:13"),
-        Music(title: "Starlight", artist: "Muse", lenght: "4:12"),
-        Music(title: "Cookie", artist: "NeaJeans", lenght: "3:13"),
-        Music(title: "Starlight", artist: "Muse", lenght: "4:12"),
-        Music(title: "Cookie", artist: "NeaJeans", lenght: "3:13"),
-        Music(title: "Starlight", artist: "Muse", lenght: "4:12"),
-        Music(title: "Cookie", artist: "NeaJeans", lenght: "3:13"),
-        Music(title: "Starlight", artist: "Muse", lenght: "4:12"),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "Muse", length: "3:15", imageURL: URL(string: "https://example.com/image2.jpg")!),
     ]
+    
+    
+    
+    
     @State private var showingAlert = false
     
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 20){
-            Text("5월 12일의 플레이리스트")
+            Text("\(Date(), formatter: Self.KoreanFormatter)의 플레이리스트")
                 .font(.system(size: 24, weight: .semibold))
                 .padding(.leading, 20)
             
@@ -50,30 +39,27 @@ struct PlaylistView: View {
             
             ZStack(alignment: .bottom){
                 List{
-                    ForEach(MusicList, id: \.id) { item in
+                    ForEach($MusicList, id: \.id) { item in
                         HStack{
-                            Rectangle()
+                            AsyncImage(url: item.wrappedValue.imageURL)
                                 .cornerRadius(11)
                                 .frame(width: 44, height: 44)
                             
-                            
-                            
                             VStack(alignment: .leading)
                             {
-                                Text(item.title)
-                                Text(item.artist)
+                                Text(item.wrappedValue.title)
+                                Text(item.wrappedValue.artist)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
                             Spacer()
-                            Text(item.lenght)
+                            Text(item.wrappedValue.length)
                                 .foregroundColor(.gray)
                                 .font(.caption)
                             
                         }
                         
                     }
-//                    .onDelete(perform: delete)
                     
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) {
@@ -129,17 +115,19 @@ struct PlaylistView: View {
             Text("지금 재생하고 있는 플레이리스트를 종료하시겠습니까?")
         }
         
-        
-        
     }
-    func delete(at offsets: IndexSet) {
-        if let first = offsets.first {
-            MusicList.remove(at: first)
-        }
-    }
+    
     
 }
 
+
+extension PlaylistView{
+    static let KoreanFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M월 dd일"
+        return formatter
+    }()
+}
 
 
 
