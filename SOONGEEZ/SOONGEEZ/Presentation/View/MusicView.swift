@@ -25,6 +25,7 @@ struct MusicView: View {
 
 var TopLogo: some View {
     HStack{
+        Text("commit 테스트용")
         Image("img_logo")//텍스트 로고
             .resizable()
             .scaledToFit()
