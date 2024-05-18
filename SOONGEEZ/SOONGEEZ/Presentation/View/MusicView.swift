@@ -16,7 +16,7 @@ struct MusicView: View {
             VStack(spacing:0){
                 TopLogo
                 CurrentOrder
-                AudioPlayerView()
+                MusicPlayerView()
                 Spacer()
             }
         }
@@ -25,7 +25,7 @@ struct MusicView: View {
 
 var TopLogo: some View {
     HStack{
-        Text("commit 테스트용")
+    
         Image("img_logo")//텍스트 로고
             .resizable()
             .scaledToFit()
