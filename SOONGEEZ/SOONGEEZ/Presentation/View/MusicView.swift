@@ -10,8 +10,15 @@ import AVKit
 
 struct MusicView: View {
     var body: some View {
+        
         ZStack{
-            Image("img_musicViewBackground") //백그라운드 이미지 들어갈 것
+            Color.customGray200.edgesIgnoringSafeArea(.all)
+
+            Image("backgroundDecoration") //백그라운드 이미지 들어갈 것
+                .resizable()
+                .scaledToFit()
+                .frame(width:393, height:486)
+                .padding(.top, 330)
                 .ignoresSafeArea()
             VStack(spacing:0){
                 TopLogo
