@@ -12,10 +12,7 @@ import SwiftUI
 
 
 struct PlaylistView: View {
-    @State var MusicList: [Music] = [
-        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "", imageURL: URL(string: "https://example.com/image2.jpg")!),
-    ]
+    @Binding var PlayList: [Music]
     
     
     
@@ -39,7 +36,7 @@ struct PlaylistView: View {
             
             ZStack(alignment: .bottom){
                 List{
-                    ForEach($MusicList, id: \.id) { item in
+                    ForEach($PlayList, id: \.id) { item in
                         HStack{
                             AsyncImage(url: item.wrappedValue.imageURL)
                                 .cornerRadius(11)
@@ -134,5 +131,8 @@ extension PlaylistView{
 
 
 #Preview {
-    PlaylistView()
+    PlaylistView(PlayList: .constant([
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "", imageURL: URL(string: "https://example.com/image2.jpg")!),
+    ]))
 }
