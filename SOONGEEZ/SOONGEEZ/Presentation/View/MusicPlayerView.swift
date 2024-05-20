@@ -9,44 +9,152 @@ import SwiftUI
 import AVKit
 
 
-
-struct Song{
-    let id = UUID()
-    let title: String
-    let artist: String
-    //let musicURL: URL
-    let musicURL: String
-    let imageURL: URL
-    let length: TimeInterval //루이 뷰에서는 length:String
+class AudioPlayerViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
+    @Published var isPlaying = false//@Published
+    @Published var progress: CGFloat = 0.0
+    @Published var currentSong: Music? //
     
-}
-
-struct MusicPlayerView: View {
+    @Published var currentTime: TimeInterval = 0.0 //@Published
     
-    @State var audioPlayer: AVAudioPlayer!
-    @State var progress:CGFloat = 0.0
-    @State private var playing: Bool = false
+    
+    var formattedDuration: String = "20:00" //총 길이
+    var formattedProgress: String = "00:00" //재생된 시간
+    
+    
     @State var duration: Double = 0.0
-    @State var formattedDuration: String = "20:00" //총 길이
-    @State var formattedProgress: String = "00:00" //재생된 시간
     
-    @State var currentSongIndex = 0
-
+    var currentSongIndex = 0
+    
+    var audioPlayer: AVAudioPlayer?
     
     
     let songs = [
-        Song(title: "Song 1", artist: "Artist 1", musicURL: "music_test",imageURL: URL(string: "https://example.com/image1.jpg")!, length: 102),//
-        Song(title: "Song 2", artist: "Artist 2", musicURL: "music_test",imageURL: URL(string: "https://example.com/image2.jpg")!, length: 131),//
-        Song(title: "Song 3", artist: "Artist 3", musicURL: "music_test",imageURL: URL(string: "https://example.com/image3.jpg")!, length: 104)//
+        Music(title: "Song 1", artist: "Artist 1", length: "102", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")! ),
+        Music(title: "Song 2", artist: "Artist 2", length: "102", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")! ),
+        Music(title: "Song 3", artist: "Artist 3", length: "102", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")! ),
     ]
     
     
-    var body: some View{
+    override init() {
+        super.init()
+        initialiseAudioPlayer()
+    }
     
+    
+    
+    func initialiseAudioPlayer(){
+        currentSong = songs[currentSongIndex]
+        
+        let path = Bundle.main.path(forResource: currentSong?.musicURL, ofType: "mp3")!
+        print(currentSongIndex)
+        
+        do{
+            
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.delegate = self
+            audioPlayer?.currentTime = 0
+            currentTime = 0
+            
+            
+        } catch{
+            print("오류")
+        }
+        
+        
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = [.pad]
+        
+        
+        
+        duration = self.audioPlayer!.duration
+        
+        
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] _ in
+            if !audioPlayer!.isPlaying{
+                isPlaying = false
+            }
+            
+            progress = CGFloat(audioPlayer!.currentTime / audioPlayer!.duration)
+            
+            formattedProgress = formatter.string(from: TimeInterval(audioPlayer!.currentTime))!
+            
+            formattedDuration = formatter.string(from: TimeInterval(audioPlayer!.duration))!
+            
+            print(progress, formattedProgress)
+        }
+        
+        
+        
+    }
+    
+    func nextSong() {
+        currentSongIndex = (currentSongIndex + 1) % songs.count
+        initialiseAudioPlayer()
+        
+        if isPlaying {
+            audioPlayer?.play()
+        }
+    }
+    
+    func playPause() {
+        guard let player = audioPlayer else { return }
+        
+        if isPlaying {
+            player.pause()
+            isPlaying = false
+        } else {
+            player.play()
+            isPlaying = true
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        nextSong()
+    }
+    
+    
+    
+}
+
+
+struct MusicPlayerView: View {
+    
+    //    @State var audioPlayer: AVAudioPlayer!
+    //    @State var progress:CGFloat = 0.0
+    //    @State private var playing: Bool = false
+    //    @State var duration: Double = 0.0
+    //    @State var formattedDuration: String = "20:00" //총 길이
+    //    @State var formattedProgress: String = "00:00" //재생된 시간
+    //
+    //    @State var currentSongIndex = 0
+    
+    //    @StateObject var viewModel = AudioPlayerViewModel(progress: 0.0, formattedDuration: "20:00", formattedProgress: "00:00", duration: 0.0, audioPlayer: AVAudioPlayer!)
+    
+    
+    
+    
+    @StateObject var viewModel = AudioPlayerViewModel()
+    
+    
+    var body: some View{
+        let songs = viewModel.songs
+        let currentSongIndex = viewModel.currentSongIndex
+        var audioPlayer = viewModel.audioPlayer
+        var isPlaying = viewModel.isPlaying
+        var progress = viewModel.progress
+        
+        
+        
+        
         VStack(spacing:0){
             VStack(spacing:0){
-                Image("img_recordAudio")
-                    .resizable()
+//                Image("img_recordAudio")
+                AsyncImage(url: songs[currentSongIndex].imageURL)
+//                    .resizable()
                     .scaledToFill()
                     .frame(width:305, height:305)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -61,7 +169,7 @@ struct MusicPlayerView: View {
                             Spacer()
                         }
                         HStack{
-                            Text("가수")//data: 가수
+                            Text(songs[currentSongIndex].artist)//data: 가수
                                 .font(.system( size: 20))
                             Spacer()
                         }
@@ -70,21 +178,10 @@ struct MusicPlayerView: View {
                     
                     
                     Button(action:{
-                        if audioPlayer.isPlaying {
-                            playing = false
-                            self.audioPlayer.pause()
-                        }
-                                                        
-                        currentSongIndex = (currentSongIndex + 1) % songs.count
-                        print(currentSongIndex)
-                        
-                        
-                        initialiseAudioPlayer()
-                        
-                        playing = true
-                        self.audioPlayer.play()
-
-                        
+                        //                        if audioPlayer.isPlaying {
+                        //                            playing = false
+                        //                            self.audioPlayer.pause()
+                        viewModel.nextSong()
                         
                     }, label: {
                         Image(systemName: "forward.end.fill")
@@ -96,7 +193,8 @@ struct MusicPlayerView: View {
                 }.padding([.bottom], 20)
                 
                 //Status bar
-                VStack(spacing:0){//songLength
+                VStack(spacing:0){
+                    //songLength
                     ZStack{
                         Capsule()
                             .fill(Color.customLightGray)
@@ -110,14 +208,16 @@ struct MusicPlayerView: View {
                                     Capsule()
                                         .foregroundColor(Color.primaryPurple)
                                         .frame(width: gr.size.width * progress, height: 8), alignment: .leading)
-                        }.frame( height: 8)
+                            
+                        }
+                        .frame( height: 8)
                     }
                     .padding([.bottom],4)
                     HStack{
-                        Text(formattedProgress)//data: 현재 재생시간
+                        Text(viewModel.formattedProgress)//data: 현재 재생시간
                             .font(.system( size: 16).monospacedDigit())
                         Spacer()
-                        Text(formattedDuration)//data: 총 재생길이
+                        Text(viewModel.formattedDuration)//data: 총 재생길이
                             .font(.system( size: 16).monospacedDigit())
                     }
                 }
@@ -132,54 +232,41 @@ struct MusicPlayerView: View {
         .padding([.horizontal],20)
         .padding([.bottom],16)
         .onAppear {
-            initialiseAudioPlayer()
+            viewModel.initialiseAudioPlayer()
         }
         
-        
         Button {
-            if audioPlayer.isPlaying {
-                playing = false
-                self.audioPlayer.pause()
-            }else if !audioPlayer.isPlaying{
-                playing = true
-                self.audioPlayer.play()
-            }
+            viewModel.playPause()
         } label: {
-            if playing {
+            if viewModel.isPlaying{
                 PauseButtonView
             } else {
                 PlayButtonView
             }
-            
         }
+        
     }
     
-    func initialiseAudioPlayer(){
-        
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.minute, .second]
-        formatter.unitsStyle = .positional
-        formatter.zeroFormattingBehavior = [.pad]
-        
-        let path = Bundle.main.path(forResource: songs[currentSongIndex].musicURL, ofType: "mp3")!
-        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-        self.audioPlayer.prepareToPlay()
-        
-        //formattedDurtaion = formatter.string(from: TimeInterval(self.audioPlayer.duration))!
-        
-        duration = self.audioPlayer.duration
-        
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            if !audioPlayer.isPlaying{
-                playing = false
-            }
-            
-            progress = CGFloat(audioPlayer.currentTime / audioPlayer.duration)
-            
-            formattedProgress = formatter.string(from: TimeInterval(self.audioPlayer.currentTime))!
-        }
-    }
+    
+    
+    
+    
+    
+    //    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    //        if flag {
+    //            nextSong()
+    //        }
+    //    }
 }
+
+//extension MusicPlayerView: AVAudioPlayerDelegate {
+//    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+//        if flag {
+//            nextSong()
+//        }
+//    }
+//}
+
 
 var PauseButton: some View{
     Button{
@@ -242,6 +329,7 @@ var PlayButton: some View{
             .fill(Color.white)
     }
 }
+
 
 
 

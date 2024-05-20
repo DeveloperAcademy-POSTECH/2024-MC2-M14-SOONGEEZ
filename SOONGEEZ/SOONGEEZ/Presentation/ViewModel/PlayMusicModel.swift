@@ -5,6 +5,7 @@
 //  Created by 김은정 on 5/17/24.
 //
 
+
 import Foundation
 
 struct Music: Identifiable {
@@ -12,6 +13,7 @@ struct Music: Identifiable {
     let title: String
     let artist: String
     let length: String
+    let musicURL: String
+
     let imageURL: URL
 }
-
