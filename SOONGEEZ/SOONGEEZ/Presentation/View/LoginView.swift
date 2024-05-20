@@ -9,7 +9,33 @@ import SwiftUI
 
 struct LoginView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack() {
+            
+            Image("backgroundOfLogin")
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack() {
+                Spacer()
+                Button(action: {
+                    print("")
+                }, label: {
+                    Image("iconOfYoutube")
+                        . frame(width: 30,height: 30)
+                    Text("Youtube Music 연결하기")
+                        .foregroundColor(.primary)
+                })
+                .frame(maxWidth: .infinity)
+                .fontWeight(.regular)
+                .padding(10)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.white)
+                )
+                .padding(.horizontal, 20)
+                .padding(.bottom, 80)
+            }
+        }
     }
 }
 
