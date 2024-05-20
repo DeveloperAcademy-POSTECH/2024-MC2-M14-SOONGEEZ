@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var authSessionManager = AuthSessionManager()
+    @State private var isLoading = false // 로딩 상태 관리
+    //var loginService = LoginService()
     
     var body: some View {
         ZStack() {
@@ -20,13 +22,16 @@ struct LoginView: View {
             VStack() {
                 Spacer()
                 Button(action: {
-                    authSessionManager.authenticate()
+                    Task{ 
+                        await loginAndAuthenticate()
+                    }
+                    //authSessionManager.authenticate(with: )
                 }, label: {
                     Image("iconOfYoutube")
                         . frame(width: 30,height: 30)
                     Text("Youtube Music 연결하기")
                         .foregroundColor(.primary)
-                        
+                    
                 })
                 .frame(maxWidth: .infinity)
                 .fontWeight(.regular)
@@ -38,6 +43,24 @@ struct LoginView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 80)
             }
+        }
+    }
+    
+    
+    func loginAndAuthenticate() async {
+        isLoading = true
+        defer { isLoading = false }
+        
+        do {
+            let urlString = try await LoginService.shared.postLoginURL()
+            guard let url = URL(string: urlString) else {
+                print("URL 변환 실패")
+                return
+            }
+            
+            await authSessionManager.authenticate(with: url)
+        } catch {
+            print("에러: \(error)")
         }
     }
 }

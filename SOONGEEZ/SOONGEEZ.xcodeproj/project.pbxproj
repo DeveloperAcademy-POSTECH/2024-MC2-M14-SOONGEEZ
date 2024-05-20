@@ -23,7 +23,10 @@
 		DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */; };
 		DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A068E2BF31AAF00E40050 /* TempEntity.swift */; };
 		DF3A06912BF31ABF00E40050 /* AuthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */; };
-		DF78CB252BFB945300CF4AFC /* LoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB242BFB945300CF4AFC /* LoginNetworkManager.swift */; };
+		DF78CB272BFB9B8300CF4AFC /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF78CB262BFB9B8300CF4AFC /* Property List.plist */; };
+		DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB282BFB9C4400CF4AFC /* Config.swift */; };
+		DF78CB2B2BFBA00D00CF4AFC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */; };
+		DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */; };
 		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +50,10 @@
 		DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionManager.swift; sourceTree = "<group>"; };
 		DF78CB222BFB37F100CF4AFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		DF78CB242BFB945300CF4AFC /* LoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkManager.swift; sourceTree = "<group>"; };
+		DF78CB262BFB9B8300CF4AFC /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		DF78CB282BFB9C4400CF4AFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +88,9 @@
 			isa = PBXGroup;
 			children = (
 				DF78CB222BFB37F100CF4AFC /* Info.plist */,
+				DF78CB262BFB9B8300CF4AFC /* Property List.plist */,
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
+				DF78CB282BFB9C4400CF4AFC /* Config.swift */,
 				DF20B0042BF1B7B20082BFF3 /* Domain */,
 				DF20AFFE2BF1B75F0082BFF3 /* Data */,
 				DF20AFFB2BF1B6EC0082BFF3 /* Presentation */,
@@ -162,8 +170,9 @@
 		DF20B0002BF1B76C0082BFF3 /* NetwokManager */ = {
 			isa = PBXGroup;
 			children = (
+				DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */,
 				DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */,
-				DF78CB242BFB945300CF4AFC /* LoginNetworkManager.swift */,
+				DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */,
 			);
 			path = NetwokManager;
 			sourceTree = "<group>";
@@ -267,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF78CB272BFB9B8300CF4AFC /* Property List.plist in Resources */,
 				DE1615E72BF1AC28007EE7A0 /* Preview Assets.xcassets in Resources */,
 				DE1615E42BF1AC28007EE7A0 /* Assets.xcassets in Resources */,
 			);
@@ -279,10 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */,
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
 				DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */,
-				DF78CB252BFB945300CF4AFC /* LoginNetworkManager.swift in Sources */,
 				DF0523082BF30ECC00C902DD /* LoginResponse.swift in Sources */,
+				DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
 				DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */,
 				DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */,
@@ -293,6 +304,7 @@
 				DF20B0112BF2F0AE0082BFF3 /* MusicView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DF78CB2B2BFBA00D00CF4AFC /* NetworkError.swift in Sources */,
 				DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */,
 				DE1EEC762BF6EE4A00E9FFD9 /* PlayMusicModel.swift in Sources */,
 			);
@@ -303,6 +315,7 @@
 /* Begin XCBuildConfiguration section */
 		DE1615E82BF1AC28007EE7A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -366,6 +379,7 @@
 		};
 		DE1615E92BF1AC28007EE7A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -431,7 +445,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SOONGEEZ/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -460,7 +473,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SOONGEEZ/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
