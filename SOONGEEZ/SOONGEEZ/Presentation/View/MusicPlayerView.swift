@@ -8,6 +8,19 @@
 import SwiftUI
 import AVKit
 
+
+
+struct Song{
+    let id = UUID()
+    let title: String
+    let artist: String
+    //let musicURL: URL
+    let musicURL: String
+    let imageURL: URL
+    let length: TimeInterval //루이 뷰에서는 length:String
+    
+}
+
 struct MusicPlayerView: View {
     
     @State var audioPlayer: AVAudioPlayer!
@@ -17,6 +30,15 @@ struct MusicPlayerView: View {
     @State var formattedDuration: String = "20:00" //총 길이
     @State var formattedProgress: String = "00:00" //재생된 시간
     
+    @State var currentSongIndex = 0
+
+    
+    
+    let songs = [
+        Song(title: "Song 1", artist: "Artist 1", musicURL: "music_test",imageURL: URL(string: "https://example.com/image1.jpg")!, length: 102),//
+        Song(title: "Song 2", artist: "Artist 2", musicURL: "music_test",imageURL: URL(string: "https://example.com/image2.jpg")!, length: 131),//
+        Song(title: "Song 3", artist: "Artist 3", musicURL: "music_test",imageURL: URL(string: "https://example.com/image3.jpg")!, length: 104)//
+    ]
     
     
     var body: some View{
@@ -34,7 +56,7 @@ struct MusicPlayerView: View {
                 HStack(alignment:.center,spacing: 5) {
                     VStack(spacing:12){//songinfo
                         HStack{
-                            Text("노래제목")//data: 노래제목
+                            Text(songs[currentSongIndex].title)//data: 노래제목
                                 .font(.system(size: 24, weight:.semibold))
                             Spacer()
                         }
@@ -44,7 +66,33 @@ struct MusicPlayerView: View {
                             Spacer()
                         }
                     }
-                    SkipButton
+                    
+                    
+                    
+                    Button(action:{
+                        if audioPlayer.isPlaying {
+                            playing = false
+                            self.audioPlayer.pause()
+                        }
+                                                        
+                        currentSongIndex = (currentSongIndex + 1) % songs.count
+                        print(currentSongIndex)
+                        
+                        
+                        initialiseAudioPlayer()
+                        
+                        playing = true
+                        self.audioPlayer.play()
+
+                        
+                        
+                    }, label: {
+                        Image(systemName: "forward.end.fill")
+                            .font(.system( size: 20))
+                            .foregroundColor(.customGray)
+                            .frame(width:40, height:40)
+                    }
+                    )
                 }.padding([.bottom], 20)
                 
                 //Status bar
@@ -55,7 +103,7 @@ struct MusicPlayerView: View {
                             .frame(height:8)
                         GeometryReader{ gr in
                             Capsule()
-                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                                .foregroundColor(.blue)
                                 .opacity(0.0)
                             
                                 .background(
@@ -72,7 +120,6 @@ struct MusicPlayerView: View {
                         Text(formattedDuration)//data: 총 재생길이
                             .font(.system( size: 16).monospacedDigit())
                     }
-                    
                 }
             }
         }
@@ -114,11 +161,11 @@ struct MusicPlayerView: View {
         formatter.unitsStyle = .positional
         formatter.zeroFormattingBehavior = [.pad]
         
-        let path = Bundle.main.path(forResource: "music_test", ofType: "mp3")!
+        let path = Bundle.main.path(forResource: songs[currentSongIndex].musicURL, ofType: "mp3")!
         self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
         self.audioPlayer.prepareToPlay()
         
-        //            formattedDurtaion = formatter.string(from: TimeInterval(self.audioPlayer.duration))!
+        //formattedDurtaion = formatter.string(from: TimeInterval(self.audioPlayer.duration))!
         
         duration = self.audioPlayer.duration
         
@@ -197,17 +244,7 @@ var PlayButton: some View{
 }
 
 
-var SkipButton: some View {
-    Button(action:{
-        print("이 곡 넘기기")
-    }, label: {
-        Image(systemName: "forward.end.fill")
-            .font(.system( size: 20))
-            .foregroundColor(.customGray)
-            .frame(width:40, height:40)
-    }
-    )
-}
+
 
 
 
