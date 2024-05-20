@@ -12,6 +12,7 @@ struct Music: Identifiable {
     let title: String
     let artist: String
     let length: String
+    let musicURL: String
+
     let imageURL: URL
 }
-
