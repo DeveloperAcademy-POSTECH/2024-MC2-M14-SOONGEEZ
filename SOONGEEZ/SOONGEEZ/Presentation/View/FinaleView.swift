@@ -10,6 +10,7 @@ import SwiftUI
 struct FinaleView: View {
     @State var date = Date()
     @State var showDatepicker = false
+    @State private var showSelectMusicView = false
     
     var body: some View {
         ZStack{
@@ -60,6 +61,7 @@ struct FinaleView: View {
                     .padding(.top, 29)
                     .padding(.bottom, 9)
                 
+                
                 ZStack{
                     RoundedRectangle(cornerRadius:  16)
                         .fill(.thickMaterial)
@@ -92,6 +94,9 @@ struct FinaleView: View {
                         
                         
                     }.padding(.leading, 56)
+                } // 피날레음악선택버튼
+                .onTapGesture{
+                    showSelectMusicView = true
                 }
             }
             Button(action: {
@@ -149,6 +154,14 @@ struct FinaleView: View {
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
             }
+            .sheet(isPresented: $showSelectMusicView) {
+                SelectMusicView()
+                    .padding(.top, 40)
+                    .presentationDragIndicator(.visible)
+
+            }
+            
+            
     }
         
     }
