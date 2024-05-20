@@ -23,6 +23,7 @@
 		DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */; };
 		DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A068E2BF31AAF00E40050 /* TempEntity.swift */; };
 		DF3A06912BF31ABF00E40050 /* TempNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */; };
+
 		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,9 @@
 		DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicView.swift; sourceTree = "<group>"; };
 		DF3A068E2BF31AAF00E40050 /* TempEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempEntity.swift; sourceTree = "<group>"; };
 		DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempNetworkManager.swift; sourceTree = "<group>"; };
+
 		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
+				F7B039ED2BF9E91100847B12 /* testView.swift */,
 				DF20B0042BF1B7B20082BFF3 /* Domain */,
 				DF20AFFE2BF1B75F0082BFF3 /* Data */,
 				DF20AFFB2BF1B6EC0082BFF3 /* Presentation */,
@@ -283,6 +287,7 @@
 				DF3A06912BF31ABF00E40050 /* TempNetworkManager.swift in Sources */,
 				DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */,
 				DF20B0112BF2F0AE0082BFF3 /* MusicView.swift in Sources */,
+				F7B039EE2BF9E91100847B12 /* testView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
 				DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */,
