@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct LoginResponse: Codable {
+    let url: String
+}

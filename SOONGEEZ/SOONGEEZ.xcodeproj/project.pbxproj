@@ -12,7 +12,7 @@
 		DE1615E72BF1AC28007EE7A0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */; };
 		DE1EEC762BF6EE4A00E9FFD9 /* PlayMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EEC752BF6EE4A00E9FFD9 /* PlayMusicModel.swift */; };
 		DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523052BF30EB500C902DD /* TempRequest.swift */; };
-		DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523072BF30ECC00C902DD /* TempResponse.swift */; };
+		DF0523082BF30ECC00C902DD /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523072BF30ECC00C902DD /* LoginResponse.swift */; };
 		DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */; };
 		DF20B00B2BF2F0850082BFF3 /* FinaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */; };
 		DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00C2BF2F0910082BFF3 /* SplashView.swift */; };
@@ -23,6 +23,7 @@
 		DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */; };
 		DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A068E2BF31AAF00E40050 /* TempEntity.swift */; };
 		DF3A06912BF31ABF00E40050 /* AuthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */; };
+		DF78CB252BFB945300CF4AFC /* LoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB242BFB945300CF4AFC /* LoginNetworkManager.swift */; };
 		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +34,7 @@
 		DE1615E62BF1AC28007EE7A0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DE1EEC752BF6EE4A00E9FFD9 /* PlayMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusicModel.swift; sourceTree = "<group>"; };
 		DF0523052BF30EB500C902DD /* TempRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempRequest.swift; sourceTree = "<group>"; };
-		DF0523072BF30ECC00C902DD /* TempResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempResponse.swift; sourceTree = "<group>"; };
+		DF0523072BF30ECC00C902DD /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinaleView.swift; sourceTree = "<group>"; };
 		DF20B00C2BF2F0910082BFF3 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -44,6 +45,9 @@
 		DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicView.swift; sourceTree = "<group>"; };
 		DF3A068E2BF31AAF00E40050 /* TempEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempEntity.swift; sourceTree = "<group>"; };
 		DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionManager.swift; sourceTree = "<group>"; };
+		DF78CB222BFB37F100CF4AFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		DF78CB242BFB945300CF4AFC /* LoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNetworkManager.swift; sourceTree = "<group>"; };
 		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +81,7 @@
 		DE1615DE2BF1AC27007EE7A0 /* SOONGEEZ */ = {
 			isa = PBXGroup;
 			children = (
+				DF78CB222BFB37F100CF4AFC /* Info.plist */,
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
 				DF20B0042BF1B7B20082BFF3 /* Domain */,
 				DF20AFFE2BF1B75F0082BFF3 /* Data */,
@@ -84,6 +89,7 @@
 				DF20AFF72BF1B4F10082BFF3 /* Extension */,
 				DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */,
 				DE1615E52BF1AC28007EE7A0 /* Preview Content */,
+				DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */,
 			);
 			path = SOONGEEZ;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */,
+				DF78CB242BFB945300CF4AFC /* LoginNetworkManager.swift */,
 			);
 			path = NetwokManager;
 			sourceTree = "<group>";
@@ -181,7 +188,7 @@
 		DF20B0032BF1B79C0082BFF3 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				DF0523072BF30ECC00C902DD /* TempResponse.swift */,
+				DF0523072BF30ECC00C902DD /* LoginResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -274,7 +281,8 @@
 			files = (
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
 				DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */,
-				DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */,
+				DF78CB252BFB945300CF4AFC /* LoginNetworkManager.swift in Sources */,
+				DF0523082BF30ECC00C902DD /* LoginResponse.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
 				DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */,
 				DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */,
@@ -422,6 +430,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SOONGEEZ/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SOONGEEZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -450,6 +459,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SOONGEEZ/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SOONGEEZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
