@@ -9,25 +9,28 @@ import SwiftUI
 
 struct SelectMusicView: View {
     
-    @State private var searchText = ""
-    @State private var filteredSongs: [SearchMusic] = []
-    @State private var clickedSongs = false
+    @Environment(\.dismiss) var dismiss
+
     
-    let songs: [LastFinaleMusic] = [
-        LastFinaleMusic(title: "노래 제목 1", artist: "가수 1", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        LastFinaleMusic(title: "노래 제목 2", artist: "가수 2", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        LastFinaleMusic(title: "Starlight", artist: "Muse", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        LastFinaleMusic(title: "노래 제목 4", artist: "가수 2", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        LastFinaleMusic(title: "노래 제목 4", artist: "가수 2", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        LastFinaleMusic(title: "노래 제목 4", artist: "가수 2", imageURL: URL(string: "https://example.com/image2.jpg")!)
+    @State private var searchText = ""
+    @State private var filteredSongs: [Music] = []
+    @State private var clickedSongs = false
+    @Binding var selectSong: Music
+    
+    let songs: [Music] = [
+        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
     ]
     
     
-    let searchSongs: [SearchMusic] = [
-        SearchMusic(title: "가", artist: "가수 1", playtime: "3-30", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        SearchMusic(title: "나", artist: "가수 2", playtime: "3-30", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        SearchMusic(title: "다", artist: "Muse", playtime: "3-30", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        SearchMusic(title: "라", artist: "가수 4", playtime: "3-30", imageURL: URL(string: "https://example.com/image2.jpg")!)
+    let searchSongs: [Music] = [
+        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "가", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "나", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
     ]
     
     
@@ -124,23 +127,23 @@ struct SelectMusicView: View {
                         .padding(.leading, 20)
                         .font(.system(size: 14))
                     
-                    ForEach(filteredSongs, id: \.id) { song in
+                    ForEach($filteredSongs, id: \.id) { song in
                         VStack(spacing: 9){
                             HStack(spacing: 12){
-                                AsyncImage(url: song.imageURL)
+                                AsyncImage(url: song.wrappedValue.imageURL)
                                     .frame(width: 44, height: 44)
                                     .cornerRadius(11)
                                 
                                 VStack(alignment: .leading, spacing: 0){
-                                    Text(song.title)
+                                    Text(song.wrappedValue.title)
                                         .font(.system(size: 17))
                                         .frame(width: 260, height: 22, alignment: .leading)
-                                    Text(song.artist)
+                                    Text(song.wrappedValue.artist)
                                         .font(.system(size: 15))
                                         .foregroundColor(.customGray)
                                         .frame(width: 260, height: 20, alignment: .leading)
                                 }
-                                Text(song.playtime)
+                                Text(song.wrappedValue.length)
                                     .font(.system(size: 12))
                                     .foregroundColor(.customGray)
                             }.onTapGesture {
@@ -158,12 +161,12 @@ struct SelectMusicView: View {
                                     
                                     
                                     HStack(spacing: 16){
-                                        AsyncImage(url: song.imageURL) //이미지 바꾸기
+                                        AsyncImage(url: song.wrappedValue.imageURL) //이미지 바꾸기
                                             .frame(width: 44, height: 44)
                                             .cornerRadius(11)
                                         
                                         VStack(alignment: .leading, spacing: 0){
-                                            Text(song.title)
+                                            Text(song.wrappedValue.title)
                                                 .font(.system(size: 16))
                                                 .fontWeight(.bold)
                                                 .frame(width: 260, height: 22, alignment: .leading)
@@ -184,6 +187,11 @@ struct SelectMusicView: View {
                                         RoundedRectangle(cornerRadius: 12)
                                             .stroke(Color.black, lineWidth: 1)
                                     )
+                                    .onTapGesture {
+                                        selectSong = song.wrappedValue
+                                        print(selectSong)
+                                        dismiss()
+                                    }
                             }
                             
                         }
@@ -197,7 +205,7 @@ struct SelectMusicView: View {
 }
 
 
-
-#Preview {
-    SelectMusicView()
-}
+//
+//#Preview {
+////    SelectMusicView()
+//}

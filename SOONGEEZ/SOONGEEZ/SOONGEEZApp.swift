@@ -15,6 +15,7 @@ struct SOONGEEZApp: App {
         WindowGroup {
             
             FinaleView()
+//            MusicView()
             
         }
     }
