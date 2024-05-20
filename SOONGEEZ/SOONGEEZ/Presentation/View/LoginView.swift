@@ -14,6 +14,7 @@ struct LoginView: View {
             Image("backgroundOfLogin")
                 .scaledToFill()
                 .ignoresSafeArea()
+            
             VStack() {
                 Spacer()
                 Button(action: {
@@ -30,7 +31,6 @@ struct LoginView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 12)
                         .fill(Color.white)
-                        .strokeBorder(lineWidth: 1)
                 )
                 .padding(.horizontal, 20)
                 .padding(.bottom, 80)
