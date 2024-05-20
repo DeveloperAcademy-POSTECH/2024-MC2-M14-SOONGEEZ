@@ -8,9 +8,6 @@
 import SwiftUI
 
 
-
-
-
 struct PlaylistView: View {
     @State var MusicList: [Music] = [
         Music(title: "Cookie", artist: "NeaJeans", length: "3:13", imageURL: URL(string: "https://example.com/image1.jpg")!),

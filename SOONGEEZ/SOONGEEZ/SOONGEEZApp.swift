@@ -9,13 +9,9 @@ import SwiftUI
 
 @main
 struct SOONGEEZApp: App {
-    
-    
     var body: some Scene {
         WindowGroup {
-            
-            PlaylistView()
-            
+            LoginView()
         }
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @StateObject private var authSessionManager = AuthSessionManager()
+    
     var body: some View {
         ZStack() {
             
@@ -18,12 +20,13 @@ struct LoginView: View {
             VStack() {
                 Spacer()
                 Button(action: {
-                    print("")
+                    authSessionManager.authenticate()
                 }, label: {
                     Image("iconOfYoutube")
                         . frame(width: 30,height: 30)
                     Text("Youtube Music 연결하기")
                         .foregroundColor(.primary)
+                        
                 })
                 .frame(maxWidth: .infinity)
                 .fontWeight(.regular)
