@@ -9,7 +9,28 @@ import SwiftUI
 
 struct FinishView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack() {
+            
+            Image("backgroundOfFinish")
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack() {
+                Text("다음 피날레도 기대할게요!")
+                    .font(.title2)
+                    .padding(.top, 280)
+                Spacer()
+                Button(action: {
+                    print("")
+                }, label: {
+                    Text("다른 피날레 만들기")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .underline()
+                })
+                .padding(.bottom, 110)
+            }
+        }
     }
 }
 
