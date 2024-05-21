@@ -14,8 +14,6 @@ struct PlayerView: View {
     @ObservedObject var PlayerModel: AudioPlayerViewModel
 
     var body: some View{
-        
-        //        let audioPlayer = PlayerModel.audioPlayer
         let playlist = PlayerModel.PlayList
         let currentSongIndex = PlayerModel.currentSongIndex
         let isPlaying = PlayerModel.isPlaying
