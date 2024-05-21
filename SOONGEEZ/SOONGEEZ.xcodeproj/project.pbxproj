@@ -16,7 +16,7 @@
 		DE1EEC762BF6EE4A00E9FFD9 /* PlayMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EEC752BF6EE4A00E9FFD9 /* PlayMusicModel.swift */; };
 		DEBBF9FA2BFB22F400AEE7A1 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBF9F92BFB22F400AEE7A1 /* MusicPlayerView.swift */; };
 		DEBBF9FC2BFB24E200AEE7A1 /* music_test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEBBF9FB2BFB24E200AEE7A1 /* music_test.mp3 */; };
-		DEBBF9FE2BFBA59F00AEE7A1 /* FinaleControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBF9FD2BFBA59F00AEE7A1 /* FinaleControlView.swift */; };
+		DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBF9FD2BFBA59F00AEE7A1 /* ControlView.swift */; };
 		DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523052BF30EB500C902DD /* TempRequest.swift */; };
 		DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523072BF30ECC00C902DD /* TempResponse.swift */; };
 		DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */; };
@@ -43,7 +43,7 @@
 		DE1EEC752BF6EE4A00E9FFD9 /* PlayMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusicModel.swift; sourceTree = "<group>"; };
 		DEBBF9F92BFB22F400AEE7A1 /* MusicPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MusicPlayerView.swift; path = ../../../../../../Downloads/MusicPlayerView.swift; sourceTree = "<group>"; };
 		DEBBF9FB2BFB24E200AEE7A1 /* music_test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music_test.mp3; path = ../../../../Downloads/music_test.mp3; sourceTree = "<group>"; };
-		DEBBF9FD2BFBA59F00AEE7A1 /* FinaleControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinaleControlView.swift; sourceTree = "<group>"; };
+		DEBBF9FD2BFBA59F00AEE7A1 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		DF0523052BF30EB500C902DD /* TempRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempRequest.swift; sourceTree = "<group>"; };
 		DF0523072BF30ECC00C902DD /* TempResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempResponse.swift; sourceTree = "<group>"; };
 		DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -131,15 +131,15 @@
 			children = (
 				DF20B00C2BF2F0910082BFF3 /* SplashView.swift */,
 				DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */,
-				DEBBF9FD2BFBA59F00AEE7A1 /* FinaleControlView.swift */,
+				DEBBF9FD2BFBA59F00AEE7A1 /* ControlView.swift */,
 				DE0580162BFC3672009E8B63 /* FinaleSelctedView.swift */,
 				DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */,
 				DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */,
-				DEBBF9F92BFB22F400AEE7A1 /* MusicPlayerView.swift */,
 				DE0580182BFC391B009E8B63 /* PlayerView.swift */,
 				DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */,
 				DF20B0142BF2F0C70082BFF3 /* FinishView.swift */,
 				DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */,
+				DEBBF9F92BFB22F400AEE7A1 /* MusicPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,7 +307,7 @@
 				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
-				DEBBF9FE2BFBA59F00AEE7A1 /* FinaleControlView.swift in Sources */,
+				DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */,
 				DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */,
 				DE0580152BFC34F2009E8B63 /* AudioPlayerViewModel.swift in Sources */,
 				DE1EEC762BF6EE4A00E9FFD9 /* PlayMusicModel.swift in Sources */,

@@ -12,15 +12,11 @@ import AVKit
 class AudioPlayerViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     var audioPlayer: AVAudioPlayer?
-    @Published var PlayList: [Music] =
-    [
-        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-    ]
-
+    @Published var PlayList: [Music]
     var currentSongIndex = 0
     @Published var currentSong: Music? //
 
+    var lastSong: Music
 
     
     @Published var isPlaying = false//@Published
@@ -48,8 +44,13 @@ class AudioPlayerViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
 //    }
     
     
-    override init() {
+    init(PlayList: [Music], lastSong: Music) {
+        self.PlayList = PlayList
+        self.lastSong = lastSong
+
         super.init()
+        self.PlayList.append(lastSong)
+
         initialiseAudioPlayer()
     }
     
@@ -96,10 +97,8 @@ class AudioPlayerViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             formattedDuration = formatter.string(from: TimeInterval(audioPlayer!.duration))!
             
         }
-        
-        
-        
     }
+    
     
     func nextSong() {
         currentSongIndex = (currentSongIndex + 1) % PlayList.count

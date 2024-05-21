@@ -14,7 +14,7 @@ struct SelectMusicView: View {
     
     @State private var searchText = ""
     @State private var filteredSongs: [Music] = []
-    @State private var clickedSongs = false
+    @State private var clickedSong: Music?
     @Binding var selectSong: Music?
     
     let songs: [Music] = [
@@ -31,6 +31,18 @@ struct SelectMusicView: View {
         Music(title: "가", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
         Music(title: "나", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
         Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        
+        
     ]
     
     
@@ -69,7 +81,7 @@ struct SelectMusicView: View {
                             Button(action: {
                                 self.searchText = ""
                                 self.filteredSongs = []
-                                self.clickedSongs = false
+                                self.clickedSong = nil
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                             }
@@ -86,7 +98,7 @@ struct SelectMusicView: View {
                         Button(action: {
                             self.searchText = ""
                             self.filteredSongs = []
-                            self.clickedSongs = false
+                            self.clickedSong = nil
                         }) {
                             Text("Cancel")
                                 .foregroundColor(.blue)
@@ -126,9 +138,7 @@ struct SelectMusicView: View {
                     Text("검색 결과")
                         .padding(.leading, 20)
                         .font(.system(size: 14))
-                    
-                    ForEach($filteredSongs, id: \.id) { song in
-                        VStack(spacing: 9){
+                        ForEach($filteredSongs, id: \.id) { song in
                             HStack(spacing: 12){
                                 AsyncImage(url: song.wrappedValue.imageURL)
                                     .frame(width: 44, height: 44)
@@ -147,11 +157,16 @@ struct SelectMusicView: View {
                                     .font(.system(size: 12))
                                     .foregroundColor(.customGray)
                             }.onTapGesture {
-                                self.clickedSongs = true
+                                clickedSong = song.wrappedValue
+                                print("선택함")
+                                print(clickedSong!)
                             }
-                            Divider()
                             
-                            if clickedSongs {
+                        }
+                        .frame(maxHeight: 300)
+                        
+                        if clickedSong != nil {
+                            VStack{
                                 ZStack{
                                     Rectangle()
                                         .foregroundColor(.clear)
@@ -161,12 +176,12 @@ struct SelectMusicView: View {
                                     
                                     
                                     HStack(spacing: 16){
-                                        AsyncImage(url: song.wrappedValue.imageURL) //이미지 바꾸기
+                                        AsyncImage(url: clickedSong!.imageURL) //이미지 바꾸기
                                             .frame(width: 44, height: 44)
                                             .cornerRadius(11)
                                         
                                         VStack(alignment: .leading, spacing: 0){
-                                            Text(song.wrappedValue.title)
+                                            Text(clickedSong!.title)
                                                 .font(.system(size: 16))
                                                 .fontWeight(.bold)
                                                 .frame(width: 260, height: 22, alignment: .leading)
@@ -180,23 +195,23 @@ struct SelectMusicView: View {
                                     .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
                                 
                                 Text("확인")
-                                    .padding(.vertical, 16)
-                                    .padding(.horizontal, 160)
+                                    .frame(width: 353, height: 50)
                                     .font(.system(size: 17))
-                                    .background(
+                                    .foregroundStyle(Color.white)
+                                
+                                    .background{
                                         RoundedRectangle(cornerRadius: 12)
-                                            .stroke(Color.black, lineWidth: 1)
-                                    )
+                                            .fill(Color.customPurple100)
+                                    }
+                                
                                     .onTapGesture {
-                                        selectSong = song.wrappedValue
-                                        print(selectSong)
+                                        selectSong = clickedSong!
                                         dismiss()
                                     }
                             }
-                            
+                            .padding(.bottom, 84)
                         }
-                    }
-                    
+                        
                 }
             }
             
@@ -205,7 +220,8 @@ struct SelectMusicView: View {
 }
 
 
-//
-//#Preview {
-////    SelectMusicView()
-//}
+
+#Preview {
+    SelectMusicView(selectSong: .constant(nil))
+}
+

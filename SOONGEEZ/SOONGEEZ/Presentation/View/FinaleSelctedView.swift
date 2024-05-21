@@ -235,7 +235,6 @@ struct FinaleSelctedView: View {
         .background{
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.customPurple100)
-            
         }
     }
     
@@ -249,6 +248,6 @@ struct FinaleSelctedView: View {
 
 
 #Preview {
-    FinaleSelctedView(makePlaylist: .constant(false))
+    FinaleSelctedView(makePlaylist: .constant(false), selectSong: .constant(nil))
     
 }

@@ -13,14 +13,11 @@ struct MusicView: View {
     @State var showPlayList = false
 
     
-    @State var PlayList0: [Music] =
-    [
-        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-    ]
+
     
     
-    @StateObject var PlayerModel = AudioPlayerViewModel()
+    @ObservedObject var PlayerModel: AudioPlayerViewModel
+
     
     
     var body: some View {
@@ -43,7 +40,7 @@ struct MusicView: View {
             }
         }
         .sheet(isPresented: $showPlayList){
-            PlaylistView(PlayList: $PlayList0)
+            PlaylistView(PlayList: $PlayerModel.PlayList)
                 .onDisappear(){
                     dismiss()
                 }
@@ -84,7 +81,7 @@ var CurrentOrder: some View {
     .padding([.bottom],24)
 }
 
-
-#Preview {
-    MusicView()
-}
+//
+//#Preview {
+//    MusicView()
+//}
