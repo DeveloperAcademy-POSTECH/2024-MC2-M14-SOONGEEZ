@@ -1,15 +1,11 @@
 //
-//  TempResponse.swift
+//  LoginResponse.swift
 //  SOONGEEZ
 //
 //  Created by 조세연 on 5/14/24.
 //
 
 import Foundation
-
-//struct LoginResponse: Decodable {
-//    let googleOauthUrl: String
-//}
 
 struct LoginResponse: Decodable {
     let timeStamp: String
@@ -19,5 +15,6 @@ struct LoginResponse: Decodable {
     
     struct Result: Decodable {
         let googleOauthUrl: String
+        let code: String
     }
 }

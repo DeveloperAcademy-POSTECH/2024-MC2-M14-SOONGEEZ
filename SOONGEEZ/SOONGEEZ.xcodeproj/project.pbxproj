@@ -27,7 +27,12 @@
 		DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB282BFB9C4400CF4AFC /* Config.swift */; };
 		DF78CB2B2BFBA00D00CF4AFC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */; };
 		DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */; };
+		DF8171882BFC9E4300A33402 /* TokenRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */; };
+		DF81718C2BFCB8D100A33402 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718B2BFCB8D100A33402 /* SearchService.swift */; };
+		DF81718E2BFCB8FA00A33402 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */; };
+		DF8171902BFCB90500A33402 /* SearchRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */; };
 		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
+		DFAEF1FF2BFC4799006F0DA3 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +59,13 @@
 		DF78CB282BFB9C4400CF4AFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRequestBody.swift; sourceTree = "<group>"; };
+		DF8171892BFCA6AC00A33402 /* SOONGEEZ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOONGEEZ.entitlements; sourceTree = "<group>"; };
+		DF81718B2BFCB8D100A33402 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestBody.swift; sourceTree = "<group>"; };
 		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
+		DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +98,7 @@
 		DE1615DE2BF1AC27007EE7A0 /* SOONGEEZ */ = {
 			isa = PBXGroup;
 			children = (
+				DF8171892BFCA6AC00A33402 /* SOONGEEZ.entitlements */,
 				DF78CB222BFB37F100CF4AFC /* Info.plist */,
 				DF78CB262BFB9B8300CF4AFC /* Property List.plist */,
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
@@ -171,8 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */,
-				DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */,
-				DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */,
+				DF81718A2BFCB8BD00A33402 /* Search */,
+				DFAEF2002BFC47A4006F0DA3 /* Login */,
 			);
 			path = NetwokManager;
 			sourceTree = "<group>";
@@ -190,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				DF0523052BF30EB500C902DD /* LoginRequestBody.swift */,
+				DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */,
+				DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -198,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				DF0523072BF30ECC00C902DD /* LoginResponse.swift */,
+				DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -216,6 +231,24 @@
 				DF3A068E2BF31AAF00E40050 /* TempEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		DF81718A2BFCB8BD00A33402 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DF81718B2BFCB8D100A33402 /* SearchService.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DFAEF2002BFC47A4006F0DA3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DF3A06902BF31ABF00E40050 /* AuthSessionManager.swift */,
+				DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */,
+				DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,16 +325,21 @@
 				DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */,
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
 				DF0523062BF30EB500C902DD /* LoginRequestBody.swift in Sources */,
+				DFAEF1FF2BFC4799006F0DA3 /* TokenService.swift in Sources */,
 				DF0523082BF30ECC00C902DD /* LoginResponse.swift in Sources */,
 				DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */,
+				DF81718E2BFCB8FA00A33402 /* SearchResponse.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
 				DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */,
 				DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */,
 				DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */,
+				DF8171902BFCB90500A33402 /* SearchRequestBody.swift in Sources */,
 				DF20B00B2BF2F0850082BFF3 /* FinaleView.swift in Sources */,
 				DF3A06912BF31ABF00E40050 /* AuthSessionManager.swift in Sources */,
 				DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */,
+				DF8171882BFC9E4300A33402 /* TokenRequestBody.swift in Sources */,
 				DF20B0112BF2F0AE0082BFF3 /* MusicView.swift in Sources */,
+				DF81718C2BFCB8D100A33402 /* SearchService.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
 				DF78CB2B2BFBA00D00CF4AFC /* NetworkError.swift in Sources */,
@@ -439,9 +477,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SOONGEEZ/SOONGEEZ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SOONGEEZ/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SOONGEEZ/Info.plist;
@@ -467,9 +507,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SOONGEEZ/SOONGEEZ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SOONGEEZ/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SOONGEEZ/Info.plist;

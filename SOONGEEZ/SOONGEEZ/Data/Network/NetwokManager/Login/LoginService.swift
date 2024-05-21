@@ -11,6 +11,8 @@ class LoginService {
     static let shared = LoginService()
     private init() {}
     
+    var responseUrl : String = ""
+    var responseCode : String = ""
     
     func makeRequestBody(client_id: String, scope: String) -> Data? {
         do {
@@ -58,7 +60,11 @@ class LoginService {
             }
             
             let decodedResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-            return decodedResponse.result.googleOauthUrl
+            self.responseUrl = decodedResponse.result.googleOauthUrl
+            self.responseCode = decodedResponse.result.code
+            
+            return self.responseUrl
+            
         } catch {
             print("에러세요: \(error)")
             throw error

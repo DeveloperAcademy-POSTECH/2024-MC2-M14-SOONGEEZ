@@ -1,5 +1,5 @@
 //
-//  TempNetworkManager.swift
+//  AuthSessionManager.swift
 //  SOONGEEZ
 //
 //  Created by 조세연 on 5/14/24.
@@ -9,21 +9,30 @@ import SwiftUI
 import AuthenticationServices
 
 class AuthSessionManager: NSObject, ObservableObject {
+    
     var webAuthSession: ASWebAuthenticationSession?
     
-    // 이 메서드를 호출하여 인증 세션을 시작
     func authenticate(with authURL: URL) {
-
-        
         // 콜백 URL을 처리하기 위한 세션 생성
         webAuthSession = ASWebAuthenticationSession(url: authURL, callbackURLScheme: "https") { callbackURL, error in
             
-            print("before : \(callbackURL)")
+            print("before : \(String(describing: callbackURL))")
             
-            // 오류 처리
-            if let error = error {
-                print("Authentication error: \(error.localizedDescription)")
-                return
+//            // 오류 처리
+//            if let error = error {
+//                print("Authentication error: \(error.localizedDescription)")
+//                // 오류 발생 시 API 호출
+//                Task {
+//                    await postToken()
+//                }
+//            }
+            
+            if callbackURL == nil {
+                print("nil Authentication error: \(String(describing: error?.localizedDescription))")
+                // 오류 발생 시 API 호출
+                Task {
+                    await postToken()
+                }
             }
             
             // URL에서 액세스 토큰 추출
@@ -44,11 +53,12 @@ class AuthSessionManager: NSObject, ObservableObject {
         webAuthSession?.presentationContextProvider = self
         webAuthSession?.start()
     }
-    
+
     // 서버로 토큰 전송
     private func sendTokenToServer(token: String) {
         // 네트워크 코드로 서버에 POST 요청
     }
+
 }
 
 extension AuthSessionManager: ASWebAuthenticationPresentationContextProviding {
@@ -56,3 +66,16 @@ extension AuthSessionManager: ASWebAuthenticationPresentationContextProviding {
         return UIApplication.shared.windows.first { $0.isKeyWindow } ?? ASPresentationAnchor()
     }
 }
+
+func postToken() async {
+    do {
+        let code = LoginService.shared.responseCode
+        try await TokenService.shared.PostTokenData(code: code)
+        print("토큰 성공")
+    } catch {
+        print("auth 토큰 실패: \(error)")
+    }
+}
+
+
+
