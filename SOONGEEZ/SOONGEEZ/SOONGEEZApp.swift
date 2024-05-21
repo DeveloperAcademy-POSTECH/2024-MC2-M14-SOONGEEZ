@@ -11,7 +11,9 @@ import SwiftUI
 struct SOONGEEZApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+
+            ControlView()
+
         }
     }
 }
