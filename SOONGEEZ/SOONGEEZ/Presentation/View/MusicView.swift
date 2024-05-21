@@ -37,7 +37,7 @@ struct MusicView: View {
             VStack(spacing:0){
                 TopLogo
                 CurrentOrder
-                MusicPlayerView(PlayerModel: PlayerModel)
+                PlayerView(PlayerModel: PlayerModel)
                 Text("플리보기")
                     .onTapGesture { showPlayList = true }
                 Spacer()
