@@ -52,7 +52,7 @@ struct LoginView: View {
         defer { isLoading = false }
         
         do {
-            let urlString = try await LoginService.shared.postLoginURL()
+            let urlString = try await LoginService.shared.getLoginURL()
             guard let url = URL(string: urlString) else {
                 print("URL 변환 실패")
                 return

@@ -15,11 +15,11 @@ class LoginService {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.keys.Plist.baseURL) as? String ?? ""
         let url = URL(string: baseURL + "/api")!
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = "GET"
         return request
     }
     
-    func postLoginURL() async throws -> String {
+    func getLoginURL() async throws -> String {
         do {
             let request = self.makeRequest()
             let (data, response) = try await URLSession.shared.data(for: request)
