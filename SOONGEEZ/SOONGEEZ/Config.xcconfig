@@ -8,4 +8,5 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-BASE_URL = http://soongeez.shop 
+BASE_URL = https:/$()/soongeez.shop
+CLIENT_ID = 749492689389-j067tspanbra266amsk4funtf4bunc1o.apps.googleusercontent.com
