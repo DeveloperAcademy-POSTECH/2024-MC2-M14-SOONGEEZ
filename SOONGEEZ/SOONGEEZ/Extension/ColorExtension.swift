@@ -2,8 +2,10 @@ import SwiftUI
 
 
 extension Color{
-    static let customGray = Color(hex: "8A8A8E") 
-    static let customGray100 = Color(hex: "F5F5F5") 
+    static let customGray = Color(hex: "8A8A8E")
+    static let customGray100 = Color(hex: "F5F5F5")
+    static let customLightGray = Color(hex: "E4E3E4")
+    static let primaryPurple = Color(hex: "7E70EC")
     static let customGray200 = Color(hex: "F1F1F1")
     static let customPurple = Color(hex: "DBD9EE")
     static let customPurple100 = Color(hex: "7E70EC")

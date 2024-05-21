@@ -7,8 +7,16 @@
 
 import SwiftUI
 
+func formatDate(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "a hh:mm" // 오전/오후와 시간을 표시합니다.
+    formatter.locale = Locale(identifier: "ko_KR") // 한국 시간 형식으로 설정합니다.
+    return formatter.string(from: date)
+}
 
-struct FinaleView: View {
+
+
+struct FinaleSelctedView: View {
     @Environment(\.dismiss) var dismiss
     
     @Binding var makePlaylist: Bool
@@ -17,8 +25,9 @@ struct FinaleView: View {
     @State var showDatepicker = false
     
     @State private var showSelectMusicView = false
-    @State var selectSong: Music?
+    @Binding var selectSong: Music?
 
+    
     
     
     var body: some View {
@@ -31,6 +40,7 @@ struct FinaleView: View {
                 .padding(.top, 330)
             
             VStack{
+                
                 HStack{
                     Image("textLogo")
                         .resizable()
@@ -225,13 +235,19 @@ struct FinaleView: View {
         .background{
             RoundedRectangle(cornerRadius: 12)
                 .fill(Color.customPurple100)
-            
         }
     }
     
 }
 
 
+
+
+
+
+
+
 #Preview {
-    FinaleView(makePlaylist: .constant(false))
+    FinaleSelctedView(makePlaylist: .constant(false), selectSong: .constant(nil))
+    
 }

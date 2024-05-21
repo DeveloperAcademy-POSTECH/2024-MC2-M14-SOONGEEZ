@@ -12,13 +12,9 @@ import SwiftUI
 
 
 struct PlaylistView: View {
-    @State var MusicList: [Music] = [
-        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", imageURL: URL(string: "https://example.com/image2.jpg")!),
-    ]
+    @Environment(\.dismiss) var dismiss
     
-    
-    
+    @Binding var PlayList: [Music]
     
     @State private var showingAlert = false
     
@@ -39,7 +35,7 @@ struct PlaylistView: View {
             
             ZStack(alignment: .bottom){
                 List{
-                    ForEach($MusicList, id: \.id) { item in
+                    ForEach($PlayList, id: \.id) { item in
                         HStack{
                             AsyncImage(url: item.wrappedValue.imageURL)
                                 .cornerRadius(11)
@@ -108,7 +104,9 @@ struct PlaylistView: View {
         }
         
         .alert("플레이리스트 종료", isPresented: $showingAlert) {
-            Button("종료하기", role: .destructive) {}
+            Button("종료하기", role: .destructive) {
+                dismiss()
+            }
             Button("취소", role: .cancel) {}
             
         } message: {
@@ -134,5 +132,8 @@ extension PlaylistView{
 
 
 #Preview {
-    PlaylistView()
+    PlaylistView(PlayList: .constant([
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "", imageURL: URL(string: "https://example.com/image2.jpg")!),
+    ]))
 }
