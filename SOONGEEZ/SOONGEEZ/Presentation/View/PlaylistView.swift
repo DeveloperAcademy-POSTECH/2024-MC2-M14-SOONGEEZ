@@ -12,10 +12,9 @@ import SwiftUI
 
 
 struct PlaylistView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var PlayList: [Music]
-    
-    
-    
     
     @State private var showingAlert = false
     
@@ -105,7 +104,9 @@ struct PlaylistView: View {
         }
         
         .alert("플레이리스트 종료", isPresented: $showingAlert) {
-            Button("종료하기", role: .destructive) {}
+            Button("종료하기", role: .destructive) {
+                dismiss()
+            }
             Button("취소", role: .cancel) {}
             
         } message: {

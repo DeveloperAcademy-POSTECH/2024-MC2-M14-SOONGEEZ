@@ -9,8 +9,22 @@ import SwiftUI
 import AVKit
 
 struct MusicView: View {
+    @Environment(\.dismiss) var dismiss
+    @State var showPlayList = false
+
+    
+    @State var PlayList0: [Music] =
+    [
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+    ]
+    
+    
+    @StateObject var PlayerModel = AudioPlayerViewModel()
+    
+    
     var body: some View {
-        
+
         ZStack{
             Color.customGray200.edgesIgnoringSafeArea(.all)
 
@@ -23,11 +37,20 @@ struct MusicView: View {
             VStack(spacing:0){
                 TopLogo
                 CurrentOrder
-                MusicPlayerView()
+                MusicPlayerView(PlayerModel: PlayerModel)
+                Text("플리보기")
+                    .onTapGesture { showPlayList = true }
                 Spacer()
             }
         }
+        .sheet(isPresented: $showPlayList){
+            PlaylistView(PlayList: $PlayList0)
+                .onDisappear(){
+                    dismiss()
+                }
+        }
     }
+
 }
 
 var TopLogo: some View {

@@ -8,22 +8,17 @@
 import SwiftUI
 
 struct FinaleView: View {
+    @Environment(\.dismiss) var dismiss
+
+    @Binding var makePlaylist: Bool
+    
     @State var date = Date()
     @State var showDatepicker = false
-    @State var makePlaylist = false
 
     @State private var showSelectMusicView = false
     @State var selectSong = Music(title: "", artist: "", length: "", musicURL: "", imageURL: URL(string: " ")!)
     
     var body: some View {
-        
-        if makePlaylist {
-            MusicView()
-        }
-        
-        else
-        {
-            //        NavigationStack{
             ZStack{
                 Color.customGray200.edgesIgnoringSafeArea(.all)
                 Image("backgroundDecoration")
@@ -93,8 +88,8 @@ struct FinaleView: View {
                                     }
                                 
                                 
-                                //                                                    Text("피날레 곡을 선택해주세요")
-                                Text(selectSong.title)
+                                                                                    Text("피날레 곡을 선택해주세요")
+//                                Text(selectSong.title)
                                     .font(.system(size:17))
                                     .foregroundColor(.gray)
                                     .padding(.bottom, 10)
@@ -161,14 +156,13 @@ struct FinaleView: View {
                     SelectMusicView(selectSong: $selectSong)
                         .padding(.top, 40)
                         .presentationDragIndicator(.visible)
-                    
+
                 }
                 
                 
             }
             
         }
-    }
     
     var PlaylistMakeBtn: some View {
         if selectSong.title == "" {
@@ -214,5 +208,5 @@ func formatDate(_ date: Date) -> String {
 
 
 #Preview {
-    FinaleView()
+    FinaleView(makePlaylist: .constant(false))
 }
