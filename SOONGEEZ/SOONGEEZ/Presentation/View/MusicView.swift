@@ -11,8 +11,10 @@ import AVKit
 struct MusicView: View {
     @Environment(\.dismiss) var dismiss
     @State var showPlayList = false
-    
+
     @ObservedObject var PlayerModel: AudioPlayerViewModel
+    @Binding var finish: Bool
+
     
     var body: some View {
         ZStack{
@@ -34,10 +36,7 @@ struct MusicView: View {
             }
         }
         .sheet(isPresented: $showPlayList){
-            PlaylistView(PlayList: $PlayerModel.PlayList)
-                .onDisappear(){
-                    dismiss()
-                }
+            PlaylistView(PlayList: $PlayerModel.PlayList, finish: $finish)
         }
     }
     
@@ -79,8 +78,11 @@ struct MusicView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         // @StateObject 사용
-        MusicView(PlayerModel: AudioPlayerViewModel(PlayList: [
+        MusicView(PlayerModel: AudioPlayerViewModel(
+            PlayList: [
             Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-            Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),  ], lastSong: Music(title: "집에 언제가노", artist: "김은정", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!)))
+            Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),  ],
+            lastSong: Music(title: "집에 언제가노", artist: "김은정", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!)),
+                  finish: .constant(false))
     }
 }

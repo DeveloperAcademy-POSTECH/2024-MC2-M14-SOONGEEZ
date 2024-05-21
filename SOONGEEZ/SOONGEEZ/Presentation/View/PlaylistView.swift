@@ -15,6 +15,8 @@ struct PlaylistView: View {
     @Environment(\.dismiss) var dismiss
     
     @Binding var PlayList: [Music]
+    @Binding var finish: Bool
+
     
     @State private var showingAlert = false
     
@@ -105,6 +107,7 @@ struct PlaylistView: View {
         
         .alert("플레이리스트 종료", isPresented: $showingAlert) {
             Button("종료하기", role: .destructive) {
+                finish = true
                 dismiss()
             }
             Button("취소", role: .cancel) {}
@@ -135,5 +138,5 @@ extension PlaylistView{
     PlaylistView(PlayList: .constant([
         Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
         Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "", imageURL: URL(string: "https://example.com/image2.jpg")!),
-    ]))
+    ]), finish: .constant(false))
 }

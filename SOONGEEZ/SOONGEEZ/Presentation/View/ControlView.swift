@@ -10,6 +10,8 @@ import SwiftUI
 struct ControlView: View {
     
     @State var makePlaylist = false
+    @State var finish = false
+
     
     @State var viewNum = 0
     @State var selectSong: Music?
@@ -33,7 +35,13 @@ struct ControlView: View {
         {
             @StateObject var PlayerModel = AudioPlayerViewModel(PlayList: PlayList0, lastSong: selectSong!)
 
-            MusicView(PlayerModel: PlayerModel)
+            if !finish  {  MusicView(PlayerModel: PlayerModel, finish: $finish)  }
+            
+            else    {   FinishView(makePlaylist: $makePlaylist, finish: $finish).onAppear(){
+                
+                selectSong = nil
+            }    }
+
         }
     }
 }
