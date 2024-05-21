@@ -15,7 +15,7 @@ struct SelectMusicView: View {
     @State private var searchText = ""
     @State private var filteredSongs: [Music] = []
     @State private var clickedSongs = false
-    @Binding var selectSong: Music
+    @Binding var selectSong: Music?
     
     let songs: [Music] = [
         Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),

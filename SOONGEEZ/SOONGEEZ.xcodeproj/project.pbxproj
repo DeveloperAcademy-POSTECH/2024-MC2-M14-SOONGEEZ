@@ -132,14 +132,14 @@
 				DF20B00C2BF2F0910082BFF3 /* SplashView.swift */,
 				DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */,
 				DEBBF9FD2BFBA59F00AEE7A1 /* FinaleControlView.swift */,
-				DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */,
+				DE0580162BFC3672009E8B63 /* FinaleSelctedView.swift */,
 				DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */,
 				DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */,
 				DEBBF9F92BFB22F400AEE7A1 /* MusicPlayerView.swift */,
 				DE0580182BFC391B009E8B63 /* PlayerView.swift */,
 				DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */,
 				DF20B0142BF2F0C70082BFF3 /* FinishView.swift */,
-				DE0580162BFC3672009E8B63 /* FinaleSelctedView.swift */,
+				DF20B00A2BF2F0850082BFF3 /* FinaleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

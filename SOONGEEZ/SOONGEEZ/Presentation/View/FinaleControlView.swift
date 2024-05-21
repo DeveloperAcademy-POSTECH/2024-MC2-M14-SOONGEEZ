@@ -12,13 +12,15 @@ struct FinaleControlView: View {
     @State var makePlaylist = false
     
     @State var viewNum = 0
+    @State var selectSong: Music?
+
 
     
     
     var body: some View {
         
         if !makePlaylist {
-            FinaleView(makePlaylist: $makePlaylist)
+            FinaleSelctedView(makePlaylist: $makePlaylist)
         }
         
         else
@@ -30,4 +32,5 @@ struct FinaleControlView: View {
 
 #Preview {
     FinaleControlView()
+    
 }

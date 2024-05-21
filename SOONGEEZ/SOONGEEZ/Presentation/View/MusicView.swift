@@ -24,7 +24,6 @@ struct MusicView: View {
     
     
     var body: some View {
-
         ZStack{
             Color.customGray200.edgesIgnoringSafeArea(.all)
 
