@@ -81,7 +81,12 @@ var CurrentOrder: some View {
     .padding([.bottom],24)
 }
 
-//
-//#Preview {
-//    MusicView()
-//}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        // @StateObject 사용
+        MusicView(PlayerModel: AudioPlayerViewModel(PlayList: [
+            Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+            Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),  ], lastSong: Music(title: "집에 언제가노", artist: "김은정", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!)))
+    }
+}
