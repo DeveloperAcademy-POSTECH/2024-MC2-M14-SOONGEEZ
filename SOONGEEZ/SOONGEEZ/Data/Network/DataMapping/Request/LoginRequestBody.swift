@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct LoginRequestBody: Codable {
+    let client_id: String
+    let scope: String
+}

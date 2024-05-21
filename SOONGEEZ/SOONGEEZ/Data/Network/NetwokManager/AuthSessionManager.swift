@@ -13,12 +13,7 @@ class AuthSessionManager: NSObject, ObservableObject {
     
     // 이 메서드를 호출하여 인증 세션을 시작
     func authenticate(with authURL: URL) {
-        
-//    func authenticate() {
-//        guard let authURL = URL(string: "서버통신해서 받아온 url ") else {
-//            print("Invalid URL")
-//            return
-//        }
+
         
         // 콜백 URL을 처리하기 위한 세션 생성
         webAuthSession = ASWebAuthenticationSession(url: authURL, callbackURLScheme: "https") { callbackURL, error in

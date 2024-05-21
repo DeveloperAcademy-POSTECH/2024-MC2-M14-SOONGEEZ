@@ -7,6 +7,17 @@
 
 import Foundation
 
-struct LoginResponse: Codable {
-    let url: String
+//struct LoginResponse: Decodable {
+//    let googleOauthUrl: String
+//}
+
+struct LoginResponse: Decodable {
+    let timeStamp: String
+    let code: String
+    let message: String
+    let result: Result
+    
+    struct Result: Decodable {
+        let googleOauthUrl: String
+    }
 }
