@@ -1,8 +1,8 @@
 //
-//  request.swift
+//  LoginRequestBody.swift
 //  SOONGEEZ
 //
-//  Created by 조세연 on 5/14/24.
+//  Created by 조세연 on 5/21/24.
 //
 
 import Foundation

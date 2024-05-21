@@ -2,8 +2,9 @@
 //  AuthSessionManager.swift
 //  SOONGEEZ
 //
-//  Created by 조세연 on 5/14/24.
+//  Created by 조세연 on 5/21/24.
 //
+
 
 import SwiftUI
 import AuthenticationServices
@@ -76,6 +77,3 @@ func postToken() async {
         print("auth 토큰 실패: \(error)")
     }
 }
-
-
-
