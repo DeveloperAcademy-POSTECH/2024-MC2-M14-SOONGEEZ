@@ -22,10 +22,10 @@ struct SelectMusicView: View {
 //        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!)
 //    ]
     
-    let columns: [GridItem] = [
-        GridItem(.flexible(), spacing: 17),
-        GridItem(.flexible(), spacing: 17)
-    ]
+//    let columns: [GridItem] = [
+//        GridItem(.flexible(), spacing: 17),
+//        GridItem(.flexible(), spacing: 17)
+//    ]
     
     func performSearch() { //필터링
         Task {
