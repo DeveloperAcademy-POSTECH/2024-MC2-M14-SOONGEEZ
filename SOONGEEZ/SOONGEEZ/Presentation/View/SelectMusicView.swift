@@ -136,6 +136,7 @@ struct SelectMusicView: View {
                                     Text(song.wrappedValue.title)
                                         .font(.system(size: 17))
                                         .frame(width: 260, height: 22, alignment: .leading)
+                                    
                                     Text(song.wrappedValue.artist)
                                         .font(.system(size: 15))
                                         .foregroundColor(.customGray)
@@ -146,9 +147,9 @@ struct SelectMusicView: View {
                                     .foregroundColor(.customGray)
                             }
                             .onTapGesture {
-//                                clickedSong = song.wrappedValue
-//                                print("선택함")
-//                                print(clickedSong!)
+                                clickedSong = song.wrappedValue
+                                print("선택함")
+                                print(clickedSong!)
                             }
                         }
                     }
@@ -167,7 +168,7 @@ struct SelectMusicView: View {
                                 
                                 
                                 HStack(spacing: 16){
-                                    AsyncImage(url: clickedSong?.thumbnail) //이미지 바꾸기
+                                    AsyncImage(url: clickedSong?.thumbnail)
                                         .frame(width: 44, height: 44)
                                         .cornerRadius(11)
                                     
