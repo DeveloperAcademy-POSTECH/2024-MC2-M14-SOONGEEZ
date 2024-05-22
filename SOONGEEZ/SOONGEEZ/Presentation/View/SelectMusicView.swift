@@ -61,6 +61,19 @@ struct SelectMusicView: View {
         filteredSongs = searchSongs.filter { song in
             song.title.lowercased().contains(searchText.lowercased())
         }
+        Task {
+            await getSearch()
+        }
+    }
+    
+    func getSearch() async {
+        do {
+            print("search text", searchText)
+            let result = try await SearchService.shared.GetSearchData(query: searchText)
+            print("post search 결과: \(result)")
+        } catch {
+            print("post search 실패: \(error)")
+        }
     }
     
     var body: some View {

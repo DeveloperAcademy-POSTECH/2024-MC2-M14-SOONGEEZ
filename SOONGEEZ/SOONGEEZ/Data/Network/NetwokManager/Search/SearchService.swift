@@ -1,71 +1,66 @@
-////
-////  SearchManager.swift
-////  SOONGEEZ
-////
-////  Created by 조세연 on 5/21/24.
-////
 //
-//import Foundation
+//  SearchManager.swift
+//  SOONGEEZ
 //
-//class SearchService {
-//    static let shared = SearchService()
-//    private init() {}
-//    
-//    
-////    func makeRequestBody(code: String) -> Data? {
-////        do {
-////            let data = TokenRequestBody(code: code)
-////            let jsonEncoder = JSONEncoder()
-////            let requestBody = try jsonEncoder.encode(data)
-////            return requestBody
-////        } catch {
-////            print(error)
-////            return nil
-////        }
-////    }
-////    
-////    func makeRequest(body: Data?) -> URLRequest {
-////        let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.keys.Plist.baseURL) as? String ?? ""
-////        let url = URL(string: baseURL + "members/google-oauth-token")!
-////        var request = URLRequest(url: url)
-////        request.httpMethod = "POST"
-////        let header = ["Content-Type": "application/json"]
-////        header.forEach {
-////            request.addValue($0.value, forHTTPHeaderField: $0.key)
-////        }
-////        if let body = body {
-////            request.httpBody = body
-////        }
-////        
-////        return request
-////    }
-////    
-////    func PostTokenData(code: String) async throws -> String {
-////        do {
-////            guard let body = makeRequestBody(code: code)
-////            else {
-////                throw NetworkError.requstEncodingError
-////            }
-////            
-////            let request = self.makeRequest(body: body)
-////            let (_, response) = try await URLSession.shared.data(for: request)
-////            
-////            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-////                print(response)
-////                throw NetworkError.responseError
-////            }
-////            return "성공"
-////            
-////        } catch {
-////            print("토큰서비스 에러: \(error)")
-////            throw error
-////        }
-////    }
-////
-////
-////    private func configureHTTPError(errorCode: Int) -> Error {
-////        return NetworkError(rawValue: errorCode)
-////        ?? NetworkError.unknownError
-////    }
-////}
-////
+//  Created by 조세연 on 5/21/24.
+//
+
+import Foundation
+
+class SearchService {
+    static let shared = SearchService()
+    private init() {}
+    
+    var responseVideoInfo: [SearchResponse.VideoInfo] = []
+
+    func makeRequest(query: String) -> URLRequest {
+        let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.keys.Plist.baseURL) as? String ?? ""
+        
+        guard var components = URLComponents(string: baseURL + "/videos/search") else {
+            fatalError("Invalid base URL")
+        }
+        components.queryItems = [URLQueryItem(name: "q", value: query)]
+        
+        guard let url = components.url else {
+            fatalError("Invalid URL components")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let header = ["Content-Type": "application/json"]
+        header.forEach {
+            request.addValue($0.value, forHTTPHeaderField: $0.key)
+        }
+        
+        return request
+    }
+   
+    func GetSearchData(query: String) async throws -> Array<Any> {
+        do {
+           
+            let request = self.makeRequest(query: query)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                print(response)
+                throw NetworkError.responseError
+            }
+            
+            let decodedResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
+            self.responseVideoInfo = decodedResponse.result.videoInfoList
+            
+            print(responseVideoInfo)
+            return responseVideoInfo
+            
+        } catch {
+            print("에러세요: \(error)")
+            throw error
+        }
+    }
+    
+    private func configureHTTPError(errorCode: Int) -> Error {
+        return NetworkError(rawValue: errorCode)
+        ?? NetworkError.unknownError
+    }
+}
+
