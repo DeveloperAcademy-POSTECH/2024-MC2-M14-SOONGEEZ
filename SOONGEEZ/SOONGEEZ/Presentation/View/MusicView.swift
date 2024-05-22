@@ -15,36 +15,67 @@ struct MusicView: View {
     @ObservedObject var PlayerModel: AudioPlayerViewModel
     @Binding var finish: Bool
 
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.85
+    @State private var currentDragOffsetY: CGFloat = 0
+    @State private var endingOffsetY: CGFloat = 0
     
     var body: some View {
-        ZStack{
-            Color.customGray200.edgesIgnoringSafeArea(.all)
-            
-            Image("backgroundDecoration") //백그라운드 이미지 들어갈 것
-                .resizable()
-                .scaledToFit()
-                .frame(width:393, height:486)
-                .padding(.top, 330)
-                .ignoresSafeArea()
-            VStack(spacing:0){
-                TopLogo
-                CurrentOrder
-                PlayerView(PlayerModel: PlayerModel)
-                Text("플리보기")
-                    .onTapGesture { showPlayList = true }
-                Spacer()
+
+        ZStack {
+            ZStack{
+                Color.customGray200.edgesIgnoringSafeArea(.all)
+                
+                Image("backgroundDecoration") //백그라운드 이미지 들어갈 것
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:393, height:486)
+                    .padding(.top, 330)
+                    .ignoresSafeArea()
+                
+                VStack(spacing:0){
+                    TopLogo
+                    CurrentOrder
+                    PlayerView(PlayerModel: PlayerModel)
+                    Text("플리보기")
+                        .onTapGesture { showPlayList = true }
+                    Spacer()
+                }
             }
-        }
-        .sheet(isPresented: $showPlayList){
             PlaylistView(PlayList: $PlayerModel.PlayList, finish: $finish)
+//                .padding(.top, 40)
+                .offset(y: startingOffsetY)
+                .offset(y: currentDragOffsetY)
+                .offset(y: endingOffsetY)
+                .gesture(
+                    DragGesture()
+                        .onChanged({ value in
+                            withAnimation(.spring()) {
+                                currentDragOffsetY = value.translation.height
+                            }
+                        })
+                        .onEnded({ value in
+                            withAnimation(.spring()) {
+                                if currentDragOffsetY < -150 {
+                                    endingOffsetY = -startingOffsetY
+                                    currentDragOffsetY = .zero
+                                } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                    endingOffsetY = .zero
+                                    currentDragOffsetY = .zero
+                                } else {
+                                    currentDragOffsetY = .zero
+                                }
+                            }
+                        })
+                )
         }
+        .ignoresSafeArea(edges: .bottom)
+        
     }
     
     
     
     var TopLogo: some View {
         HStack{
-            
             Image("img_logo")//텍스트 로고
                 .resizable()
                 .scaledToFit()
@@ -86,3 +117,5 @@ struct ContentView_Previews: PreviewProvider {
                   finish: .constant(false))
     }
 }
+
+
