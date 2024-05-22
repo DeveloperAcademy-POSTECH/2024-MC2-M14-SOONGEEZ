@@ -13,7 +13,7 @@ struct LoginView: View {
     var body: some View {
         ZStack() {
             
-            Image("backgroundOfLogin")
+            Image("img_loginView")
                 .scaledToFill()
                 .ignoresSafeArea()
             
@@ -26,7 +26,7 @@ struct LoginView: View {
                 }, label: {
                     Image("iconOfYoutube")
                         . frame(width: 30,height: 30)
-                    Text("Youtube Music 연결하기")
+                    Text("Youtube 연결하기")
                         .foregroundColor(.primary)
                     
                 })
