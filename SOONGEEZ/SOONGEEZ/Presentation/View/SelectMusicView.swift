@@ -127,6 +127,7 @@ struct SelectMusicView: View {
                 Text("검색 결과")
                     .padding(.leading, 20)
                     .font(.system(size: 14))
+                
                 ZStack(alignment: .bottom){
                     List{
                         ForEach($filteredSongs, id: \.id) { song in
@@ -160,10 +161,10 @@ struct SelectMusicView: View {
                     .listStyle(.inset)
                     .frame(maxHeight: .infinity)
                     
-                    VStack{
-                        Text("dk")
-                            .font(.system(size: 300))
-                    }
+//                    VStack{
+//                        Text("dk")
+//                            .font(.system(size: 300))
+//                    }
                     
                     if clickedSong != nil {
                         VStack{
