@@ -49,7 +49,8 @@ class LoginService {
         do {
             guard let body = makeRequestBody(client_id: client_id, scope: scope)
             else {
-                throw NetworkError.requstEncodingError }
+                throw NetworkError.requstEncodingError
+            }
             
             let request = self.makeRequest(body: body)
             let (data, response) = try await URLSession.shared.data(for: request)
