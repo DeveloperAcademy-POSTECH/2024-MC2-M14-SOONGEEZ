@@ -11,56 +11,23 @@ struct SelectMusicView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    
     @State private var searchText = ""
-    @State private var filteredSongs: [Music] = []
-    @State private var clickedSong: Music?
-    @Binding var selectSong: Music?
+    @State private var filteredSongs: [SearchModel] = []
+    @State private var clickedSong: SearchModel?
+    @Binding var selectSong: SearchModel?
     
     let songs: [Music] = [
         Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        
-        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        
+        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!)
     ]
-    
-    
-    let searchSongs: [Music] = [
-        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "가", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "나", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "다", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        
-        
-    ]
-    
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 17),
         GridItem(.flexible(), spacing: 17)
     ]
     
-    func performSearch() {
-        filteredSongs = searchSongs.filter { song in
-            song.title.lowercased().contains(searchText.lowercased())
-        }
+    func performSearch() { //필터링
         Task {
             await getSearch()
         }
@@ -69,8 +36,9 @@ struct SelectMusicView: View {
     func getSearch() async {
         do {
             print("search text", searchText)
-            let result = try await SearchService.shared.GetSearchData(query: searchText)
-            print("post search 결과: \(result)")
+            filteredSongs = try await SearchService.shared.GetSearchData(query: searchText)
+            
+            print("post search 결과: \(filteredSongs)")
         } catch {
             print("post search 실패: \(error)")
         }
@@ -126,12 +94,12 @@ struct SelectMusicView: View {
             }
             .padding(.horizontal)
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0))
-                
-                if searchText.isEmpty { //입력 창 텍스트 없을 때
-                    Text("최근 선택한 곡")
-                        .padding(.leading, 20)
-                        .font(.system(size: 14))
-                    ScrollView{
+            
+            if searchText.isEmpty { //입력 창 텍스트 없을 때
+                Text("최근 선택한 곡")
+                    .padding(.leading, 20)
+                    .font(.system(size: 14))
+                ScrollView{
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(songs) { song in
                             VStack(alignment: .leading) {
@@ -160,7 +128,7 @@ struct SelectMusicView: View {
                     List{
                         ForEach($filteredSongs, id: \.id) { song in
                             HStack(spacing: 12){
-                                AsyncImage(url: song.wrappedValue.imageURL)
+                                AsyncImage(url: song.wrappedValue.thumbnail)
                                     .frame(width: 44, height: 44)
                                     .cornerRadius(11)
                                 
@@ -173,14 +141,14 @@ struct SelectMusicView: View {
                                         .foregroundColor(.customGray)
                                         .frame(width: 260, height: 20, alignment: .leading)
                                 }
-                                Text(song.wrappedValue.length)
+                                Text(song.wrappedValue.duration)
                                     .font(.system(size: 12))
                                     .foregroundColor(.customGray)
                             }
                             .onTapGesture {
-                                clickedSong = song.wrappedValue
-                                print("선택함")
-                                print(clickedSong!)
+//                                clickedSong = song.wrappedValue
+//                                print("선택함")
+//                                print(clickedSong!)
                             }
                         }
                     }
@@ -199,7 +167,7 @@ struct SelectMusicView: View {
                                 
                                 
                                 HStack(spacing: 16){
-                                    AsyncImage(url: clickedSong!.imageURL) //이미지 바꾸기
+                                    AsyncImage(url: clickedSong?.thumbnail) //이미지 바꾸기
                                         .frame(width: 44, height: 44)
                                         .cornerRadius(11)
                                     
@@ -233,13 +201,10 @@ struct SelectMusicView: View {
                                 }
                         }
                         .padding(.bottom, 20)
-
+                        
                         
                     }
                 }
-                
-
-                
             }
         }
         

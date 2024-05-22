@@ -25,7 +25,7 @@ struct FinaleSelctedView: View {
     @State var showDatepicker = false
     
     @State private var showSelectMusicView = false
-    @Binding var selectSong: Music?
+    @Binding var selectSong: SearchModel?
 
     
     
@@ -186,7 +186,7 @@ struct FinaleSelctedView: View {
                 .frame(width:282, height:341)
             
             VStack(alignment: .leading){
-                AsyncImage(url: $selectSong.wrappedValue?.imageURL)
+                AsyncImage(url: $selectSong.wrappedValue?.thumbnail)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .scaledToFit()
                     .frame(width:250, height:249)

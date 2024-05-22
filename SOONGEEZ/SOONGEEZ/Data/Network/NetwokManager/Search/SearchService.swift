@@ -11,7 +11,7 @@ class SearchService {
     static let shared = SearchService()
     private init() {}
     
-    var responseVideoInfo: [SearchResponse.VideoInfo] = []
+    var responseVideoInfo: [SearchModel] = []
 
     func makeRequest(query: String) -> URLRequest {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.keys.Plist.baseURL) as? String ?? ""
@@ -35,7 +35,7 @@ class SearchService {
         return request
     }
    
-    func GetSearchData(query: String) async throws -> Array<Any> {
+    func GetSearchData(query: String) async throws -> [SearchModel] {
         do {
            
             let request = self.makeRequest(query: query)
@@ -47,10 +47,23 @@ class SearchService {
             }
             
             let decodedResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
-            self.responseVideoInfo = decodedResponse.result.videoInfoList
+            let videoInfoList = decodedResponse.result.videoInfoList
             
-            print(responseVideoInfo)
-            return responseVideoInfo
+            let searchModels = videoInfoList.compactMap { videoInfo -> SearchModel? in
+                        guard let url = URL(string: videoInfo.thumbnail) else {
+                            print("Invalid URL: \(videoInfo.thumbnail)")
+                            return nil
+                        }
+                        return SearchModel(
+                            videoId: videoInfo.videoId,
+                            thumbnail: url,
+                            title: videoInfo.title,
+                            artist: videoInfo.artist,
+                            duration: videoInfo.duration.convertDuration()
+                        )
+                    }
+            
+                    return searchModels
             
         } catch {
             print("에러세요: \(error)")
