@@ -14,14 +14,15 @@ struct ControlView: View {
 
     
     @State var viewNum = 0
-    @State var selectSong: Music?
+    @State var selectSong: SearchModel?
 
 
     
-    @State var PlayList0: [Music] =
+    @State var PlayList0: [SearchModel] =
     [
-        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
+        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
+        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
     ]
     
     
@@ -33,7 +34,7 @@ struct ControlView: View {
         
         else
         {
-            @StateObject var PlayerModel = AudioPlayerViewModel(PlayList: PlayList0, lastSong: selectSong!)
+            //@StateObject var PlayerModel = AudioPlayerViewModel(PlayList: PlayList0, lastSong: selectSong!)
 
             if !finish  {  MusicView(PlayerModel: PlayerModel, finish: $finish)  }
 
