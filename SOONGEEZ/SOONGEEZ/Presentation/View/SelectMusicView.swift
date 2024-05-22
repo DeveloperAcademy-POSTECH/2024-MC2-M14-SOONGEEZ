@@ -16,11 +16,11 @@ struct SelectMusicView: View {
     @State private var clickedSong: SearchModel?
     @Binding var selectSong: SearchModel?
     
-    let songs: [Music] = [
-        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!)
-    ]
+//    let songs: [Music] = [
+//        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+//        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+//        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!)
+//    ]
     
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 17),
@@ -96,30 +96,33 @@ struct SelectMusicView: View {
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0))
             
             if searchText.isEmpty { //입력 창 텍스트 없을 때
-                Text("최근 선택한 곡")
-                    .padding(.leading, 20)
-                    .font(.system(size: 14))
-                ScrollView{
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(songs) { song in
-                            VStack(alignment: .leading) {
-                                AsyncImage(url: song.imageURL)
-                                    .frame(width: 168, height: 168)
-                                    .cornerRadius(16)
-                                    .padding(.bottom, 4)
-                                
-                                Text(song.title)
-                                    .font(.system(size: 12))
-                                    .fontWeight(.bold)
-                                
-                                Text(song.artist)
-                                    .font(.system(size: 12))
-                            }
-                        }
-                    }
-                    .padding(.horizontal, 20)
-                }
+                EmptyView()
+                Spacer()
+//                Text("최근 선택한 곡")
+//                    .padding(.leading, 20)
+//                    .font(.system(size: 14))
+//                ScrollView{
+//                    LazyVGrid(columns: columns, spacing: 16) {
+//                        ForEach(songs) { song in
+//                            VStack(alignment: .leading) {
+//                                AsyncImage(url: song.imageURL)
+//                                    .frame(width: 168, height: 168)
+//                                    .cornerRadius(16)
+//                                    .padding(.bottom, 4)
+//
+//                                Text(song.title)
+//                                    .font(.system(size: 12))
+//                                    .fontWeight(.bold)
+//
+//                                Text(song.artist)
+//                                    .font(.system(size: 12))
+//                            }
+//                        }
+//                    }
+//                    .padding(.horizontal, 20)
+//                }
             }
+            
             else {//입력 창에 무언가 입력했을 때
                 Text("검색 결과")
                     .padding(.leading, 20)
