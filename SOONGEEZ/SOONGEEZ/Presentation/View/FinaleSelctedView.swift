@@ -9,11 +9,10 @@ import SwiftUI
 
 func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "a hh:mm" // 오전/오후와 시간을 표시합니다.
-    formatter.locale = Locale(identifier: "ko_KR") // 한국 시간 형식으로 설정합니다.
+    formatter.dateFormat = "a hh:mm"
+    formatter.locale = Locale(identifier: "ko_KR")
     return formatter.string(from: date)
 }
-
 
 
 struct FinaleSelctedView: View {
@@ -25,10 +24,8 @@ struct FinaleSelctedView: View {
     @State var showDatepicker = false
     
     @State private var showSelectMusicView = false
-    @Binding var selectSong: Music?
+    @Binding var selectSong: SearchModel?
 
-    
-    
     
     var body: some View {
         ZStack{
@@ -186,10 +183,10 @@ struct FinaleSelctedView: View {
                 .frame(width:282, height:341)
             
             VStack(alignment: .leading){
-                AsyncImage(url: $selectSong.wrappedValue?.imageURL)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .scaledToFit()
-                    .frame(width:250, height:249)
+                AsyncImage(url: $selectSong.wrappedValue?.thumbnail)
+                    .frame(width:250, height:250)
+                    .cornerRadius(11)
+
                 
                 VStack(alignment: .leading, spacing: 8){
                     Text(selectSong!.title)
@@ -203,8 +200,7 @@ struct FinaleSelctedView: View {
                         .frame(height: 15)
                     
                 }
-                //                .frame(width:200, height: 43)
-                
+
             }
             .frame(width:250, height: 309)
         }
