@@ -16,8 +16,7 @@
 		DE1EEC762BF6EE4A00E9FFD9 /* PlayMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1EEC752BF6EE4A00E9FFD9 /* PlayMusicModel.swift */; };
 		DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBBF9FD2BFBA59F00AEE7A1 /* ControlView.swift */; };
 		DEDB50E02BFCBE120021E32C /* music_test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DEDB50DF2BFCBE120021E32C /* music_test.mp3 */; };
-		DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523052BF30EB500C902DD /* TempRequest.swift */; };
-		DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0523072BF30ECC00C902DD /* TempResponse.swift */; };
+
 		DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */; };
 		DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00C2BF2F0910082BFF3 /* SplashView.swift */; };
 		DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */; };
@@ -25,9 +24,22 @@
 		DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */; };
 		DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0142BF2F0C70082BFF3 /* FinishView.swift */; };
 		DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */; };
+		DF2C1A0D2BFCC0DA009C651D /* LoginRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C1A0C2BFCC0DA009C651D /* LoginRequestBody.swift */; };
+		DF2C1A0F2BFCC0E9009C651D /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C1A0E2BFCC0E9009C651D /* LoginResponse.swift */; };
 		DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A068E2BF31AAF00E40050 /* TempEntity.swift */; };
-		DF3A06912BF31ABF00E40050 /* TempNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */; };
+
+		DF78CB272BFB9B8300CF4AFC /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF78CB262BFB9B8300CF4AFC /* Property List.plist */; };
+		DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB282BFB9C4400CF4AFC /* Config.swift */; };
+		DF78CB2B2BFBA00D00CF4AFC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */; };
+		DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */; };
+		DF8171882BFC9E4300A33402 /* TokenRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */; };
+		DF81718C2BFCB8D100A33402 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718B2BFCB8D100A33402 /* SearchService.swift */; };
+		DF81718E2BFCB8FA00A33402 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */; };
+		DF8171902BFCB90500A33402 /* SearchRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */; };
+
 		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
+		DFAEF1FF2BFC4799006F0DA3 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */; };
+		DFC550BF2BFCC162000C1F92 /* AuthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC550BE2BFCC162000C1F92 /* AuthSessionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +53,6 @@
 		DE1EEC752BF6EE4A00E9FFD9 /* PlayMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayMusicModel.swift; sourceTree = "<group>"; };
 		DEBBF9FD2BFBA59F00AEE7A1 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		DEDB50DF2BFCBE120021E32C /* music_test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music_test.mp3; sourceTree = "<group>"; };
-		DF0523052BF30EB500C902DD /* TempRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempRequest.swift; sourceTree = "<group>"; };
-		DF0523072BF30ECC00C902DD /* TempResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempResponse.swift; sourceTree = "<group>"; };
 		DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		DF20B00C2BF2F0910082BFF3 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -50,9 +60,27 @@
 		DF20B0122BF2F0BA0082BFF3 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		DF20B0142BF2F0C70082BFF3 /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
 		DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicView.swift; sourceTree = "<group>"; };
+		DF2C1A0C2BFCC0DA009C651D /* LoginRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestBody.swift; sourceTree = "<group>"; };
+		DF2C1A0E2BFCC0E9009C651D /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		DF3A068E2BF31AAF00E40050 /* TempEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempEntity.swift; sourceTree = "<group>"; };
-		DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempNetworkManager.swift; sourceTree = "<group>"; };
+
+		DF78CB222BFB37F100CF4AFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		DF78CB262BFB9B8300CF4AFC /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		DF78CB282BFB9C4400CF4AFC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRequestBody.swift; sourceTree = "<group>"; };
+		DF8171892BFCA6AC00A33402 /* SOONGEEZ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOONGEEZ.entitlements; sourceTree = "<group>"; };
+		DF81718B2BFCB8D100A33402 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestBody.swift; sourceTree = "<group>"; };
 		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
+		DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		DFC550BE2BFCC162000C1F92 /* AuthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionManager.swift; sourceTree = "<group>"; };
+
+		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +113,11 @@
 		DE1615DE2BF1AC27007EE7A0 /* SOONGEEZ */ = {
 			isa = PBXGroup;
 			children = (
+				DF8171892BFCA6AC00A33402 /* SOONGEEZ.entitlements */,
+				DF78CB222BFB37F100CF4AFC /* Info.plist */,
+				DF78CB262BFB9B8300CF4AFC /* Property List.plist */,
+				DF78CB282BFB9C4400CF4AFC /* Config.swift */,
+
 				DEDB50DF2BFCBE120021E32C /* music_test.mp3 */,
 				DE1615DF2BF1AC27007EE7A0 /* SOONGEEZApp.swift */,
 				DF20B0042BF1B7B20082BFF3 /* Domain */,
@@ -93,6 +126,7 @@
 				DF20AFF72BF1B4F10082BFF3 /* Extension */,
 				DE1615E32BF1AC28007EE7A0 /* Assets.xcassets */,
 				DE1615E52BF1AC28007EE7A0 /* Preview Content */,
+				DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */,
 			);
 			path = SOONGEEZ;
 			sourceTree = "<group>";
@@ -168,7 +202,9 @@
 		DF20B0002BF1B76C0082BFF3 /* NetwokManager */ = {
 			isa = PBXGroup;
 			children = (
-				DF3A06902BF31ABF00E40050 /* TempNetworkManager.swift */,
+				DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */,
+				DF81718A2BFCB8BD00A33402 /* Search */,
+				DFAEF2002BFC47A4006F0DA3 /* Login */,
 			);
 			path = NetwokManager;
 			sourceTree = "<group>";
@@ -185,7 +221,9 @@
 		DF20B0022BF1B78B0082BFF3 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				DF0523052BF30EB500C902DD /* TempRequest.swift */,
+				DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */,
+				DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */,
+				DF2C1A0C2BFCC0DA009C651D /* LoginRequestBody.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -193,7 +231,8 @@
 		DF20B0032BF1B79C0082BFF3 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				DF0523072BF30ECC00C902DD /* TempResponse.swift */,
+				DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */,
+				DF2C1A0E2BFCC0E9009C651D /* LoginResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -212,6 +251,24 @@
 				DF3A068E2BF31AAF00E40050 /* TempEntity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		DF81718A2BFCB8BD00A33402 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DF81718B2BFCB8D100A33402 /* SearchService.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DFAEF2002BFC47A4006F0DA3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */,
+				DF78CB2C2BFBA04300CF4AFC /* LoginService.swift */,
+				DFC550BE2BFCC162000C1F92 /* AuthSessionManager.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +329,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				DF78CB272BFB9B8300CF4AFC /* Property List.plist in Resources */,
+
 				DEDB50E02BFCBE120021E32C /* music_test.mp3 in Resources */,
 				DE1615E72BF1AC28007EE7A0 /* Preview Assets.xcassets in Resources */,
 				DE1615E42BF1AC28007EE7A0 /* Assets.xcassets in Resources */,
@@ -285,20 +345,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */,
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
-				DF0523062BF30EB500C902DD /* TempRequest.swift in Sources */,
-				DF0523082BF30ECC00C902DD /* TempResponse.swift in Sources */,
+
+				DFAEF1FF2BFC4799006F0DA3 /* TokenService.swift in Sources */,
+				DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */,
+				DFC550BF2BFCC162000C1F92 /* AuthSessionManager.swift in Sources */,
+				DF81718E2BFCB8FA00A33402 /* SearchResponse.swift in Sources */,
+
 				DE0580192BFC391B009E8B63 /* PlayerView.swift in Sources */,
 				DF20AFF92BF1B50B0082BFF3 /* ColorExtension.swift in Sources */,
 				DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */,
 				DF3A068F2BF31AAF00E40050 /* TempEntity.swift in Sources */,
 				DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */,
-				DF3A06912BF31ABF00E40050 /* TempNetworkManager.swift in Sources */,
+
+				DF8171902BFCB90500A33402 /* SearchRequestBody.swift in Sources */,
+
 				DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */,
+				DF8171882BFC9E4300A33402 /* TokenRequestBody.swift in Sources */,
+				DF2C1A0D2BFCC0DA009C651D /* LoginRequestBody.swift in Sources */,
 				DF20B0112BF2F0AE0082BFF3 /* MusicView.swift in Sources */,
+
+				DF81718C2BFCB8D100A33402 /* SearchService.swift in Sources */,
+				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
+				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DF78CB2B2BFBA00D00CF4AFC /* NetworkError.swift in Sources */,
 				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */,
+				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
+				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
+				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DF2C1A0F2BFCC0E9009C651D /* LoginResponse.swift in Sources */,
+        
+				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
+				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
+				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+
 				DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */,
 				DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */,
 				DE0580152BFC34F2009E8B63 /* AudioPlayerViewModel.swift in Sources */,
@@ -311,6 +395,7 @@
 /* Begin XCBuildConfiguration section */
 		DE1615E82BF1AC28007EE7A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -374,6 +459,7 @@
 		};
 		DE1615E92BF1AC28007EE7A0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF78CB232BFB3CFF00CF4AFC /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -433,12 +519,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SOONGEEZ/SOONGEEZ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SOONGEEZ/Preview Content\"";
+				DEVELOPMENT_TEAM = 4QMNM64P9Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = SOONGEEZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -461,12 +549,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SOONGEEZ/SOONGEEZ.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SOONGEEZ/Preview Content\"";
+				DEVELOPMENT_TEAM = 4QMNM64P9Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = SOONGEEZ/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

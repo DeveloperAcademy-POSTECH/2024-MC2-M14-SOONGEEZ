@@ -13,10 +13,7 @@ struct SOONGEEZApp: App {
     
     var body: some Scene {
         WindowGroup {
-            
-            ControlView()
-            //            MusicView()
-            
+            LoginView()
         }
     }
 }
