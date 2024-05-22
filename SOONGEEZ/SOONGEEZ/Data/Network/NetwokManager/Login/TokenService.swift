@@ -26,7 +26,7 @@ class TokenService {
     
     func makeRequest(body: Data?) -> URLRequest {
         let baseURL = Bundle.main.object(forInfoDictionaryKey: Config.keys.Plist.baseURL) as? String ?? ""
-        let url = URL(string: baseURL + "members/google-oauth-token")!
+        let url = URL(string: baseURL + "/members/google-oauth-token")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let header = ["Content-Type": "application/json"]
