@@ -12,7 +12,7 @@ struct PlayerView: View {
     @State var showPlayList = false
     
     @ObservedObject var PlayerModel: AudioPlayerViewModel
-
+    
     var body: some View{
         let playlist = PlayerModel.PlayList
         let currentSongIndex = PlayerModel.currentSongIndex
@@ -22,31 +22,25 @@ struct PlayerView: View {
         
         
         VStack{
-            VStack(spacing:0){
-                VStack(spacing:0){
+            VStack(alignment: .leading, spacing:0){
+                VStack(alignment: .leading, spacing:0){
                     AsyncImage(url: playlist[currentSongIndex].imageURL)
-                    //                    .resizable()
                         .scaledToFill()
                         .frame(width:305, height:305)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .clipped()
                         .padding([.bottom],20)
                     
-                    HStack(alignment:.center,spacing: 5) {
-                        VStack(spacing:12){//songinfo
-                            HStack{
-                                Text(playlist[currentSongIndex].title)//data: 노래제목
-                                    .font(.system(size: 24, weight:.semibold))
-                                Spacer()
-                            }
-                            HStack{
-                                Text(playlist[currentSongIndex].artist)//data: 가수
-                                    .font(.system( size: 20))
-                                Spacer()
-                            }
+                    HStack(spacing: 5) {
+                        VStack(alignment: .leading, spacing:12){//songinfo
+                            Text(playlist[currentSongIndex].title)//data: 노래제목
+                                .font(.system(size: 24, weight:.semibold))
+                            
+                            Text(playlist[currentSongIndex].artist)//data: 가수
+                                .font(.system( size: 20))
                         }
                         
-                        
+                        Spacer()
                         
                         Button(action:{
                             PlayerModel.nextSong()
@@ -66,7 +60,8 @@ struct PlayerView: View {
                         ZStack{
                             Capsule()
                                 .fill(Color.customLightGray)
-                                .frame(height:8)
+                                .frame(width: 305, height: 8)
+
                             GeometryReader{ gr in
                                 Capsule()
                                     .foregroundColor(.blue)
@@ -78,7 +73,8 @@ struct PlayerView: View {
                                             .frame(width: gr.size.width * progress, height: 8), alignment: .leading)
                                 
                             }
-                            .frame( height: 8)
+                            .frame(width: 305, height: 8)
+
                         }
                         .padding([.bottom],4)
                         HStack{
@@ -91,14 +87,15 @@ struct PlayerView: View {
                     }
                 }
             }
+            .frame(width: 305)
             .padding(24)
             .background{
                 RoundedRectangle(cornerRadius: 16)
                     .fill(.ultraThickMaterial)
                     .strokeBorder(Color.black, lineWidth:1)
+                    .frame(width: 353)
+                
             }
-            .padding([.horizontal],20)
-            .padding([.bottom],16)
             .onAppear {
                 PlayerModel.initialiseAudioPlayer()
             }
@@ -186,3 +183,16 @@ var PlayButton: some View{
 //#Preview {
 ////    PlayerView()
 //}
+
+
+struct PlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        // @StateObject 사용
+        PlayerView(PlayerModel: AudioPlayerViewModel(
+            PlayList: [
+                Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+                Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),  ],
+            lastSong: Music(title: "집에 언제가노", artist: "김은정", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!))
+        )
+    }
+}

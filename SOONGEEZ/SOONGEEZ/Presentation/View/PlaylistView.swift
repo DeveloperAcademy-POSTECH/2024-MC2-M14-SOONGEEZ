@@ -18,8 +18,6 @@ struct PlaylistView: View {
     @State private var showingAlert = false
     
     var body: some View {
-        ZStack{
-            Color.black.ignoresSafeArea(edges: .bottom)
             VStack(alignment: .leading, spacing: 20){
                 HStack{
                     Spacer()
@@ -32,7 +30,7 @@ struct PlaylistView: View {
                     Spacer()
                 }
                 .padding(.bottom, 30)
-                .padding(.top, 10)
+                .padding(.top, 20)
                 
                 
                 Text("\(Date(), formatter: Self.KoreanFormatter)의 플레이리스트")
@@ -117,17 +115,11 @@ struct PlaylistView: View {
                         ))
                 }
             }
-            
-            
-            .frame(height: 793)
-            .background(.white)
-            
-            .cornerRadius(30)
-            
-            .ignoresSafeArea(edges: .top)
-            
-            
-            
+//            .frame(height: 793, alignment: .top)
+//            .background(.white)
+//            .cornerRadius(30, corners: [.topLeft, .topRight])
+//            .padding(.top, 0)
+
             
             .alert("플레이리스트 종료", isPresented: $showingAlert) {
                 Button("종료하기", role: .destructive) {
@@ -140,7 +132,7 @@ struct PlaylistView: View {
                 Text("지금 재생하고 있는 플레이리스트를 종료하시겠습니까?")
             }
             
-        }}
+        }
     
     
 }
@@ -162,5 +154,12 @@ extension PlaylistView{
     PlaylistView(PlayList: .constant([
         Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
         Music(title: "starlight", artist: "Muse", length: "3:15", musicURL: "", imageURL: URL(string: "https://example.com/image2.jpg")!),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        Music(title: "Cookie", artist: "NeaJeans", length: "3:13", musicURL: "", imageURL: URL(string: "https://example.com/image1.jpg")!),
+        
     ]), finish: .constant(false))
 }
