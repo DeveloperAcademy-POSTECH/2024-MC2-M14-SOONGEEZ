@@ -34,14 +34,14 @@ struct ControlView: View {
         
         else
         {
-            //@StateObject var PlayerModel = AudioPlayerViewModel(PlayList: PlayList0, lastSong: selectSong!)
-
-            if !finish  {  MusicView(PlayerModel: PlayerModel, finish: $finish)  }
-
-            else    {   FinishView(makePlaylist: $makePlaylist, finish: $finish).onAppear(){
-                
-                selectSong = nil
-            }    }
+//            //@StateObject var PlayerModel = AudioPlayerViewModel(PlayList: PlayList0, lastSong: selectSong!)
+//
+//            if !finish  {  MusicView(PlayerModel: PlayerModel, finish: $finish)  }
+//
+//            else    {   FinishView(makePlaylist: $makePlaylist, finish: $finish).onAppear(){
+//                
+//                selectSong = nil
+//            }    }
 
         }
     }
