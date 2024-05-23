@@ -23,6 +23,7 @@ struct MakePlaylistView: View {
         SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
         SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
         SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
+        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
         
     ]
     
@@ -40,14 +41,17 @@ struct MakePlaylistView: View {
                 .ignoresSafeArea()
             
             
-            VStack(alignment: .leading){
+            VStack(alignment: .leading, spacing: 16){
                 TopLogo
+                    .padding(.horizontal, 20)
+
                 HStack{
                     Text("오늘의 피날레곡")
                     Image(systemName: "music.note")
                 }
-                .font(.system(size: 24, weight:.bold))//semibold로하면 피그마랑 묘하게 안맞음
-                
+                .font(.system(size: 24, weight:.bold))
+                .padding(.horizontal, 20)
+
                 
                 ZStack{
                     Rectangle()
@@ -75,23 +79,31 @@ struct MakePlaylistView: View {
                     .padding(12)
                     .frame(width: 353, height: 104)
                 }
+                .padding(.horizontal, 20)
+
                 
                 Text("\(Date(), formatter: Self.KoreanFormatter)의 플레이리스트")
                     .font(.system(size: 24, weight:.bold))
+                    .padding(.horizontal, 20)
+
                 
-                HStack{
-                    Spacer()
-                    Text("13분 25초")
-                        .padding(.trailing, 20)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                }
+//                HStack{
+//                    Spacer()
+//                    Text("13분 25초")
+//                        .font(.footnote)
+//                        .foregroundColor(.gray)
+//                }
+//                .padding(.horizontal, 20)
+
                 
                 
                 List{
                     ForEach(PlayList0, id: \.id) { item in
                         SongView(thissong: item)
+
                     }
+                    .listRowBackground(Color.clear)
+                    
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) { print("삭제") } label: {
                             Label("delete", systemImage: "trash") }
@@ -100,30 +112,51 @@ struct MakePlaylistView: View {
                     }
                 }
                 .listStyle(.inset)
-                .frame(height: 360)
+                .frame(height: 384)
+                .scrollContentBackground(.hidden)
+                .background(Color.customGray100.opacity(0.9))
                 
                 
-                HStack{
-                    Image(systemName: "play.fill")
-                        .foregroundStyle(Color.white)
-                    Text(" 플레이리스트 생성하고 재생")
-                        .foregroundStyle(Color.white)
+                
+                
+                
+                HStack(spacing: 14){
+                    
+                    HStack{
+                        Image(systemName: "arrow.counterclockwise")
+                            .foregroundStyle(Color.primaryPurple)
+                        Text("다시 만들기")
+                            .foregroundStyle(Color.primaryPurple)
+                    }
+                    .frame(width: 168, height: 49, alignment: .center)
+                    .background(.white)
+                    .cornerRadius(12)
+                    
+                    //                .padding(.horizontal, 20)
+                    
+                    
+                    
+                    HStack{
+                        Image(systemName: "play.fill")
+                            .foregroundStyle(Color.white)
+                        Text("13분 25초")
+                            .foregroundStyle(Color.white)
+                    }
+                    .frame(width: 168, height: 49, alignment: .center)
+                    .background(Color.primaryPurple)
+                    .cornerRadius(12)
+                    
                 }
-                .frame(width: 353, height: 50)
-                .background{
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.customPurple100)
-                }
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
+
+                
                 
             }
-            .padding(.horizontal, 20)
             
             
         }
-        
-        
 
-        
     }
     
     
@@ -132,6 +165,7 @@ struct MakePlaylistView: View {
             .resizable()
             .scaledToFit()
             .frame(width:69, height: 21)
+            .padding(.bottom, 4)
         
     }
     
@@ -166,8 +200,6 @@ struct SongView: View {
     }
     
     var body: some View {
-        
-        
         HStack{
             AsyncImage(url: thissong.thumbnail)
                 .cornerRadius(4)
@@ -185,7 +217,8 @@ struct SongView: View {
                 .foregroundColor(.gray)
                 .font(.caption)
         }
-        .background(.white.opacity(0.75))
+        
+//        .background(.white.opacity(0.75))
     }
 }
 
