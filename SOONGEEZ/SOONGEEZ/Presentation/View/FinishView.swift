@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct FinishView: View {
+    @Binding var makePlaylist: Bool
+
+    @Binding var finish: Bool
+    
+
     var body: some View {
         ZStack() {
             
@@ -21,7 +26,8 @@ struct FinishView: View {
                     .padding(.top, 280)
                 Spacer()
                 Button(action: {
-                    print("")
+                    finish = false
+                    makePlaylist = false
                 }, label: {
                     Text("다른 피날레 만들기")
                         .font(.subheadline)
@@ -35,5 +41,5 @@ struct FinishView: View {
 }
 
 #Preview {
-    FinishView()
+    FinishView(makePlaylist: .constant(true), finish: .constant(true))
 }
