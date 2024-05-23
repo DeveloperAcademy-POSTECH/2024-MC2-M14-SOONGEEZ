@@ -24,6 +24,19 @@ extension Int {
     }
 }
 
+extension String {
+    func convertToSeconds() -> Int {
+        let components = self.split(separator: ":").map(String.init)
+        guard components.count == 2,
+              let minutes = Int(components[0]),
+              let seconds = Int(components[1]) else {
+            return nil
+        }
+        return minutes * 60 + seconds
+    }
+}
+
+
 
 //extension String {
 //    func convertDuration() -> String {

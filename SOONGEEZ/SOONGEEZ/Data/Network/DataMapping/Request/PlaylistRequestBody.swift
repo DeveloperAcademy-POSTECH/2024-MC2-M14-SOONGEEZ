@@ -12,8 +12,11 @@ struct PlaylistRequestBody: Codable {
     let finaleInfo: FinaleInfo
     
     struct FinaleInfo: Codable {
+        let videoId: String
+        let thumbnail: String
         let title: String
         let artist: String
-        let videoId: String
+        let length: Int
+        let viewCount: Int
     }
 }

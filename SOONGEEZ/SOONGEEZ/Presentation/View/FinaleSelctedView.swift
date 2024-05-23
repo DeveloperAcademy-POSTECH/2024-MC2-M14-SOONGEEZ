@@ -23,7 +23,29 @@ struct FinaleSelctedView: View {
             
             print("끝나는 시간", finishTime)
             
-            PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(restTime: Int(finishTime), finaleInfo: (title: selectSong!.title, artist: selectSong!.artist, videoId: selectSong!.videoId))
+            if let selectSong = selectSong {
+                PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(
+                    restTime: Int(finishTime),
+                    finaleInfo: (
+                        videoId: selectSong.videoId,
+                        thumbnail: selectSong.thumbnail.absoluteString,
+                        title: selectSong.title,
+                        artist: selectSong.artist,
+                        length: selectSong.duration.convertToSeconds(),
+                        viewCount: selectSong.viewCount 
+                    )
+                )
+            } else {
+                print("selctsong")
+            }
+
+//            PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(restTime: Int(finishTime),
+//                                                                              finaleInfo: (videoId: selectSong!.videoId,
+//                                                                                           thumbnail: selectSong!.thumbnail,
+//                                                                                           title: selectSong!.title,
+//                                                                                           artist: selectSong!.artist,
+//                                                                                           length: selectSong!.length,
+//                                                                                           viewCount: selectSong!.viewCount))
             
             print(PlaylistSongs)
             
@@ -40,7 +62,7 @@ struct FinaleSelctedView: View {
     
     @Environment(\.dismiss) var dismiss
     
-
+    
     @Binding var PlaylistSongs: [SearchModel]
     
     @Binding var makePlaylist: Bool
@@ -50,7 +72,7 @@ struct FinaleSelctedView: View {
     
     @State private var showSelectMusicView = false
     @Binding var selectSong: SearchModel?
-
+    
     
     var body: some View {
         ZStack{
@@ -58,7 +80,7 @@ struct FinaleSelctedView: View {
             Image("img_finaleView")
                 .scaledToFill()
                 .ignoresSafeArea()
-        
+            
             VStack {
                 HStack {
                     Image("textLogo")
@@ -71,7 +93,7 @@ struct FinaleSelctedView: View {
                 .padding(.leading, 20)
                 Spacer()
                     .frame(height: 58)
-            
+                
                 VStack(alignment: .leading, spacing: 8){
                     Text("종료시간")
                         .fontWeight(.bold)
@@ -91,11 +113,11 @@ struct FinaleSelctedView: View {
                         
                         Text(formatDate(date))
                             .font(.system(size: 28))
-                            
+                        
                     }
-                        .onTapGesture {
-                            showDatepicker = true
-                        }
+                    .onTapGesture {
+                        showDatepicker = true
+                    }
                     
                     Text("피날레 곡")
                         .fontWeight(.bold)
@@ -109,15 +131,15 @@ struct FinaleSelctedView: View {
                         .padding(.bottom, 8)
                     
                     
-                        VStack{
-                            if selectSong != nil {
+                    VStack{
+                        if selectSong != nil {
                             finale
-                            }
-                            else {
-                                recode
+                        }
+                        else {
+                            recode
                         }
                     }
-                        //.padding(.bottom, 75)
+                    //.padding(.bottom, 75)
                     .onTapGesture { showSelectMusicView = true }
                 }
                 .padding(.bottom, 75)
@@ -235,11 +257,11 @@ struct FinaleSelctedView: View {
                 AsyncImage(url: $selectSong.wrappedValue?.thumbnail){ image in
                     image.image?.resizable()
                 }
-                    .scaledToFit()
-                    .frame(width: 321, height: 180)
-                    .scaledToFit()
-                    .cornerRadius(10)
-
+                .scaledToFit()
+                .frame(width: 321, height: 180)
+                .scaledToFit()
+                .cornerRadius(10)
+                
                 
                 VStack(alignment: .leading, spacing: 8){
                     Text(selectSong!.title)
@@ -252,7 +274,7 @@ struct FinaleSelctedView: View {
                         .frame(height: 15)
                     
                 }
-
+                
             }
             .frame(width: 353, height: 272)
         }

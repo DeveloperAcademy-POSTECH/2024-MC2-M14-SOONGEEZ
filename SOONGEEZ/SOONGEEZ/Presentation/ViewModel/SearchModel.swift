@@ -15,4 +15,5 @@ struct SearchModel: Identifiable {
     let title: String
     let artist: String
     let duration: String
+    let viewCount: Int
 }

@@ -14,9 +14,9 @@ class PlaylistService {
     var responseLength : String = ""
     var responseVideoInfo: [SearchModel] = []
 
-    func makeRequestBody(restTime: Int, finaleInfo: (title: String, artist: String, videoId: String)) -> Data? {
+    func makeRequestBody(restTime: Int, finaleInfo: (videoId: String, thumbnail: String, title: String, artist: String, length: Int, viewCount: Int)) -> Data? {
         do {
-            let finaleInfoStruct = PlaylistRequestBody.FinaleInfo(title: finaleInfo.title, artist: finaleInfo.artist, videoId: finaleInfo.videoId)
+            let finaleInfoStruct = PlaylistRequestBody.FinaleInfo(videoId: finaleInfo.videoId, thumbnail: finaleInfo.thumbnail, title: finaleInfo.title, artist: finaleInfo.artist, length: finaleInfo.length, viewCount: finaleInfo.viewCount)
             
             let data = PlaylistRequestBody(restTime: restTime, finaleInfo: finaleInfoStruct)
             let jsonEncoder = JSONEncoder()
@@ -44,9 +44,9 @@ class PlaylistService {
         return request
     }
     
-    func PostPlaylistData(restTime: Int, finaleInfo: (title: String, artist: String, videoId: String)) async throws -> [SearchModel] {
+    func PostPlaylistData(restTime: Int, finaleInfo: (videoId: String, thumbnail: String, title: String, artist: String, length: Int, viewCount: Int)) async throws -> [SearchModel] {
         do {
-            guard let body = makeRequestBody(restTime: restTime, finaleInfo: (title: finaleInfo.title, artist: finaleInfo.artist, videoId: finaleInfo.videoId))
+            guard let body = makeRequestBody(restTime: restTime, finaleInfo: (videoId: finaleInfo.videoId, thumbnail: finaleInfo.thumbnail, title: finaleInfo.title, artist: finaleInfo.artist, length: finaleInfo.length, viewCount: finaleInfo.viewCount))
             else {
                 throw NetworkError.requstEncodingError
             }
