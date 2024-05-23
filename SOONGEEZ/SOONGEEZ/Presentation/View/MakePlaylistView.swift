@@ -29,6 +29,8 @@ struct MakePlaylistView: View {
     
     var lastMusic = SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S")
     
+    var totalLen = "13분 25초"
+    
     var body: some View {
         
         ZStack {
@@ -87,13 +89,13 @@ struct MakePlaylistView: View {
                     .padding(.horizontal, 20)
 
                 
-//                HStack{
-//                    Spacer()
-//                    Text("13분 25초")
-//                        .font(.footnote)
-//                        .foregroundColor(.gray)
-//                }
-//                .padding(.horizontal, 20)
+                HStack{
+                    Spacer()
+                    Text("총 \(totalLen)")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal, 20)
 
                 
                 
@@ -137,9 +139,9 @@ struct MakePlaylistView: View {
                     
                     
                     HStack{
-                        Image(systemName: "play.fill")
+                        Image(systemName: "headphones")
                             .foregroundStyle(Color.white)
-                        Text("13분 25초")
+                        Text("들으러 가기")
                             .foregroundStyle(Color.white)
                     }
                     .frame(width: 168, height: 49, alignment: .center)
