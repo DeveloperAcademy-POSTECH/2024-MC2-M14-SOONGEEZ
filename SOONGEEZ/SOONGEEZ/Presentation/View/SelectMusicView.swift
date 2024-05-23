@@ -131,11 +131,19 @@ struct SelectMusicView: View {
                 ZStack(alignment: .bottom){
                     List{
                         ForEach($filteredSongs, id: \.id) { song in
+                            
                             HStack(spacing: 12){
-                                AsyncImage(url: song.wrappedValue.thumbnail)
+                                AsyncImage(url: song.wrappedValue.thumbnail){ image in
+                                    image.image?.resizable()
+                                }
                                     .frame(width: 64, height: 36)
+                                    
+                                    .scaledToFit()
                                     .cornerRadius(4)
-                                   
+                                    .padding(.leading, 8)
+                                
+                                
+                        
                                 VStack(alignment: .leading, spacing: 0){
                                     Text(song.wrappedValue.title)
                                         .font(.system(size: 17))
@@ -151,6 +159,7 @@ struct SelectMusicView: View {
                                     Text(song.wrappedValue.duration)
                                         .font(.system(size: 12))
                                         .foregroundColor(.customGray)
+                                        .frame(width: 45, height: 16, alignment: .leading)
                                 }
                             .onTapGesture {
                                 clickedSong = song.wrappedValue
@@ -176,7 +185,10 @@ struct SelectMusicView: View {
                                     .cornerRadius(16)
                                 
                                 HStack(spacing: 8){
-                                    AsyncImage(url: clickedSong?.thumbnail)
+                                    AsyncImage(url: clickedSong?.thumbnail){ image in
+                                        image.image?.resizable()
+                                    }
+                                        .scaledToFit()
                                         .frame(width: 100, height: 56)
                                         .cornerRadius(8)
                                         .padding(.leading, 36)
