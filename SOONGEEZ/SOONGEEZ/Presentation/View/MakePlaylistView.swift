@@ -13,21 +13,40 @@ struct MakePlaylistView: View {
     @Environment(\.dismiss) var dismiss
     @State var showPlayList = false
     
+    @State var playListId: String = ""
+    
+    @Binding var selectSong: SearchModel?
     @Binding var finish: Bool
     
-    @State var PlayList0: [SearchModel] =
-    [
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S"),
-        
-    ]
+    @Binding var PlaylistSongs: [SearchModel]
     
-    var lastMusic = SearchModel(videoId: "viosad", thumbnail: URL(string: "https://example.com/image1.jpg")!, title: "카사노바", artist: "에스파", duration: "PT3M1S")
+    func createExportRequestBody(from playlistSongs: [SearchModel]) -> ExportRequestBody {
+        let videoList = playlistSongs.map { $0.videoId }
+        return ExportRequestBody(videoList: videoList)
+    }
+    
+    
+    func postExport() async {
+        do {
+
+            let exportRequestBody = createExportRequestBody(from: PlaylistSongs)
+            
+            playListId = try await ExportService.shared.PostExportData(videoList: exportRequestBody.videoList)
+                    
+            print(playListId)
+            
+        } catch {
+            print("에러 발생: \(error)")
+        }
+    }
+    
+    func performExport() {
+        Task {
+            await postExport()
+        }
+    }
+    
+    
     
     var totalLen = "13분 25초"
     
@@ -62,19 +81,25 @@ struct MakePlaylistView: View {
                         .frame(width: 353, height: 104)
                     
                     HStack(spacing: 8){
-                        AsyncImage(url: lastMusic.thumbnail)
-                            .cornerRadius(8)
+                        AsyncImage(url: $selectSong.wrappedValue?.thumbnail){ image in
+                            image.image?.resizable()
+                        }
+                            .scaledToFit()
                             .frame(width: 140, height: 79)
+                            .scaledToFit()
+                            .cornerRadius(8)
+                        
+                    
                         
                         VStack(alignment: .leading)
                         {
-                            Text(lastMusic.title)
-                            Text(lastMusic.artist)
+                            Text(selectSong!.title)
+                            Text(selectSong!.artist)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
                         Spacer()
-                        Text(lastMusic.duration)
+                        Text(selectSong!.duration)
                             .foregroundColor(.gray)
                             .font(.caption)
                     }
@@ -91,7 +116,7 @@ struct MakePlaylistView: View {
                 
                 HStack{
                     Spacer()
-                    Text("총 \(totalLen)")
+                    Text("총 \(PlaylistService.shared.responseLength)")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
@@ -100,7 +125,7 @@ struct MakePlaylistView: View {
                 
                 
                 List{
-                    ForEach(PlayList0, id: \.id) { item in
+                    ForEach(PlaylistSongs, id: \.id) { item in
                         SongView(thissong: item)
 
                     }
@@ -147,6 +172,9 @@ struct MakePlaylistView: View {
                     .frame(width: 168, height: 49, alignment: .center)
                     .background(Color.primaryPurple)
                     .cornerRadius(12)
+                    .onTapGesture {
+                        self.performExport()
+                    }
                     
                 }
                 .padding(.horizontal, 20)
@@ -203,7 +231,12 @@ struct SongView: View {
     
     var body: some View {
         HStack{
-            AsyncImage(url: thissong.thumbnail)
+            
+            
+            AsyncImage(url: thissong.thumbnail){ image in
+                image.image?.resizable()
+            }
+                .scaledToFit()
                 .cornerRadius(4)
                 .frame(width: 64, height: 36)
             
@@ -214,6 +247,7 @@ struct SongView: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
+        
             Spacer()
             Text(thissong.duration)
                 .foregroundColor(.gray)
@@ -225,9 +259,9 @@ struct SongView: View {
 }
 
 
-#Preview {
-    MakePlaylistView(finish: .constant(false))
-}
-
+//#Preview {
+//    MakePlaylistView(finish: .constant(false), PlaylistSongs: PlaylistSongs)
+//}
+//
 
 

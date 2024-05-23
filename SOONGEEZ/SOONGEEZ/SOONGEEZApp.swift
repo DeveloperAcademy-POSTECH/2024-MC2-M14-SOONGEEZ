@@ -16,5 +16,6 @@ struct SOONGEEZApp: App {
 //            LoginView()
             ControlView()
         }
+        
     }
 }

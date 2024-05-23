@@ -96,8 +96,8 @@ struct SelectMusicView: View {
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0))
             
             if searchText.isEmpty { //입력 창 텍스트 없을 때
-                EmptyView()
                 Spacer()
+                
 //                Text("최근 선택한 곡")
 //                    .padding(.leading, 20)
 //                    .font(.system(size: 14))
@@ -127,38 +127,53 @@ struct SelectMusicView: View {
                 Text("검색 결과")
                     .padding(.leading, 20)
                     .font(.system(size: 14))
+                
                 ZStack(alignment: .bottom){
                     List{
                         ForEach($filteredSongs, id: \.id) { song in
+                            
                             HStack(spacing: 12){
-                                AsyncImage(url: song.wrappedValue.thumbnail)
-                                    .frame(width: 44, height: 44)
-                                    .cornerRadius(11)
+                                AsyncImage(url: song.wrappedValue.thumbnail){ image in
+                                    image.image?.resizable()
+                                }
+                                    .frame(width: 64, height: 36)
+                                    
+                                    .scaledToFit()
+                                    .cornerRadius(4)
+                                    .padding(.leading, 8)
                                 
+                                
+                        
                                 VStack(alignment: .leading, spacing: 0){
                                     Text(song.wrappedValue.title)
                                         .font(.system(size: 17))
-                                        .frame(width: 260, height: 22, alignment: .leading)
+                                        .fontWeight(.semibold)
+                                        .frame(width: 232, height: 22, alignment: .leading)
                                     
                                     Text(song.wrappedValue.artist)
                                         .font(.system(size: 15))
                                         .foregroundColor(.customGray)
-                                        .frame(width: 260, height: 20, alignment: .leading)
+                                        .frame(width: 232, height: 20, alignment: .leading)
                                 }
-                                Text(song.wrappedValue.duration)
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.customGray)
-                            }
+                                    
+                                    Text(song.wrappedValue.duration)
+                                        .font(.system(size: 12))
+                                        .foregroundColor(.customGray)
+                                        .frame(width: 45, height: 16, alignment: .leading)
+                                }
                             .onTapGesture {
                                 clickedSong = song.wrappedValue
-                                print("선택함")
-                                print(clickedSong!)
+                                print("선택함", clickedSong!)
                             }
                         }
                     }
                     .listStyle(.inset)
                     .frame(maxHeight: .infinity)
                     
+//                    VStack{
+//                        Text("dk")
+//                            .font(.system(size: 300))
+//                    }
                     
                     if clickedSong != nil {
                         VStack{
@@ -169,18 +184,22 @@ struct SelectMusicView: View {
                                     .background(Color.customGray100)
                                     .cornerRadius(16)
                                 
-                                
-                                HStack(spacing: 16){
-                                    AsyncImage(url: clickedSong?.thumbnail)
-                                        .frame(width: 44, height: 44)
-                                        .cornerRadius(11)
+                                HStack(spacing: 8){
+                                    AsyncImage(url: clickedSong?.thumbnail){ image in
+                                        image.image?.resizable()
+                                    }
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 56)
+                                        .cornerRadius(8)
+                                        .padding(.leading, 36)
                                     
                                     VStack(alignment: .leading, spacing: 0){
                                         Text(clickedSong!.title)
                                             .font(.system(size: 16))
                                             .fontWeight(.bold)
-                                            .frame(width: 260, height: 22, alignment: .leading)
-                                        Text("오늘의 피날레 곡으로 선택할게요.")
+                                            .frame(width: 232, height: 22, alignment: .leading)
+                                        
+                                        Text("피날레 곡으로 선택할게요.")
                                             .font(.system(size: 16))
                                             .frame(width: 260, height: 20, alignment: .leading)
                                     }
@@ -188,9 +207,9 @@ struct SelectMusicView: View {
                             }.padding(.bottom, 16)
                                 .padding(.top, 360)
                                 .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 0)
+                                .allowsHitTesting(false)
                             
                             Text("확인")
-                            
                                 .frame(width: 353, height: 50)
                                 .font(.system(size: 17))
                                 .foregroundStyle(Color.white)
@@ -200,12 +219,12 @@ struct SelectMusicView: View {
                                         .fill(Color.customPurple100)
                                 }
                                 .onTapGesture {
+                                    
                                     selectSong = clickedSong!
                                     dismiss()
                                 }
                         }
-                        .padding(.bottom, 20)
-                        
+                        .padding(.bottom, 40)
                         
                     }
                 }

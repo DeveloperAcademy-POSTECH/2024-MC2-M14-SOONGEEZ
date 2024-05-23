@@ -13,7 +13,7 @@ struct LoginView: View {
     var body: some View {
         ZStack() {
             
-            Image("backgroundOfLogin")
+            Image("img_loginView")
                 .scaledToFill()
                 .ignoresSafeArea()
             
@@ -26,7 +26,7 @@ struct LoginView: View {
                 }, label: {
                     Image("iconOfYoutube")
                         . frame(width: 30,height: 30)
-                    Text("Youtube Music 연결하기")
+                    Text("Youtube 연결하기")
                         .foregroundColor(.primary)
                     
                 })
@@ -45,7 +45,7 @@ struct LoginView: View {
     
     func loginAndAuthenticate() async {
         do {
-            let urlString = try await LoginService.shared.PostRegisterData(client_id: "749492689389-j067tspanbra266amsk4funtf4bunc1o.apps.googleusercontent.com", scope: "https://www.googleapis.com/auth/youtube")
+            let urlString = try await LoginService.shared.PostRegisterData(client_id: "450132674468-bu4dt790mqcc10mbqdjc38ivf08basvk.apps.googleusercontent.com", scope: "https://www.googleapis.com/auth/youtube")
         
             guard let url = URL(string: urlString) else {
                 print("URL 변환 실패")

@@ -16,7 +16,54 @@ func formatDate(_ date: Date) -> String {
 
 
 struct FinaleSelctedView: View {
+    
+    func postPlaylist() async {
+        do {
+            let finishTime = date.secondsUntilDate()
+            
+            print("끝나는 시간", finishTime)
+            
+            if let selectSong = selectSong {
+                PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(
+                    restTime: Int(finishTime),
+                    finaleInfo: (
+                        videoId: selectSong.videoId,
+                        thumbnail: selectSong.thumbnail.absoluteString,
+                        title: selectSong.title,
+                        artist: selectSong.artist,
+                        length: selectSong.duration.convertToSeconds(),
+                        viewCount: selectSong.viewCount 
+                    )
+                )
+            } else {
+                print("selctsong")
+            }
+
+//            PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(restTime: Int(finishTime),
+//                                                                              finaleInfo: (videoId: selectSong!.videoId,
+//                                                                                           thumbnail: selectSong!.thumbnail,
+//                                                                                           title: selectSong!.title,
+//                                                                                           artist: selectSong!.artist,
+//                                                                                           length: selectSong!.length,
+//                                                                                           viewCount: selectSong!.viewCount))
+            
+            print(PlaylistSongs)
+            
+        } catch {
+            print("에러 발생: \(error)")
+        }
+    }
+    
+    func performPlaylist() { //필터링
+        Task {
+            await postPlaylist()
+        }
+    }
+    
     @Environment(\.dismiss) var dismiss
+    
+    
+    @Binding var PlaylistSongs: [SearchModel]
     
     @Binding var makePlaylist: Bool
     
@@ -25,75 +72,90 @@ struct FinaleSelctedView: View {
     
     @State private var showSelectMusicView = false
     @Binding var selectSong: SearchModel?
-
+    
     
     var body: some View {
         ZStack{
-            Color.customGray200.edgesIgnoringSafeArea(.all)
-            Image("backgroundDecoration")
-                .resizable()
-                .scaledToFit()
-                .frame(width:393, height:486)
-                .padding(.top, 330)
             
-            VStack{
-                
-                HStack{
+            Image("img_finaleView")
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack {
+                HStack {
                     Image("textLogo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width:69, height:21)
-                        .padding(20)
+                        .frame(width: 69, height: 21)
+                        .padding(.top, 74)
                     Spacer()
-                } //피날레로고
+                }
+                .padding(.leading, 20)
                 Spacer()
-                    .frame(height:29)
+                    .frame(height: 58)
                 
-                VStack(alignment: .leading, spacing: 11){
+                VStack(alignment: .leading, spacing: 8){
                     Text("종료시간")
-                        .fontWeight(.semibold)
-                        .font(.system(size:17))
-                    //                        .padding(.leading, 56)
-                        .padding(.bottom, 6)
+                        .fontWeight(.bold)
+                        .font(.system(size: 22))
                     
-                    Text(formatDate(date))
-                        .font(.system(size: 34))
-                    //                        .padding(.leading, 56)
-                        .onTapGesture {
-                            showDatepicker = true
-                        }
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 170, height: 1)
-                        .background(Color(red: 0.26, green: 0.26, blue: 0.26))
+                    Text("플레이리스트가 종료될 시간을 선택해 주세요.")
+                        .font(.system(size: 12))
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 8)
+                    
+                    ZStack{
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .frame(width: 353, height: 60)
+                            .background(.white)
+                            .cornerRadius(16)
+                        
+                        Text(formatDate(date))
+                            .font(.system(size: 28))
+                        
+                    }
+                    .onTapGesture {
+                        showDatepicker = true
+                    }
                     
                     Text("피날레 곡")
-                        .fontWeight(.semibold)
-                        .font(.system(size:17))
-                        .padding(.top, 29)
-                        .padding(.bottom, 9)
+                        .fontWeight(.bold)
+                        .font(.system(size: 22))
+                        .padding(.top, 41)
                     
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.thickMaterial)
-                            .strokeBorder(Color.black)
-                            .frame(width: 282, height: 341)
-                        
-                        if selectSong != nil {  finale  }
-                        else {  recode  }
+                    Text("플레이리스트의 마지막을 장식할 피날레 곡을 선택해 주세요.")
+                        .font(.system(size: 12))
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 8)
+                    
+                    
+                    VStack{
+                        if selectSong != nil {
+                            finale
+                        }
+                        else {
+                            recode
+                        }
                     }
+                    //.padding(.bottom, 75)
                     .onTapGesture { showSelectMusicView = true }
-                    
                 }
-                .padding(.horizontal, 56)
                 .padding(.bottom, 75)
                 
                 if selectSong != nil {
                     ActivePlaylistMakeBtn
-                        .onTapGesture{  makePlaylist = true }
+                        .padding(.bottom, 59)
+                        .onTapGesture{
+                            makePlaylist = true
+                            self.performPlaylist()
+                        }
                 }
-                else {  PlaylistMakeBtn  }
+                else {
+                    PlaylistMakeBtn
+                        .padding(.bottom, 59)
+                }
                 
             }
             .sheet(isPresented: $showDatepicker){
@@ -101,6 +163,8 @@ struct FinaleSelctedView: View {
                     Text("종료시간")
                         .font(.system(size:24))
                         .fontWeight(.semibold)
+                        .padding(.bottom, 8)
+                    
                     Text("플레이리스트가 종료 될 시간을 선택해주세요.")
                         .font(.system(size:17))
                     
@@ -110,12 +174,13 @@ struct FinaleSelctedView: View {
                             "",
                             selection: $date,
                             displayedComponents: [.hourAndMinute]
-                        )/*.datePickerStyle(.wheel)*/
+                        )
                         .environment(\.locale, Locale(identifier: "ko_KR"))
                         Spacer()
                     }
                     Button(action: {
                         showDatepicker = false
+                        print(date)
                     }) {
                         Text("확인")
                             .foregroundStyle(Color.white)
@@ -139,37 +204,43 @@ struct FinaleSelctedView: View {
                 
             }
             
-            
         }
         
     }
     
-    
-    
     var recode: some View {
-        VStack(alignment: .center){
+        
+        ZStack{
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.white)
+                .frame(width: 353, height: 272)
+                .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 0)
             
-            Image("recordAudio") //오디오이미지
-                .resizable()
-                .frame(width:250, height:249)
-                .background(Color.customPurple)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .scaledToFit()
-            
-            
-            VStack(alignment: .center, spacing: 8){
-                Text("피날레 곡을 선택해주세요")
-                //                        .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .frame(height: 20)
+            VStack(alignment: .center){
                 
-                Image(systemName: "plus.circle.fill")
-                    .font(.title3.weight(.semibold))
-                    .foregroundColor(.gray)
-                    .frame(height: 15)
+                Image("img_radio") //오디오이미지
+                    .resizable()
+                    .frame(width: 321, height: 180)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .scaledToFit()
+                
+                VStack(alignment: .center, spacing: 8){
+                    Text("피날레 곡을 선택해주세요")
+                        .font(.system(size: 17))
+                        .foregroundColor(.gray)
+                        .frame(height: 20)
+                        .padding(.top, 8)
+                    
+                    Image(systemName: "plus.circle.fill")
+                        .font(.title3.weight(.semibold))
+                        .foregroundColor(.gray)
+                        .frame(height: 15)
+                        .padding(.top, 1)
+                        .padding(.bottom, 8)
+                }
             }
+            .frame(width: 321, height: 181)
         }
-        .frame(width:250, height: 309)
     }
     
     
@@ -177,16 +248,20 @@ struct FinaleSelctedView: View {
     
     var finale: some View {
         ZStack{
-            RoundedRectangle(cornerRadius:  16)
-                .fill(.thickMaterial)
-                .strokeBorder(Color.black)
-                .frame(width:282, height:341)
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.white)
+                .frame(width: 353, height: 272)
+                .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 0)
             
             VStack(alignment: .leading){
-                AsyncImage(url: $selectSong.wrappedValue?.thumbnail)
-                    .frame(width:250, height:250)
-                    .cornerRadius(11)
-
+                AsyncImage(url: $selectSong.wrappedValue?.thumbnail){ image in
+                    image.image?.resizable()
+                }
+                .scaledToFit()
+                .frame(width: 321, height: 180)
+                .scaledToFit()
+                .cornerRadius(10)
+                
                 
                 VStack(alignment: .leading, spacing: 8){
                     Text(selectSong!.title)
@@ -195,36 +270,32 @@ struct FinaleSelctedView: View {
                     
                     
                     Text(selectSong!.artist)
-                        .font(.subheadline)
                         .foregroundColor(.gray)
                         .frame(height: 15)
                     
                 }
-
+                
             }
-            .frame(width:250, height: 309)
+            .frame(width: 353, height: 272)
         }
     }
     
     
     var PlaylistMakeBtn: some View {
         HStack{
-            Image(systemName: "play.fill")
-                .foregroundStyle(Color.gray)
-            Text(" 플레이리스트 생성하고 재생")
-                .foregroundStyle(Color.gray)
+            Text("플레이리스트 생성하기")
+                .foregroundStyle(Color.white)
         }
         .frame(width: 353, height: 50)
         .background{
             RoundedRectangle(cornerRadius: 12)
-            .fill(Color.white)}
+                .fill(Color(red: 0.78, green: 0.78, blue: 0.8))
+        }
     }
     
     var ActivePlaylistMakeBtn: some View {
         HStack{
-            Image(systemName: "play.fill")
-                .foregroundStyle(Color.white)
-            Text(" 플레이리스트 생성하고 재생")
+            Text("플레이리스트 생성하기")
                 .foregroundStyle(Color.white)
         }
         .frame(width: 353, height: 50)
@@ -243,7 +314,12 @@ struct FinaleSelctedView: View {
 
 
 
-#Preview {
-    FinaleSelctedView(makePlaylist: .constant(false), selectSong: .constant(nil))
-    
-}
+
+
+
+
+//
+//#Preview {
+//    FinaleSelctedView(makePlaylist: .constant(false), PlaylistSongs: PlaylistView, selectSong: .constant(nil))
+//
+//}
