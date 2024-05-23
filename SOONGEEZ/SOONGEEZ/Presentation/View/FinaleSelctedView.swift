@@ -66,6 +66,7 @@ struct FinaleSelctedView: View {
                         
                         Text(formatDate(date))
                             .font(.system(size: 28))
+                            
                     }
                         .onTapGesture {
                             showDatepicker = true
@@ -131,6 +132,7 @@ struct FinaleSelctedView: View {
                     }
                     Button(action: {
                         showDatepicker = false
+                        print(date)
                     }) {
                         Text("확인")
                             .foregroundStyle(Color.white)

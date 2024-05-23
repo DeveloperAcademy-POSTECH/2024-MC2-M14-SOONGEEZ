@@ -39,6 +39,10 @@
 		DFBC9BE82BFD9A3F006D7DF6 /* DurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC9BE72BFD9A3F006D7DF6 /* DurationExtension.swift */; };
 		DFBC9BEA2BFD9DC3006D7DF6 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC9BE92BFD9DC3006D7DF6 /* SearchModel.swift */; };
 		DFC550BF2BFCC162000C1F92 /* AuthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC550BE2BFCC162000C1F92 /* AuthSessionManager.swift */; };
+		DFDFB43E2BFED27300077682 /* PlaylistRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFB43D2BFED27300077682 /* PlaylistRequestBody.swift */; };
+		DFDFB4402BFED28A00077682 /* PlaylistResonse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFB43F2BFED28A00077682 /* PlaylistResonse.swift */; };
+		DFDFB4422BFED3A400077682 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFB4412BFED3A400077682 /* DateExtension.swift */; };
+		DFDFB4452BFED4AF00077682 /* PlaylistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDFB4442BFED4AF00077682 /* PlaylistService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		DFBC9BE72BFD9A3F006D7DF6 /* DurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationExtension.swift; sourceTree = "<group>"; };
 		DFBC9BE92BFD9DC3006D7DF6 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		DFC550BE2BFCC162000C1F92 /* AuthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionManager.swift; sourceTree = "<group>"; };
+		DFDFB43D2BFED27300077682 /* PlaylistRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistRequestBody.swift; sourceTree = "<group>"; };
+		DFDFB43F2BFED28A00077682 /* PlaylistResonse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistResonse.swift; sourceTree = "<group>"; };
+		DFDFB4412BFED3A400077682 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		DFDFB4442BFED4AF00077682 /* PlaylistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +148,7 @@
 			children = (
 				DF20AFF82BF1B50B0082BFF3 /* ColorExtension.swift */,
 				DFBC9BE72BFD9A3F006D7DF6 /* DurationExtension.swift */,
+				DFDFB4412BFED3A400077682 /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */,
+				DFDFB4432BFED49800077682 /* Playlist */,
 				DF81718A2BFCB8BD00A33402 /* Search */,
 				DFAEF2002BFC47A4006F0DA3 /* Login */,
 			);
@@ -222,6 +232,7 @@
 				DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */,
 				DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */,
 				DF2C1A0C2BFCC0DA009C651D /* LoginRequestBody.swift */,
+				DFDFB43D2BFED27300077682 /* PlaylistRequestBody.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */,
+				DFDFB43F2BFED28A00077682 /* PlaylistResonse.swift */,
 				DF2C1A0E2BFCC0E9009C651D /* LoginResponse.swift */,
 			);
 			path = Response;
@@ -267,6 +279,14 @@
 				DFC550BE2BFCC162000C1F92 /* AuthSessionManager.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		DFDFB4432BFED49800077682 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				DFDFB4442BFED4AF00077682 /* PlaylistService.swift */,
+			);
+			path = Playlist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF78CB2D2BFBA04300CF4AFC /* LoginService.swift in Sources */,
+				DFDFB4422BFED3A400077682 /* DateExtension.swift in Sources */,
 				DF20B00F2BF2F09F0082BFF3 /* LoginView.swift in Sources */,
 				DFAEF1FF2BFC4799006F0DA3 /* TokenService.swift in Sources */,
 				DF78CB292BFB9C4400CF4AFC /* Config.swift in Sources */,
@@ -366,14 +387,17 @@
 				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DFDFB43E2BFED27300077682 /* PlaylistRequestBody.swift in Sources */,
 				DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */,
 				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
+				DFDFB4452BFED4AF00077682 /* PlaylistService.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
 				DF2C1A0F2BFCC0E9009C651D /* LoginResponse.swift in Sources */,
 				DE0580172BFC3672009E8B63 /* FinaleSelctedView.swift in Sources */,
 				DE1615E02BF1AC27007EE7A0 /* SOONGEEZApp.swift in Sources */,
 				DF20B0172BF2F0D50082BFF3 /* SelectMusicView.swift in Sources */,
+				DFDFB4402BFED28A00077682 /* PlaylistResonse.swift in Sources */,
 				DEBBF9FE2BFBA59F00AEE7A1 /* ControlView.swift in Sources */,
 				DF20B0152BF2F0C70082BFF3 /* FinishView.swift in Sources */,
 				DE0580152BFC34F2009E8B63 /* AudioPlayerViewModel.swift in Sources */,
