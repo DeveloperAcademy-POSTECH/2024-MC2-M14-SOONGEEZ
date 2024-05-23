@@ -16,7 +16,31 @@ func formatDate(_ date: Date) -> String {
 
 
 struct FinaleSelctedView: View {
+    
+    func postPlaylist() async {
+        do {
+            let finishTime = date.secondsUntilDate()
+            
+            print("끝나는 시간", finishTime)
+            
+            PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(restTime: Int(finishTime), finaleInfo: (title: selectSong!.title, artist: selectSong!.artist, videoId: selectSong!.videoId))
+            
+            print(PlaylistSongs)
+            
+        } catch {
+            print("에러 발생: \(error)")
+        }
+    }
+    
+    func performPlaylist() { //필터링
+        Task {
+            await postPlaylist()
+        }
+    }
+    
     @Environment(\.dismiss) var dismiss
+    
+    @State private var PlaylistSongs: [SearchModel] = []
     
     @Binding var makePlaylist: Bool
     
@@ -102,6 +126,10 @@ struct FinaleSelctedView: View {
                         .padding(.bottom, 59)
                         .onTapGesture{
                             makePlaylist = true
+                    
+                            self.performPlaylist()
+
+                            
                         }
                 }
                 else {
@@ -258,6 +286,11 @@ struct FinaleSelctedView: View {
     }
     
 }
+
+
+
+
+
 
 
 

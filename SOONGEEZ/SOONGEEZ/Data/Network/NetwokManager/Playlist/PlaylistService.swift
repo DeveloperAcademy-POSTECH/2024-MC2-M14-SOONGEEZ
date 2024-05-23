@@ -52,10 +52,10 @@ class PlaylistService {
             }
             
             let request = self.makeRequest(body: body)
-            print("네트워크 요청 생성됨") // 네트워크 요청 생성 로그
+            print("플레이리스트 요청 생성됨") // 네트워크 요청 생성 로그
             
             let (data, response) = try await URLSession.shared.data(for: request)
-            print("네트워크 응답 수신됨") // 네트워크 응답 수신 로그
+            print("플레이리스트 응답 수신됨") // 네트워크 응답 수신 로그
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 print(response)

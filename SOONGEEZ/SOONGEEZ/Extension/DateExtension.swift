@@ -30,15 +30,3 @@ extension Date {
     }
 }
 
-//// 예제 사용법
-//let dateString = "2024-05-23 01:16:51 +0000"
-//let dateFormatter = DateFormatter()
-//dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
-//dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//if let date = dateFormatter.date(from: dateString) {
-//    let koreanTime = date.toKoreanTime()
-//    print("한국 시간으로 변환된 날짜: \(koreanTime)")
-//    
-//    let secondsUntil = date.secondsUntilDate()
-//    print("현재 시간으로부터 남은 초: \(secondsUntil)")
-//}

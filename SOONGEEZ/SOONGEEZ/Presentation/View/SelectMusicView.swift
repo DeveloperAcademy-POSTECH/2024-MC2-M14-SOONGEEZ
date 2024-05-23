@@ -219,6 +219,7 @@ struct SelectMusicView: View {
                                         .fill(Color.customPurple100)
                                 }
                                 .onTapGesture {
+                                    
                                     selectSong = clickedSong!
                                     dismiss()
                                 }
