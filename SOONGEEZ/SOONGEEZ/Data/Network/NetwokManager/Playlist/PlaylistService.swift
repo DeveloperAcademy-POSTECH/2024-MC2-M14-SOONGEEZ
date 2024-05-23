@@ -76,7 +76,8 @@ class PlaylistService {
                             thumbnail: url,
                             title: videoInfo.title,
                             artist: videoInfo.artist,
-                            duration: videoInfo.duration.convertDuration()
+                            duration: videoInfo.duration.convertDuration(), 
+                            viewCount: videoInfo.viewCount
                         )
                     }
             

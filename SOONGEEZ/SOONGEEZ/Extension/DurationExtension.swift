@@ -30,7 +30,7 @@ extension String {
         guard components.count == 2,
               let minutes = Int(components[0]),
               let seconds = Int(components[1]) else {
-            return nil
+            return 0
         }
         return minutes * 60 + seconds
     }

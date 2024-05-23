@@ -13,10 +13,39 @@ struct MakePlaylistView: View {
     @Environment(\.dismiss) var dismiss
     @State var showPlayList = false
     
+    @State var playListId: String = ""
+    
     @Binding var selectSong: SearchModel?
     @Binding var finish: Bool
     
     @Binding var PlaylistSongs: [SearchModel]
+    
+    func createExportRequestBody(from playlistSongs: [SearchModel]) -> ExportRequestBody {
+        let videoList = playlistSongs.map { $0.videoId }
+        return ExportRequestBody(videoList: videoList)
+    }
+    
+    
+    func postExport() async {
+        do {
+
+            let exportRequestBody = createExportRequestBody(from: PlaylistSongs)
+            
+            playListId = try await ExportService.shared.PostExportData(videoList: exportRequestBody.videoList)
+                    
+            print(playListId)
+            
+        } catch {
+            print("에러 발생: \(error)")
+        }
+    }
+    
+    func performExport() {
+        Task {
+            await postExport()
+        }
+    }
+    
     
     
     var totalLen = "13분 25초"
@@ -143,6 +172,9 @@ struct MakePlaylistView: View {
                     .frame(width: 168, height: 49, alignment: .center)
                     .background(Color.primaryPurple)
                     .cornerRadius(12)
+                    .onTapGesture {
+                        self.performExport()
+                    }
                     
                 }
                 .padding(.horizontal, 20)
