@@ -11,7 +11,7 @@ class PlaylistService {
     static let shared = PlaylistService()
     private init() {}
     
-    var responseLength : Int = 0
+    var responseLength : String = ""
     var responseVideoInfo: [SearchModel] = []
 
     func makeRequestBody(restTime: Int, finaleInfo: (title: String, artist: String, videoId: String)) -> Data? {
@@ -64,7 +64,7 @@ class PlaylistService {
             
             let decodedResponse = try JSONDecoder().decode(PlaylistResonse.self, from: data)
             let videoInfoList = decodedResponse.result.videoInfoList
-            self.responseLength = decodedResponse.result.playlistLength
+            self.responseLength = decodedResponse.result.playlistLength.convertIntDuration()
             
             let searchModels = videoInfoList.compactMap { videoInfo -> SearchModel? in
                         guard let url = URL(string: videoInfo.thumbnail) else {

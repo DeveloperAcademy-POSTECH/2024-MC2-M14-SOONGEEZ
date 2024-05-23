@@ -40,11 +40,12 @@ struct FinaleSelctedView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State private var PlaylistSongs: [SearchModel] = []
+
+    @Binding var PlaylistSongs: [SearchModel]
     
     @Binding var makePlaylist: Bool
     
-    @State var date = Date() //설정한 시간 값
+    @State var date = Date()
     @State var showDatepicker = false
     
     @State private var showSelectMusicView = false
@@ -126,10 +127,7 @@ struct FinaleSelctedView: View {
                         .padding(.bottom, 59)
                         .onTapGesture{
                             makePlaylist = true
-                    
                             self.performPlaylist()
-
-                            
                         }
                 }
                 else {
@@ -298,8 +296,8 @@ struct FinaleSelctedView: View {
 
 
 
-
-#Preview {
-    FinaleSelctedView(makePlaylist: .constant(false), selectSong: .constant(nil))
-    
-}
+//
+//#Preview {
+//    FinaleSelctedView(makePlaylist: .constant(false), PlaylistSongs: PlaylistView, selectSong: .constant(nil))
+//
+//}
