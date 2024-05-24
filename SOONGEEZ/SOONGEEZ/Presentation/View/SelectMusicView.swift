@@ -12,23 +12,29 @@ struct SelectMusicView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var searchText = ""
+    @State private var loadingView : Int = 1
+    
+    
     @State private var filteredSongs: [SearchModel] = []
     @State private var clickedSong: SearchModel?
     @Binding var selectSong: SearchModel?
     
-//    let songs: [Music] = [
-//        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
-//        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
-//        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!)
-//    ]
     
-//    let columns: [GridItem] = [
-//        GridItem(.flexible(), spacing: 17),
-//        GridItem(.flexible(), spacing: 17)
-//    ]
+    
+    //    let songs: [Music] = [
+    //        Music(title: "Cookie", artist: "가수1", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!),
+    //        Music(title: "starlight", artist: "가수2", length: "3:15", musicURL: "music_test", imageURL: URL(string: "https://example.com/image2.jpg")!),
+    //        Music(title: "Cookie", artist: "가수3", length: "3:13", musicURL: "music_test", imageURL: URL(string: "https://example.com/image1.jpg")!)
+    //    ]
+    
+    //    let columns: [GridItem] = [
+    //        GridItem(.flexible(), spacing: 17),
+    //        GridItem(.flexible(), spacing: 17)
+    //    ]
     
     func performSearch() { //필터링
         Task {
+            self.loadingView = 0
             await getSearch()
         }
     }
@@ -37,6 +43,8 @@ struct SelectMusicView: View {
         do {
             print("search text", searchText)
             filteredSongs = try await SearchService.shared.GetSearchData(query: searchText)
+            
+            self.loadingView = 1
             
             print("post search 결과: \(filteredSongs)")
         } catch {
@@ -95,33 +103,47 @@ struct SelectMusicView: View {
             .padding(.horizontal)
             .padding(EdgeInsets(top: 10, leading: 0, bottom: 8, trailing: 0))
             
-            if searchText.isEmpty { //입력 창 텍스트 없을 때
+            if loadingView == 0 { //입력 창 텍스트 없을 때
+                
+                Text("검색 결과")
+                    .padding(.leading, 20)
+                    .font(.system(size: 14))
+                
                 Spacer()
                 
-//                Text("최근 선택한 곡")
-//                    .padding(.leading, 20)
-//                    .font(.system(size: 14))
-//                ScrollView{
-//                    LazyVGrid(columns: columns, spacing: 16) {
-//                        ForEach(songs) { song in
-//                            VStack(alignment: .leading) {
-//                                AsyncImage(url: song.imageURL)
-//                                    .frame(width: 168, height: 168)
-//                                    .cornerRadius(16)
-//                                    .padding(.bottom, 4)
-//
-//                                Text(song.title)
-//                                    .font(.system(size: 12))
-//                                    .fontWeight(.bold)
-//
-//                                Text(song.artist)
-//                                    .font(.system(size: 12))
-//                            }
-//                        }
-//                    }
-//                    .padding(.horizontal, 20)
-//                }
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                    .scaleEffect(2.0, anchor: .center)
+                    .padding(.leading, 185)
+                
+                Spacer()
+                
+                
+                //                Text("최근 선택한 곡")
+                //                    .padding(.leading, 20)
+                //                    .font(.system(size: 14))
+                //                ScrollView{
+                //                    LazyVGrid(columns: columns, spacing: 16) {
+                //                        ForEach(songs) { song in
+                //                            VStack(alignment: .leading) {
+                //                                AsyncImage(url: song.imageURL)
+                //                                    .frame(width: 168, height: 168)
+                //                                    .cornerRadius(16)
+                //                                    .padding(.bottom, 4)
+                //
+                //                                Text(song.title)
+                //                                    .font(.system(size: 12))
+                //                                    .fontWeight(.bold)
+                //
+                //                                Text(song.artist)
+                //                                    .font(.system(size: 12))
+                //                            }
+                //                        }
+                //                    }
+                //                    .padding(.horizontal, 20)
+                //                }
             }
+            
             
             else {//입력 창에 무언가 입력했을 때
                 Text("검색 결과")
@@ -136,14 +158,14 @@ struct SelectMusicView: View {
                                 AsyncImage(url: song.wrappedValue.thumbnail){ image in
                                     image.image?.resizable()
                                 }
-                                    .frame(width: 64, height: 36)
-                                    
-                                    .scaledToFit()
-                                    .cornerRadius(4)
-                                    .padding(.leading, 8)
+                                .frame(width: 64, height: 36)
+                                
+                                .scaledToFit()
+                                .cornerRadius(4)
+                                .padding(.leading, 8)
                                 
                                 
-                        
+                                
                                 VStack(alignment: .leading, spacing: 0){
                                     Text(song.wrappedValue.title)
                                         .font(.system(size: 17))
@@ -155,12 +177,12 @@ struct SelectMusicView: View {
                                         .foregroundColor(.customGray)
                                         .frame(width: 232, height: 20, alignment: .leading)
                                 }
-                                    
-                                    Text(song.wrappedValue.duration)
-                                        .font(.system(size: 12))
-                                        .foregroundColor(.customGray)
-                                        .frame(width: 45, height: 16, alignment: .leading)
-                                }
+                                
+                                Text(song.wrappedValue.duration)
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.customGray)
+                                    .frame(width: 45, height: 16, alignment: .leading)
+                            }
                             .onTapGesture {
                                 clickedSong = song.wrappedValue
                                 print("선택함", clickedSong!)
@@ -170,10 +192,10 @@ struct SelectMusicView: View {
                     .listStyle(.inset)
                     .frame(maxHeight: .infinity)
                     
-//                    VStack{
-//                        Text("dk")
-//                            .font(.system(size: 300))
-//                    }
+                    //                    VStack{
+                    //                        Text("dk")
+                    //                            .font(.system(size: 300))
+                    //                    }
                     
                     if clickedSong != nil {
                         VStack{
@@ -188,10 +210,10 @@ struct SelectMusicView: View {
                                     AsyncImage(url: clickedSong?.thumbnail){ image in
                                         image.image?.resizable()
                                     }
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 56)
-                                        .cornerRadius(8)
-                                        .padding(.leading, 36)
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 56)
+                                    .cornerRadius(8)
+                                    .padding(.leading, 36)
                                     
                                     VStack(alignment: .leading, spacing: 0){
                                         Text(clickedSong!.title)
@@ -233,6 +255,8 @@ struct SelectMusicView: View {
         
     }
 }
+
+
 
 
 

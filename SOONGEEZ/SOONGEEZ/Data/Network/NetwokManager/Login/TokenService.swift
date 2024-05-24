@@ -11,6 +11,7 @@ class TokenService {
     static let shared = TokenService()
     private init() {}
     
+    var responseFinishLogin : Bool = true
     
     func makeRequestBody(code: String) -> Data? {
         do {
@@ -40,7 +41,7 @@ class TokenService {
         return request
     }
     
-    func PostTokenData(code: String) async throws -> String {
+    func PostTokenData(code: String) async throws -> Bool {
         do {
             guard let body = makeRequestBody(code: code)
             else {
@@ -57,7 +58,8 @@ class TokenService {
                 print(response)
                 throw NetworkError.responseError
             }
-            return "성공"
+            
+            return responseFinishLogin
             
         } catch {
             print("토큰서비스 에러: \(error)") // 에러 발생시 로그

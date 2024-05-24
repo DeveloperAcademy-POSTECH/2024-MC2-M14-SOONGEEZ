@@ -9,22 +9,20 @@ import SwiftUI
 
 struct FinishView: View {
     @Binding var makePlaylist: Bool
-
+    
     @Binding var finish: Bool
     
-
+    
     var body: some View {
         ZStack() {
             
-            Image("backgroundOfFinish")
+            Image("img_FinishView")
                 .scaledToFill()
                 .ignoresSafeArea()
             
-            VStack() {
-                Text("다음 피날레도 기대할게요!")
-                    .font(.title2)
-                    .padding(.top, 280)
+            VStack{
                 Spacer()
+                
                 Button(action: {
                     finish = false
                     makePlaylist = false
@@ -34,11 +32,11 @@ struct FinishView: View {
                         .foregroundColor(.gray)
                         .underline()
                 })
-                .padding(.bottom, 110)
-            }
+            }.padding(.bottom, 110)
         }
     }
 }
+
 
 #Preview {
     FinishView(makePlaylist: .constant(true), finish: .constant(true))
