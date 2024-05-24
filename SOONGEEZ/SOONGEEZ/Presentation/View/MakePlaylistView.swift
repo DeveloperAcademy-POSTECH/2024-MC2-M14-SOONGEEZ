@@ -18,6 +18,8 @@ struct MakePlaylistView: View {
     @Binding var selectSong: SearchModel?
     @Binding var finish: Bool
     
+    @Binding var makePlaylist: Bool
+    
     @Binding var PlaylistSongs: [SearchModel]
     
     func createExportRequestBody(from playlistSongs: [SearchModel]) -> ExportRequestBody {
@@ -34,6 +36,8 @@ struct MakePlaylistView: View {
             playListId = try await ExportService.shared.PostExportData(videoList: exportRequestBody.videoList)
                     
             print(playListId)
+            
+            
             
         } catch {
             print("에러 발생: \(error)")
@@ -155,9 +159,13 @@ struct MakePlaylistView: View {
                         Text("다시 만들기")
                             .foregroundStyle(Color.primaryPurple)
                     }
+                
                     .frame(width: 168, height: 49, alignment: .center)
                     .background(.white)
                     .cornerRadius(12)
+                    .onTapGesture {
+                        self.makePlaylist = false
+                    }
                     
                     //                .padding(.horizontal, 20)
                     
@@ -174,6 +182,12 @@ struct MakePlaylistView: View {
                     .cornerRadius(12)
                     .onTapGesture {
                         self.performExport()
+                        self.finish = true
+                        
+                        
+                        //
+                        
+                        
                     }
                     
                 }

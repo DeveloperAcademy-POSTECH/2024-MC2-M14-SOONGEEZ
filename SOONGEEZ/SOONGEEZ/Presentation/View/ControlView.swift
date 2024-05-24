@@ -36,8 +36,16 @@ struct ControlView: View {
         
         else
         {
-            MakePlaylistView(selectSong: $selectSong, finish: $finish, PlaylistSongs: $PlaylistSongs)
+            MakePlaylistView(selectSong: $selectSong, finish: $finish, makePlaylist: $makePlaylist, PlaylistSongs: $PlaylistSongs)
             
+            if !finish {
+                FinishView(makePlaylist:  $makePlaylist, finish: $finish)
+            }
+            
+//            else {
+//                FinaleSelctedView(PlaylistSongs: $PlaylistSongs, makePlaylist: $makePlaylist, selectSong: $selectSong)
+//            }
+//            
             
 //            //@StateObject var PlayerModel = AudioPlayerViewModel(PlayList: PlayList0, lastSong: selectSong!)
 //

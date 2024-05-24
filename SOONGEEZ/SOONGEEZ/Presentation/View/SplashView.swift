@@ -2,8 +2,18 @@
 import SwiftUI
 
 struct SplashView: View {
+    @State var LoginFinsh = false
+    
     var body: some View {
-        Text("로그인뷰랑 스플래시뷰 합쳐짐")
+        
+        if !LoginFinsh {
+            LoginView(LoginFinsh: $LoginFinsh)
+        }
+        
+        else {
+            ControlView()
+        }
+
     }
 }
 

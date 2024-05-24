@@ -10,6 +10,10 @@ import SwiftUI
 struct LoginView: View {
     @StateObject private var authSessionManager = AuthSessionManager()
     
+    @Binding var LoginFinsh : Bool
+    
+    var completion: Int = 0
+    
     var body: some View {
         ZStack() {
             
@@ -20,7 +24,7 @@ struct LoginView: View {
             VStack() {
                 Spacer()
                 Button(action: {
-                    Task{ 
+                    Task{
                         await loginAndAuthenticate()
                     }
                 }, label: {
@@ -46,7 +50,7 @@ struct LoginView: View {
     func loginAndAuthenticate() async {
         do {
             let urlString = try await LoginService.shared.PostRegisterData(client_id: "450132674468-bu4dt790mqcc10mbqdjc38ivf08basvk.apps.googleusercontent.com", scope: "https://www.googleapis.com/auth/youtube")
-        
+            
             guard let url = URL(string: urlString) else {
                 print("URL 변환 실패")
                 return
@@ -54,14 +58,38 @@ struct LoginView: View {
             print("URL 변환 성공: \(url)")
             print("Login code", LoginService.shared.responseCode)
             
-            await authSessionManager.authenticate(with: url)
+            let result = await authSessionManager.authenticate(with: url)
+            
+            if result == 1 {
+                Task {
+                    await postToken()
+                }
+            } else {
+                print("토큰 오류")
+            }
+                
+                } catch {
+                    print("에러 발생: \(error)")
+                }
+    }
+    
+    
+    func postToken() async {
+        do {
+            let code = LoginService.shared.responseCode
+            print("함수 내에서 토큰 찍어보기", code)
+            self.LoginFinsh = try await TokenService.shared.PostTokenData(code: code)
+            
+            print("PostTokenData 결과: \(LoginFinsh)")
+
             
         } catch {
-            print("에러 발생: \(error)")
+            print("auth 토큰 실패: \(error)")
         }
     }
+    
 }
 
-#Preview {
-    LoginView()
-}
+//#Preview {
+//    LoginView(makePlaylist: $makePlaylist)
+//}
