@@ -33,7 +33,7 @@ struct ControlView: View {
     var body: some View {
         
         if !makePlaylist {
-            FinaleSelctedView(playListLoading: $playListLoading, PlaylistSongs: $PlaylistSongs, makePlaylist: $makePlaylist, selectSong: $selectSong)
+            FinaleSelctedView(playListLoading: $playListLoading, PlaylistSongs: $PlaylistSongs, makePlaylist: $makePlaylist, resetSelectSong: $resetSelectSong, selectSong: $selectSong)
         }
         
         else if finish && makePlaylist {
@@ -43,7 +43,7 @@ struct ControlView: View {
         
         else if makePlaylist && !finish {
             
-            MakePlaylistView(playListLoading: $playListLoading, selectSong: $selectSong, finish: $finish, makePlaylist: $makePlaylist, PlaylistSongs: $PlaylistSongs)
+            MakePlaylistView(playListLoading: $playListLoading, selectSong: $selectSong, finish: $finish, resetSelectSong: $resetSelectSong, makePlaylist: $makePlaylist, PlaylistSongs: $PlaylistSongs)
         }
             
 //            else {
