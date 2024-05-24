@@ -13,6 +13,8 @@ struct MakePlaylistView: View {
     @Environment(\.dismiss) var dismiss
     @State var showPlayList = false
     
+    @Binding var playListLoading : Int
+    
     @State var playListId: String = ""
     
     @Binding var selectSong: SearchModel?
@@ -22,6 +24,7 @@ struct MakePlaylistView: View {
     
     @Binding var PlaylistSongs: [SearchModel]
     
+    
     func createExportRequestBody(from playlistSongs: [SearchModel]) -> ExportRequestBody {
         let videoList = playlistSongs.map { $0.videoId }
         return ExportRequestBody(videoList: videoList)
@@ -30,13 +33,12 @@ struct MakePlaylistView: View {
     
     func postExport() async {
         do {
-
+            
             let exportRequestBody = createExportRequestBody(from: PlaylistSongs)
             
             playListId = try await ExportService.shared.PostExportData(videoList: exportRequestBody.videoList)
-                    
-            print(playListId)
             
+            print(playListId)
             
             
         } catch {
@@ -69,14 +71,14 @@ struct MakePlaylistView: View {
             VStack(alignment: .leading, spacing: 16){
                 TopLogo
                     .padding(.horizontal, 20)
-
+                
                 HStack{
                     Text("오늘의 피날레곡")
                     Image(systemName: "music.note")
                 }
                 .font(.system(size: 24, weight:.bold))
                 .padding(.horizontal, 20)
-
+                
                 
                 ZStack{
                     Rectangle()
@@ -88,12 +90,12 @@ struct MakePlaylistView: View {
                         AsyncImage(url: $selectSong.wrappedValue?.thumbnail){ image in
                             image.image?.resizable()
                         }
-                            .scaledToFit()
-                            .frame(width: 140, height: 79)
-                            .scaledToFit()
-                            .cornerRadius(8)
+                        .scaledToFit()
+                        .frame(width: 140, height: 79)
+                        .scaledToFit()
+                        .cornerRadius(8)
                         
-                    
+                        
                         
                         VStack(alignment: .leading)
                         {
@@ -111,96 +113,102 @@ struct MakePlaylistView: View {
                     .frame(width: 353, height: 104)
                 }
                 .padding(.horizontal, 20)
-
+                
                 
                 Text("\(Date(), formatter: Self.KoreanFormatter)의 플레이리스트")
                     .font(.system(size: 24, weight:.bold))
                     .padding(.horizontal, 20)
-
                 
-                HStack{
-                    Spacer()
-                    Text("총 \(PlaylistService.shared.responseLength)")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                }
-                .padding(.horizontal, 20)
-
-                
-                
-                List{
-                    ForEach(PlaylistSongs, id: \.id) { item in
-                        SongView(thissong: item)
-
-                    }
-                    .listRowBackground(Color.clear)
+                if playListLoading == 0 {
                     
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) { print("삭제") } label: {
-                            Label("delete", systemImage: "trash") }
-                        Button(role: .cancel) { print("붐따") } label: {
-                            Label("dislike", systemImage: "hand.thumbsdown.fill") }
-                    }
+   
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
+                        .scaleEffect(2.0, anchor: .center)
+                        .padding(.leading, 185)
+                        .frame(height: 496)
+              
                 }
-                .listStyle(.inset)
-                .frame(height: 384)
-                .scrollContentBackground(.hidden)
-                .background(Color.customGray100.opacity(0.9))
                 
                 
-                
-                
-                
-                HStack(spacing: 14){
+                else {
                     
                     HStack{
-                        Image(systemName: "arrow.counterclockwise")
-                            .foregroundStyle(Color.primaryPurple)
-                        Text("다시 만들기")
-                            .foregroundStyle(Color.primaryPurple)
+                        Spacer()
+                        Text("총 \(PlaylistService.shared.responseLength)")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
                     }
-                
-                    .frame(width: 168, height: 49, alignment: .center)
-                    .background(.white)
-                    .cornerRadius(12)
-                    .onTapGesture {
-                        self.makePlaylist = false
-                    }
-                    
-                    //                .padding(.horizontal, 20)
+                    .padding(.horizontal, 20)
                     
                     
+                    List{
+                        ForEach(PlaylistSongs, id: \.id) { item in
+                            SongView(thissong: item)
+                            
+                        }
+                        .listRowBackground(Color.clear)
+                        
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) { print("삭제") } label: {
+                                Label("delete", systemImage: "trash") }
+                            Button(role: .cancel) { print("붐따") } label: {
+                                Label("dislike", systemImage: "hand.thumbsdown.fill") }
+                        }
+                    }
+                    .listStyle(.inset)
+                    .frame(height: 384)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.customGray100.opacity(0.9))
                     
-                    HStack{
-                        Image(systemName: "headphones")
-                            .foregroundStyle(Color.white)
-                        Text("들으러 가기")
-                            .foregroundStyle(Color.white)
+                    HStack(spacing: 14){
+                        
+                        HStack{
+                            Image(systemName: "arrow.counterclockwise")
+                                .foregroundStyle(Color.primaryPurple)
+                            Text("다시 만들기")
+                                .foregroundStyle(Color.primaryPurple)
+                        }
+                        
+                        .frame(width: 168, height: 49, alignment: .center)
+                        .background(.white)
+                        .cornerRadius(12)
+                        .onTapGesture {
+                            self.makePlaylist = false
+                            
+                            self.PlaylistSongs = []
+                            //self.selectSong = nil
+                        }
+                        
+                        
+                        HStack{
+                            Image(systemName: "headphones")
+                                .foregroundStyle(Color.white)
+                            Text("들으러 가기")
+                                .foregroundStyle(Color.white)
+                        }
+                        .frame(width: 168, height: 49, alignment: .center)
+                        .background(Color.primaryPurple)
+                        .cornerRadius(12)
+                        .onTapGesture {
+                            self.performExport()
+                            self.finish = true
+                            
+                            self.PlaylistSongs = []
+                            //self.selectSong = nil
+                            
+                        }
+                        
                     }
-                    .frame(width: 168, height: 49, alignment: .center)
-                    .background(Color.primaryPurple)
-                    .cornerRadius(12)
-                    .onTapGesture {
-                        self.performExport()
-                        self.finish = true
-                        
-                        
-                        //
-                        
-                        
-                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 16)
+                    
                     
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 16)
-
-                
-                
             }
             
-            
         }
-
+        
     }
     
     
@@ -246,13 +254,12 @@ struct SongView: View {
     var body: some View {
         HStack{
             
-            
             AsyncImage(url: thissong.thumbnail){ image in
                 image.image?.resizable()
             }
-                .scaledToFit()
-                .cornerRadius(4)
-                .frame(width: 64, height: 36)
+            .scaledToFit()
+            .cornerRadius(4)
+            .frame(width: 64, height: 36)
             
             VStack(alignment: .leading)
             {
@@ -261,14 +268,14 @@ struct SongView: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
-        
+            
             Spacer()
             Text(thissong.duration)
                 .foregroundColor(.gray)
                 .font(.caption)
         }
         
-//        .background(.white.opacity(0.75))
+        //        .background(.white.opacity(0.75))
     }
 }
 

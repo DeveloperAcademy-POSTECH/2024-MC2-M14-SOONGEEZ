@@ -35,6 +35,9 @@ struct FinaleSelctedView: View {
                         viewCount: selectSong.viewCount 
                     )
                 )
+                
+                self.playListLoading = 1
+                
             } else {
                 print("selctsong")
             }
@@ -62,6 +65,7 @@ struct FinaleSelctedView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @Binding var playListLoading : Int
     
     @Binding var PlaylistSongs: [SearchModel]
     

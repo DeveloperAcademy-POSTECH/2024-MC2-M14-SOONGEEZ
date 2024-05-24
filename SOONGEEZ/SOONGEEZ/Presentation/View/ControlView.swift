@@ -12,8 +12,10 @@ struct ControlView: View {
     @State var makePlaylist = false
     @State var finish = false
 
+    @State var playListLoading : Int = 0
     
-    @State var viewNum = 0
+    @State var resetSelectSong = 0
+    
     @State var selectSong: SearchModel?
     
     @State var PlaylistSongs: [SearchModel] = []
@@ -31,16 +33,18 @@ struct ControlView: View {
     var body: some View {
         
         if !makePlaylist {
-            FinaleSelctedView(PlaylistSongs: $PlaylistSongs, makePlaylist: $makePlaylist, selectSong: $selectSong)
+            FinaleSelctedView(playListLoading: $playListLoading, PlaylistSongs: $PlaylistSongs, makePlaylist: $makePlaylist, selectSong: $selectSong)
         }
         
-        else
-        {
-            MakePlaylistView(selectSong: $selectSong, finish: $finish, makePlaylist: $makePlaylist, PlaylistSongs: $PlaylistSongs)
-            
-            if !finish {
+        else if finish && makePlaylist {
+
                 FinishView(makePlaylist:  $makePlaylist, finish: $finish)
             }
+        
+        else if makePlaylist && !finish {
+            
+            MakePlaylistView(playListLoading: $playListLoading, selectSong: $selectSong, finish: $finish, makePlaylist: $makePlaylist, PlaylistSongs: $PlaylistSongs)
+        }
             
 //            else {
 //                FinaleSelctedView(PlaylistSongs: $PlaylistSongs, makePlaylist: $makePlaylist, selectSong: $selectSong)
@@ -57,8 +61,13 @@ struct ControlView: View {
 //            }    }
 
         }
+        
+//        if !finish {}
+        
+        
+        
     }
-}
+
 
 
 
