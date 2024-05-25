@@ -70,6 +70,7 @@ struct FinaleSelctedView: View {
     @Binding var PlaylistSongs: [SearchModel]
     
     @Binding var makePlaylist: Bool
+    @Binding var resetSelectSong: Int
     
     @State var date = Date()
     @State var showDatepicker = false
@@ -136,7 +137,7 @@ struct FinaleSelctedView: View {
                     
                     
                     VStack{
-                        if selectSong != nil {
+                        if resetSelectSong == 1 {
                             finale
                         }
                         else {
@@ -148,7 +149,7 @@ struct FinaleSelctedView: View {
                 }
                 .padding(.bottom, 75)
                 
-                if selectSong != nil {
+                if resetSelectSong == 1 {
                     ActivePlaylistMakeBtn
                         .padding(.bottom, 59)
                         .onTapGesture{
@@ -202,7 +203,7 @@ struct FinaleSelctedView: View {
                 .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $showSelectMusicView) {
-                SelectMusicView(selectSong: $selectSong)
+                SelectMusicView(resetSelectSong: $resetSelectSong, selectSong: $selectSong)
                     .padding(.top, 40)
                     .presentationDragIndicator(.visible)
                 
@@ -257,30 +258,30 @@ struct FinaleSelctedView: View {
                 .frame(width: 353, height: 272)
                 .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 0)
             
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 AsyncImage(url: $selectSong.wrappedValue?.thumbnail){ image in
                     image.image?.resizable()
                 }
                 .scaledToFit()
                 .frame(width: 321, height: 180)
-                .scaledToFit()
                 .cornerRadius(10)
+                .padding(.bottom, 8)
                 
                 
                 VStack(alignment: .leading, spacing: 8){
                     Text(selectSong!.title)
-                        .font(.title3.weight(.semibold))
                         .frame(height: 20)
+                        .font(.title3.weight(.semibold))
                     
                     
                     Text(selectSong!.artist)
-                        .foregroundColor(.gray)
                         .frame(height: 15)
+                        .foregroundColor(.gray)
                     
                 }
                 
             }
-            .frame(width: 353, height: 272)
+            .frame(width: 321, height: 240)
         }
     }
     

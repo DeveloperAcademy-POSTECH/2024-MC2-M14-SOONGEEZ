@@ -13,7 +13,7 @@ struct SelectMusicView: View {
     
     @State private var searchText = ""
     @State private var loadingView : Int = 1
-    
+    @Binding var resetSelectSong: Int
     
     @State private var filteredSongs: [SearchModel] = []
     @State private var clickedSong: SearchModel?
@@ -165,7 +165,6 @@ struct SelectMusicView: View {
                                 .padding(.leading, 8)
                                 
                                 
-                                
                                 VStack(alignment: .leading, spacing: 0){
                                     Text(song.wrappedValue.title)
                                         .font(.system(size: 17))
@@ -243,6 +242,7 @@ struct SelectMusicView: View {
                                 .onTapGesture {
                                     
                                     selectSong = clickedSong!
+                                    self.resetSelectSong = 1
                                     dismiss()
                                 }
                         }
@@ -260,7 +260,7 @@ struct SelectMusicView: View {
 
 
 
-#Preview {
-    SelectMusicView(selectSong: .constant(nil))
-}
+//#Preview {
+//    SelectMusicView(selectSong: .constant(nil))
+//}
 

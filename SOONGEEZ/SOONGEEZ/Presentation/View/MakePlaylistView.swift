@@ -20,9 +20,12 @@ struct MakePlaylistView: View {
     @Binding var selectSong: SearchModel?
     @Binding var finish: Bool
     
+    @Binding var resetSelectSong: Int
+    
     @Binding var makePlaylist: Bool
     
     @Binding var PlaylistSongs: [SearchModel]
+
     
     
     func createExportRequestBody(from playlistSongs: [SearchModel]) -> ExportRequestBody {
@@ -51,10 +54,7 @@ struct MakePlaylistView: View {
             await postExport()
         }
     }
-    
-    
-    
-    var totalLen = "13분 25초"
+
     
     var body: some View {
         
@@ -97,17 +97,23 @@ struct MakePlaylistView: View {
                         
                         
                         
-                        VStack(alignment: .leading)
+                        VStack(alignment: .leading, spacing: 8)
                         {
                             Text(selectSong!.title)
+                                .font(.system(size:20))
+                                .fontWeight(.semibold)
+                                .frame(maxWidth: 175, alignment: .leading)
+                                .lineLimit(1)
+                            
+                            
                             Text(selectSong!.artist)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
+                                .frame(maxWidth: 175, alignment: .leading)
+                                .lineLimit(1)
                         }
                         Spacer()
-                        Text(selectSong!.duration)
-                            .foregroundColor(.gray)
-                            .font(.caption)
+                       
                     }
                     .padding(12)
                     .frame(width: 353, height: 104)
@@ -177,7 +183,8 @@ struct MakePlaylistView: View {
                             self.makePlaylist = false
                             
                             self.PlaylistSongs = []
-                            //self.selectSong = nil
+                            self.resetSelectSong = 0
+                            self.playListLoading = 0
                         }
                         
                         
@@ -195,8 +202,8 @@ struct MakePlaylistView: View {
                             self.finish = true
                             
                             self.PlaylistSongs = []
-                            //self.selectSong = nil
-                            
+                            self.resetSelectSong = 0
+                            self.playListLoading = 0
                         }
                         
                     }
