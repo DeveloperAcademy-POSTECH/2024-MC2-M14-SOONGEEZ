@@ -49,7 +49,7 @@ struct LoginView: View {
     
     func loginAndAuthenticate() async {
         do {
-            let urlString = try await LoginService.shared.PostRegisterData(client_id: "450132674468-bu4dt790mqcc10mbqdjc38ivf08basvk.apps.googleusercontent.com", scope: "https://www.googleapis.com/auth/youtube")
+            let urlString = try await LoginService.shared.PostRegisterData(client_id: "62156712386-4hftpgl78hi9is3rpkqgtfqlmc4dtkju.apps.googleusercontent.com", scope: "https://www.googleapis.com/auth/youtube")
             
             guard let url = URL(string: urlString) else {
                 print("URL 변환 실패")
