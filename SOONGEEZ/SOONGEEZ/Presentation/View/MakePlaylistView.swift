@@ -25,11 +25,13 @@ struct MakePlaylistView: View {
     @Binding var makePlaylist: Bool
     
     @Binding var PlaylistSongs: [SearchModel]
-
+    
     
     
     func createExportRequestBody(from playlistSongs: [SearchModel]) -> ExportRequestBody {
+        
         let videoList = playlistSongs.map { $0.videoId }
+        print("함수 내 비디오 리스트", videoList)
         return ExportRequestBody(videoList: videoList)
     }
     
@@ -37,11 +39,17 @@ struct MakePlaylistView: View {
     func postExport() async {
         do {
             
+//            print("플리 만들 때 뮤지크", PlaylistSongs)
+            
             let exportRequestBody = createExportRequestBody(from: PlaylistSongs)
+            
+            print("플리 만들 때 비디오 아이디들", exportRequestBody)
             
             playListId = try await ExportService.shared.PostExportData(videoList: exportRequestBody.videoList)
             
-            print(playListId)
+            print("플리 아이디", playListId)
+            
+            self.PlaylistSongs = []
             
             
         } catch {
@@ -49,12 +57,13 @@ struct MakePlaylistView: View {
         }
     }
     
+    
     func performExport() {
         Task {
             await postExport()
         }
     }
-
+    
     
     var body: some View {
         
@@ -113,7 +122,7 @@ struct MakePlaylistView: View {
                                 .lineLimit(1)
                         }
                         Spacer()
-                       
+                        
                     }
                     .padding(12)
                     .frame(width: 353, height: 104)
@@ -127,13 +136,13 @@ struct MakePlaylistView: View {
                 
                 if playListLoading == 0 {
                     
-   
+                    
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .gray))
                         .scaleEffect(2.0, anchor: .center)
                         .padding(.leading, 185)
                         .frame(height: 496)
-              
+                    
                 }
                 
                 
@@ -201,7 +210,6 @@ struct MakePlaylistView: View {
                             self.performExport()
                             self.finish = true
                             
-                            self.PlaylistSongs = []
                             self.resetSelectSong = 0
                             self.playListLoading = 0
                         }
@@ -220,7 +228,7 @@ struct MakePlaylistView: View {
     
     
     var TopLogo: some View {
-        Image("img_logo")//텍스트 로고
+        Image("img_logo")
             .resizable()
             .scaledToFit()
             .frame(width:69, height: 21)
@@ -230,13 +238,12 @@ struct MakePlaylistView: View {
     
     var CurrentOrder: some View {
         VStack(alignment: .leading, spacing: 0){
-            //                .padding([.bottom],5)
             HStack{
                 Text("오늘의 피날레곡")
                 Image(systemName: "music.note")
             }
         }
-        .font(.system(size: 24, weight:.bold))//semibold로하면 피그마랑 묘하게 안맞음
+        .font(.system(size: 24, weight:.bold))
     }
     
 }
@@ -271,9 +278,14 @@ struct SongView: View {
             VStack(alignment: .leading)
             {
                 Text(thissong.title)
+                    .frame(width: 236, alignment: .leading)
+                    .lineLimit(1)
+                
                 Text(thissong.artist)
+                    .frame(width: 236,alignment: .leading)
                     .font(.subheadline)
                     .foregroundColor(.gray)
+                    .lineLimit(1)
             }
             
             Spacer()

@@ -34,7 +34,6 @@
 		DF8171882BFC9E4300A33402 /* TokenRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */; };
 		DF81718C2BFCB8D100A33402 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718B2BFCB8D100A33402 /* SearchService.swift */; };
 		DF81718E2BFCB8FA00A33402 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */; };
-		DF8171902BFCB90500A33402 /* SearchRequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */; };
 		DF8BB0042BF4F750006469CD /* SelectMusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */; };
 		DFAEF1FF2BFC4799006F0DA3 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */; };
 		DFBC9BE82BFD9A3F006D7DF6 /* DurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBC9BE72BFD9A3F006D7DF6 /* DurationExtension.swift */; };
@@ -81,7 +80,6 @@
 		DF8171892BFCA6AC00A33402 /* SOONGEEZ.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SOONGEEZ.entitlements; sourceTree = "<group>"; };
 		DF81718B2BFCB8D100A33402 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		DF81718D2BFCB8FA00A33402 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
-		DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestBody.swift; sourceTree = "<group>"; };
 		DF8BB0032BF4F750006469CD /* SelectMusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicModel.swift; sourceTree = "<group>"; };
 		DFAEF1FE2BFC4799006F0DA3 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		DFBC9BE72BFD9A3F006D7DF6 /* DurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationExtension.swift; sourceTree = "<group>"; };
@@ -176,8 +174,8 @@
 				DF20B00C2BF2F0910082BFF3 /* SplashView.swift */,
 				DF20B00E2BF2F09F0082BFF3 /* LoginView.swift */,
 				DEBBF9FD2BFBA59F00AEE7A1 /* ControlView.swift */,
-				DE0580162BFC3672009E8B63 /* FinaleSelctedView.swift */,
 				DF20B0162BF2F0D50082BFF3 /* SelectMusicView.swift */,
+				DE0580162BFC3672009E8B63 /* FinaleSelctedView.swift */,
 				DE9269152BFE2F3500F6BD02 /* MakePlaylistView.swift */,
 				DF20B0102BF2F0AE0082BFF3 /* MusicView.swift */,
 				DE0580182BFC391B009E8B63 /* PlayerView.swift */,
@@ -240,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				DF8171872BFC9E4300A33402 /* TokenRequestBody.swift */,
-				DF81718F2BFCB90500A33402 /* SearchRequestBody.swift */,
 				DF2C1A0C2BFCC0DA009C651D /* LoginRequestBody.swift */,
 				DFDFB43D2BFED27300077682 /* PlaylistRequestBody.swift */,
 				DFDFB4462BFF3F3500077682 /* ExportRequestBody.swift */,
@@ -397,7 +394,6 @@
 				DFDFB4472BFF3F3500077682 /* ExportRequestBody.swift in Sources */,
 				DF20B0132BF2F0BA0082BFF3 /* PlaylistView.swift in Sources */,
 				DFBC9BEA2BFD9DC3006D7DF6 /* SearchModel.swift in Sources */,
-				DF8171902BFCB90500A33402 /* SearchRequestBody.swift in Sources */,
 				DF20B00D2BF2F0910082BFF3 /* SplashView.swift in Sources */,
 				DF8171882BFC9E4300A33402 /* TokenRequestBody.swift in Sources */,
 				DF2C1A0D2BFCC0DA009C651D /* LoginRequestBody.swift in Sources */,
