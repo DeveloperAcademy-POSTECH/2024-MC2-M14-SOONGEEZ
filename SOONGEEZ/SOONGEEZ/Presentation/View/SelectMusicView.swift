@@ -145,7 +145,7 @@ struct SelectMusicView: View {
             }
             
             
-            else {//입력 창에 무언가 입력했을 때
+            else {
                 Text("검색 결과")
                     .padding(.leading, 20)
                     .font(.system(size: 14))
@@ -170,11 +170,13 @@ struct SelectMusicView: View {
                                         .font(.system(size: 17))
                                         .fontWeight(.semibold)
                                         .frame(width: 232, height: 22, alignment: .leading)
+                                        .lineLimit(1)
                                     
                                     Text(song.wrappedValue.artist)
                                         .font(.system(size: 15))
                                         .foregroundColor(.customGray)
                                         .frame(width: 232, height: 20, alignment: .leading)
+                                        .lineLimit(1)
                                 }
                                 
                                 Text(song.wrappedValue.duration)
@@ -184,17 +186,12 @@ struct SelectMusicView: View {
                             }
                             .onTapGesture {
                                 clickedSong = song.wrappedValue
-                                print("선택함", clickedSong!)
+                                print("클릭한 송", clickedSong!)
                             }
                         }
                     }
                     .listStyle(.inset)
                     .frame(maxHeight: .infinity)
-                    
-                    //                    VStack{
-                    //                        Text("dk")
-                    //                            .font(.system(size: 300))
-                    //                    }
                     
                     if clickedSong != nil {
                         VStack{

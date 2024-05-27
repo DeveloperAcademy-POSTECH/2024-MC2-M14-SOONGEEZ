@@ -32,32 +32,32 @@ struct FinaleSelctedView: View {
                         title: selectSong.title,
                         artist: selectSong.artist,
                         length: selectSong.duration.convertToSeconds(),
-                        viewCount: selectSong.viewCount 
+                        viewCount: selectSong.viewCount
                     )
                 )
                 
                 self.playListLoading = 1
                 
             } else {
-                print("selctsong")
+                print("selctsong 오류")
             }
-
-//            PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(restTime: Int(finishTime),
-//                                                                              finaleInfo: (videoId: selectSong!.videoId,
-//                                                                                           thumbnail: selectSong!.thumbnail,
-//                                                                                           title: selectSong!.title,
-//                                                                                           artist: selectSong!.artist,
-//                                                                                           length: selectSong!.length,
-//                                                                                           viewCount: selectSong!.viewCount))
             
-            print(PlaylistSongs)
+            //            PlaylistSongs = try await PlaylistService.shared.PostPlaylistData(restTime: Int(finishTime),
+            //                                                                              finaleInfo: (videoId: selectSong!.videoId,
+            //                                                                                           thumbnail: selectSong!.thumbnail,
+            //                                                                                           title: selectSong!.title,
+            //                                                                                           artist: selectSong!.artist,
+            //                                                                                           length: selectSong!.length,
+            //                                                                                           viewCount: selectSong!.viewCount))
+            
+            print("플리 송들", PlaylistSongs)
             
         } catch {
             print("에러 발생: \(error)")
         }
     }
     
-    func performPlaylist() { //필터링
+    func performPlaylist() {
         Task {
             await postPlaylist()
         }
@@ -223,7 +223,7 @@ struct FinaleSelctedView: View {
             
             VStack(alignment: .center){
                 
-                Image("img_radio") //오디오이미지
+                Image("img_radio")
                     .resizable()
                     .frame(width: 321, height: 180)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -272,11 +272,13 @@ struct FinaleSelctedView: View {
                     Text(selectSong!.title)
                         .frame(height: 20)
                         .font(.title3.weight(.semibold))
+                        .lineLimit(1)
                     
                     
                     Text(selectSong!.artist)
                         .frame(height: 15)
                         .foregroundColor(.gray)
+                        .lineLimit(1)
                     
                 }
                 

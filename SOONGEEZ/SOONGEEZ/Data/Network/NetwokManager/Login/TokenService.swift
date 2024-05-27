@@ -49,10 +49,10 @@ class TokenService {
             }
             
             let request = self.makeRequest(body: body)
-            print("네트워크 요청 생성됨") // 네트워크 요청 생성 로그
+            print("네트워크 요청 생성됨")
             
             let (_, response) = try await URLSession.shared.data(for: request)
-            print("네트워크 응답 수신됨") // 네트워크 응답 수신 로그
+            print("네트워크 응답 수신됨")
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 print(response)
@@ -62,7 +62,7 @@ class TokenService {
             return responseFinishLogin
             
         } catch {
-            print("토큰서비스 에러: \(error)") // 에러 발생시 로그
+            print("토큰서비스 에러: \(error)") 
             throw error
         }
     }
