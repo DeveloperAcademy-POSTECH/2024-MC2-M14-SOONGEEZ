@@ -9,7 +9,7 @@
 ## 🐒 숭이즈
 |[<img src="https://github.com/crownjoe.png" width="100px">](https://github.com/crownjoe)|[<img src="https://github.com/ezzkimm.png" width="100px">](https://github.com/ezzkimm)|[<img src="https://github.com/kyxxgsoo.png" width="100px">](https://github.com/kyxxgsoo)|[<img src="https://github.com/seeeRini.png" width="100px">](https://github.com/seeeRini)|[<img src="https://github.com/keenieY.png" width="100px">](https://github.com/keenieY)|[<img src="https://github.com/Ahnhyerim.png" width="100px">](https://github.com/Ahnhyerim)|  
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|[조세연](https://github.com/crownjoe)|[김은정](https://github.com/ezzkimm)|[이경수](https://github.com/kyxxgsoo)|[성세린](https://github.com/seeeRini)|[Louis](https://github.com/keenieY)|[안혜림](https://github.com/Ahnhyerim)|
+|[조세연](https://github.com/crownjoe)|[김은정](https://github.com/ezzkimm)|[이경수](https://github.com/kyxxgsoo)|[성세린](https://github.com/seeeRini)|[이윤지](https://github.com/keenieY)|[안혜림](https://github.com/Ahnhyerim)|
 
 <br>
 
