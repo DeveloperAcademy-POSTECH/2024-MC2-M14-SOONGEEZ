@@ -207,6 +207,7 @@
 		DF20AFFF2BF1B7650082BFF3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */,
 				DF20B0012BF1B7850082BFF3 /* DataMapping */,
 				DF20B0002BF1B76C0082BFF3 /* NetwokManager */,
 			);
@@ -216,7 +217,6 @@
 		DF20B0002BF1B76C0082BFF3 /* NetwokManager */ = {
 			isa = PBXGroup;
 			children = (
-				DF78CB2A2BFBA00D00CF4AFC /* NetworkError.swift */,
 				DFDFB44A2BFF3FB200077682 /* Export */,
 				DFDFB4432BFED49800077682 /* Playlist */,
 				DF81718A2BFCB8BD00A33402 /* Search */,
