@@ -39,8 +39,6 @@ struct MakePlaylistView: View {
     func postExport() async {
         do {
             
-//            print("플리 만들 때 뮤지크", PlaylistSongs)
-            
             let exportRequestBody = createExportRequestBody(from: PlaylistSongs)
             
             print("플리 만들 때 비디오 아이디들", exportRequestBody)
@@ -50,6 +48,8 @@ struct MakePlaylistView: View {
             print("플리 아이디", playListId)
             
             self.PlaylistSongs = []
+            
+            connectYoutube()
             
             
         } catch {
@@ -61,6 +61,17 @@ struct MakePlaylistView: View {
     func performExport() {
         Task {
             await postExport()
+        }
+    }
+    
+    func connectYoutube(){
+        var youtubeUrl = NSURL(string: "youtube://")!
+        
+        if UIApplication.shared.canOpenURL(youtubeUrl as URL){
+            UIApplication.shared.open(youtubeUrl as URL)
+        } else {
+            youtubeUrl = NSURL(string: "https://www.youtube.com")!
+            UIApplication.shared.open(youtubeUrl as URL)
         }
     }
     
