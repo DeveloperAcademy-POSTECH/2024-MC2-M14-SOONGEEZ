@@ -1,6 +1,6 @@
 
 # Finale
-<p align="center"><img src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M14-SOONGEEZ/assets/135544903/13685fcc-12ae-4dc8-bf50-8e052aba397e"></p>
+<p align="center"><img src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M14-SOONGEEZ/assets/135544903/aeebe2b1-7e17-4f59-b3f5-7d0332164cb5"></p>
 
 
 **지정한 시간에 맞춰 선택한 곡이 마지막으로 재생될 수 있도록 플레이리스트를 만들어 주는 앱, Finale**
@@ -10,10 +10,6 @@
 숭이즈2. 
 
 숭이즈에서 **숭이즈...**
-
-숭이즈.
-
-<img height="20px" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=android&logoColor=white"/> <img height="20px" src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Kotlin&logoColor=white">
 
 <br> 
 
@@ -60,11 +56,14 @@
 - **[MERGE]** : 다른 브랜치와의 MERGE
 - **[REFACTOR]** : 전면 수정
 
+<br> 
 
 ## 🔖 Branch Strategy
 ```
 [작업 유형/#이슈 번호] 작업 내용 
 ```
+
+<br> 
 
 ## 🫧Project Archiving
 [CONVENTION & MEETING MINUTES](https://righteous-pigeon-fc2.notion.site/6ccfc1bf41194b5aa5548e181a5ba1d3?pvs=4)
