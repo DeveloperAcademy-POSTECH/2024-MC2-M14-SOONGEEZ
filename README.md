@@ -19,11 +19,9 @@
 ├─📂Data
 |  ├─📂Network
 │  │   ├─📂DataMapping
-│  │   ├─📂NetworkManager
+│  │   └─📂NetworkManager
 │  │      └─📂Response
 │  │      └─📂Request
-│  ├─📂service
-│  ├─📂module
 ├─📂Presentation
 │  │  └─📂View
 │  │  └─📂ViewModel
@@ -34,9 +32,8 @@
 
 ## 💻 TECH STACK
 - MVVM
-- Youtube Data Api V3
-- YTMusic Api
-
+- YouTube Data API V3
+- YTMusic API
   
 <br>
 
