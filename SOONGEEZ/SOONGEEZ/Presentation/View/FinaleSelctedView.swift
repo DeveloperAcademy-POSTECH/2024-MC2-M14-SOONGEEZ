@@ -189,8 +189,8 @@ struct FinaleSelctedView: View {
                     }) {
                         Text("확인")
                             .foregroundStyle(Color.white)
-                            .padding([.vertical], 16.5)
-                            .padding([.horizontal], 161)
+                            .padding([.vertical], 16)
+                            .padding([.horizontal], 160)
                             .background {
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(Color.customPurple100)
