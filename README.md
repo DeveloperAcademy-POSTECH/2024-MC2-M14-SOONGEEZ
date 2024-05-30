@@ -1,8 +1,8 @@
 <img src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M14-SOONGEEZ/assets/135544903/aeebe2b1-7e17-4f59-b3f5-7d0332164cb5" width="120">
 
 # Finale
-**지정한 시간에 맞춰 선택한 곡이 마지막으로 재생될 수 있도록 플레이리스트를 만들어 주는 앱, Finale**
-
+<p align="center"><img src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M14-SOONGEEZ/assets/135544903/bbcb46a1-ca9e-4793-a7c8-3b780b06da79"></p>
+<p align="center"><img src="https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M14-SOONGEEZ/assets/135544903/a6aec128-b573-4921-a1fd-a18c186cf935"></p>
 
 <br> 
 
